@@ -1,0 +1,12 @@
+[dotfiles]
+repository = ~/Dotfiles
+ignore = [
+    '.git',
+    '.gitignore',
+    '*.swp',
+    'vim/plugged']
+packages = [
+    'config',
+    'mutt',
+    'ssh',
+    'ncmpcpp']

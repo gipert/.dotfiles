@@ -1,0 +1,207 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+font pango:Meslo LG S DZ Nerd Font 9
+
+# set primary gruvbox colorscheme colors
+set $bg       #282828
+set $red      #cc241d
+set $green    #98971a
+set $yellow   #d79921
+set $blue     #458588
+set $purple   #b16286
+set $aqua     #689d68
+set $gray     #a89984
+set $darkgray #1d2021
+set $white    #ebdbb2
+
+# blue gruvbox
+# class                 border    backgr    text      indicator child_border
+client.focused          $blue     $blue     $darkgray $purple   #303536
+client.focused_inactive $darkgray $darkgray $yellow   $purple   $darkgray
+client.unfocused        $darkgray $darkgray $yellow   $purple   $darkgray
+client.urgent           $red      $red      $white    $red      $red
+
+# I hate it
+focus_follows_mouse no
+
+# Lock the screen
+bindsym $mod+Shift+l exec xlock -mode worm -count 5
+
+# set names for workspaces
+set $w1  "1:I"
+set $w2  "2:II"
+set $w3  "3:III"
+set $w4  "4:IV"
+set $w5  "5:V"
+set $w6  "6:VI"
+set $w7  "7:VII"
+set $w8  "8:VIII"
+set $w9  "9:IX"
+set $w10 "10:X"
+set $w11 "11:ROOT"
+
+# assign workspaces
+workspace $w1  output DP-2
+workspace $w2  output DP-2
+workspace $w3  output DP-2
+workspace $w4  output DP-2
+workspace $w5  output DP-2
+workspace $w6  output DP-1
+workspace $w7  output DP-1
+workspace $w8  output DP-1
+workspace $w9  output DP-1
+workspace $w10 output DP-1
+workspace $w11 output DP-1
+
+# no titles pls
+for_window [class="^.*"] border pixel 5
+# set gaps (i3-gaps!)
+gaps inner 10
+gaps outer 0
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+#bindsym $mod+Return exec urxvt256c
+bindsym $mod+Return exec st
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start rofi
+bindsym $mod+d exec "rofi -show run"
+bindsym $mod+s exec "rofi -show ssh"
+
+# change focus
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace $w9
+bindsym $mod+0 workspace $w10
+bindsym $mod+minus workspace $w11
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $w1; workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2; workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3; workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4; workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5; workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6; workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7; workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8; workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9; workspace $w9
+bindsym $mod+Shift+0 move container to workspace $w10; workspace $w10
+bindsym $mod+Shift+minus move container to workspace $w11; workspace $w11
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym XF86AudioPlay exec ncmpcpp toggle
+bindsym XF86AudioStop exec ncmpcpp stop
+bindsym XF86AudioPrev exec ncmpcpp prev
+bindsym XF86AudioNext exec ncmpcpp next
+bindsym XF86AudioLowerVolume exec amixer set Master 1%-
+bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        bindsym Left  resize shrink width  10 px or 1 ppt
+        bindsym Right resize grow   width  10 px or 1 ppt
+        bindsym Down  resize grow   height 10 px or 1 ppt
+        bindsym Up    resize shrink height 10 px or 1 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bar {
+    colors {
+        background #00000000
+        # text color used for blocks that do not have a color specified.
+        statusline $yellow
+        # workspaces section
+        #                    border    bkg      text
+        focused_workspace    $aqua     $aqua     $darkgray
+        inactive_workspace   $darkgray $darkgray $yellow
+        active_workspace     $white    $white    $darkgray
+        urgent_workspace     $red      $red      $bg
+    }
+    position top
+    workspace_buttons yes
+    tray_output none
+    strip_workspace_numbers yes
+
+    i3bar_command i3bar -t
+    status_command ~/code/installed/bumblebee-status/bumblebee-status \
+        -m github newmails docker nic weather amixer datetime \
+        -t gruvbox-powerline
+}
+
+exec --no-startup-id "i3-msg 'workspace 10:X; append_layout /home/pertoldi/.config/i3/layouts/workspace-10.json'"
+#exec --no-startup-id "i3-msg 'workspace 9:IX; append_layout /home/pertoldi/.config/i3/layouts/workspace-9.json'"
+exec --no-startup-id "i3-msg 'workspace 1:I;  append_layout /home/pertoldi/.config/i3/layouts/workspace-1.json'"
+
+exec --no-startup-id st -n htop -e htop
+exec --no-startup-id st -n ncmpcpp -e ncmpcpp
+exec --no-startup-id st -n vis -e vis
+#exec --no-startup-id vivaldi
+exec --no-startup-id st -n st-256color
+
+assign [class="^ROOT$"] → number "11:ROOT"
+for_window [class="^ROOT$"] floating enable; workspace "11:ROOT"

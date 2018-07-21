@@ -1,0 +1,29 @@
+# vim:syntax=neomuttrc
+
+set my_hotuser = luigi.pertoldi@hotmail.it
+set my_hotpswd = `cat ~/.secrets | grep hotmail | awk '{print $2}'`
+
+set imap_user   = $my_hotuser
+set imap_pass   = $my_hotpswd
+set folder      = imaps://imap-mail.outlook.com:993/
+set spoolfile   = +INBOX
+set postponed   = +Drafts
+unset record  # because hotmail already saves it in 'Sent'
+set trash       = +Trash
+unmailboxes *
+mailboxes       = +Inbox +Sent +Drafts +Trash +Junk
+
+set header_cache     = ~/.mutt/hotmail.it/cache/headers
+set message_cachedir = ~/.mutt/hotmail.it/cache/bodies
+set certificate_file = ~/.mutt/hotmail.it/certificates
+
+# SMPT
+set smtp_url = smtp://$imap_user@smtp-mail.outlook.com:587
+set smtp_pass = $imap_pass
+set realname = 'Luigi Pertoldi'
+set from = luigi.pertoldi@hotmail.it
+set hostname = hotmail.it
+set signature = "Luigi"
+set use_from = yes
+
+account-hook $folder "set imap_user=$my_hotuser imap_pass=$my_hotpswd"

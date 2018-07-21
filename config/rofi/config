@@ -1,0 +1,10 @@
+! vim: syntax=xdefaults
+
+rofi.theme: gruvbox-dark
+rofi.font: Meslo LG S DZ Nerd Font 9
+
+rofi.modi: window,run,ssh,drun
+rofi.lines: 20
+rofi.case-sensitive: false
+rofi.matching: fuzzy
+rofi.terminal: st

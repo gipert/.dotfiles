@@ -1,0 +1,29 @@
+# vim: syntax=neomuttrc
+
+set my_infnuser = pertoldi
+set my_infnpswd = `cat ~/.secrets | grep infnmail | awk '{print $2}'`
+
+set imap_user   = $my_infnuser
+set imap_pass   = $my_infnpswd
+set folder      = imaps://imap.pd.infn.it:993/
+set spoolfile   = +Inbox
+set postponed   = +Drafts
+set record      = +Sent
+set trash       = +Trash
+unmailboxes *
+mailboxes       = +Inbox +Sent +Drafts +Trash
+
+set header_cache     = ~/.mutt/pd.infn.it/cache/headers
+set message_cachedir = ~/.mutt/pd.infn.it/cache/bodies
+set certificate_file = ~/.mutt/pd.infn.it/certificates
+
+# SMPT
+set smtp_url = smtp://$imap_user@smtp.pd.infn.it:587/
+set smtp_pass = $imap_pass
+set realname = 'Luigi Pertoldi'
+set from = luigi.pertoldi@pd.infn.it
+set hostname = pd.infn.it
+set signature = "Luigi"
+set use_from = yes
+
+account-hook $folder "set imap_user=$my_infnuser imap_pass=$my_infnpswd"

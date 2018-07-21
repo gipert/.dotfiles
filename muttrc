@@ -1,0 +1,51 @@
+unset imap_passive
+
+set sidebar_visible
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats
+set mail_check_stats_interval = 10
+
+set header_cache     = ~/.cache/mutt
+set message_cachedir = ~/.cache/mutt
+set mail_check = 60
+#set sidebar_new_mail_only = yes
+
+# pd.infn.it account
+source "~/.mutt/work"
+folder-hook $folder 'source ~/.mutt/work'
+
+# hotmail.it account
+source "~/.mutt/personal"
+folder-hook $folder 'source ~/.mutt/personal'
+
+# default account
+source ~/.mutt/work
+
+# Get Help
+macro index   <f1> "!man /usr/share/doc/neomutt-*/manual.txt\n"
+macro pager   <f1> "!man /usr/share/doc/neomutt-*/manual.txt\n"
+
+# macros to switch between accounts
+macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/work<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><refresh><enter-command>source ~/.mutt/personal<enter><change-folder>!<enter>'
+
+# Fetch mail shortcut
+bind index G imap-fetch-mail
+
+# delete messages
+macro index d '<delete-message><sync-mailbox>y'
+
+# Move the highlight to the previous mailbox
+bind index,pager \Cp sidebar-prev
+# Move the highlight to the next mailbox
+bind index,pager \Cn sidebar-next
+# Open the highlighted mailbox
+bind index,pager \Co sidebar-open
+
+set mailcap_path = ~/.mutt/mailcap
+auto_view text/html
+
+set query_command= "abook --mutt-query '%s'"
+macro index,pager A "<pipe-message>abook --add-email-quiet<return>" "add the sender address to abook"
+
+# vim: syntax=neomuttrc
