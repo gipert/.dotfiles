@@ -4,7 +4,8 @@ ignore = [
     '.git',
     '.gitignore',
     '*.swp',
-    'vim/plugged']
+    'README.md',
+    'pics']
 packages = [
     'config',
     'mutt',
