@@ -1,0 +1,5 @@
+vim/plugged
+
+# junk
+*.swp
+*.DS_Store

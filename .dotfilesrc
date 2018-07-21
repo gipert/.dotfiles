@@ -9,4 +9,5 @@ packages = [
     'config',
     'mutt',
     'ssh',
-    'ncmpcpp']
+    'ncmpcpp',
+    'oh-my-zsh']
