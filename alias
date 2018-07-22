@@ -24,6 +24,6 @@ alias tunnel-on='ssh -fN gate-infn'
 alias tunnel-check='ssh -O check gate-infn'
 alias tunnel-off='ssh -O exit gate-infn'
 
-alias fetchdrive='rsync -avhuz mpik:storage/backup-drive/Desktop/ ~/desktop/ && \
-                  rsync -avhuz mpik:storage/backup-drive/Documents/ ~/documents/ && \
-                  rsync -avhuz mpik:storage/backup-drive/literature/ ~/literature/'
+alias fetchdrive='rsync -avhuz mpik:storage/backup-drive/macbook/Desktop/ ~/desktop/ && \
+                  rsync -avhuz mpik:storage/backup-drive/macbook/Documents/ ~/documents/ && \
+                  rsync -avhuz mpik:storage/backup-drive/macbook/literature/ ~/literature/'
