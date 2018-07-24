@@ -10,20 +10,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../../'
 alias .....='cd ../../../..'
-alias lscolors='msgcat --color=test'
-alias startx2='startx -- -keeptty -nolisten tcp > $HOME/.xorg.log 2>&1'
-alias cpython='bpython'
 alias untar='tar xf'
-alias xo='xdg-open'
-alias ccat='pygmentize -g'
-alias rjulia='/home/pertoldi/.julia/v0.6/ROOT/deps/usr/bin/julia'
-alias dotfiles='dotfiles -R /home/pertoldi/code/.dotfiles'
 
-# ssh tunnel for gate.pd.infn.it
-alias tunnel-on='ssh -fN gate-infn'
-alias tunnel-check='ssh -O check gate-infn'
-alias tunnel-off='ssh -O exit gate-infn'
-
-alias fetchdrive='rsync -avhuz mpik:storage/backup-drive/macbook/Desktop/ ~/desktop/ && \
-                  rsync -avhuz mpik:storage/backup-drive/macbook/Documents/ ~/documents/ && \
-                  rsync -avhuz mpik:storage/backup-drive/macbook/literature/ ~/literature/'
+[[ -f ~/.alias_bis ]] && source ~/.alias_bis
