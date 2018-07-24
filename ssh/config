@@ -1,6 +1,7 @@
 # Gobal configs ===========================
 
 Host *
+  XAuthLocation /bin/xauth
   ForwardX11Trusted yes
   ServerAliveInterval 90
   IdentityFile ~/.ssh/id_rsa
@@ -29,7 +30,19 @@ Host gerda-server
   User pertoldi
   ForwardX11 yes
 
-# ===========================================
+# Padova ==================================
+
+Host lxopera
+  HostName lxopera06
+  User pertoldi
+  ForwardX11 yes
+
+Host lxgerda
+  HostName gerda01
+  User pertoldi
+  ForwardX11 yes
+
+# Miscellanea ==============================
 
 Host gerda-cnaf
   HostName ui-gerda.cr.cnaf.infn.it
@@ -44,10 +57,5 @@ Host gerda-lngs
 
 Host mpik
   HostName lfs2.mpi-hd.mpg.de
-  User pertoldi
-  ForwardX11 yes
-
-Host lxopera
-  HostName lxopera06
   User pertoldi
   ForwardX11 yes

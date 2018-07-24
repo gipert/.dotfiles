@@ -4,7 +4,7 @@ export LANG=en_US.UTF-8
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 export MAKEFLAGS="-j8"
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig:/usr/lib64/pkgconfig:/usr/share/pkgconfig"
-export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:/usr/lib64:/usr/lib64/llvm3.9/lib/"
+export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:/usr/lib64"
 
 export HOME="/home/pertoldi"
 export TERM="xterm-256color-italic"
@@ -46,11 +46,15 @@ export G4ABLADATA="$(brew --cellar)/geant4/10.4.2/share/Geant4-10.4.2/data/G4ABL
 export AllowForHeavyElements=1
 
 # gerdasw
+export ROOT_INCLUDE_PATH="$ROOT_INCLUDE_PATH:/home/pertoldi/.linuxbrew/include/mgdo/"
+export ROOT_INCLUDE_PATH="$ROOT_INCLUDE_PATH:/home/pertoldi/.linuxbrew/include/databricxx"
+export ROOT_INCLUDE_PATH="$ROOT_INCLUDE_PATH:/home/pertoldi/.linuxbrew/include/gerda-ada"
 export MGDODIR="/home/pertoldi/code/gerda/MGDO"
 export GELATIODIR="/home/pertoldi/code/gerda/GELATIO"
 export MGGERDAGEOMETRY="/home/pertoldi/code/gerda/MaGe/gerdageometry"
 export MGGENERATORDATA="/home/pertoldi/code/gerda/MaGe/generators/data"
 export MU_CAL="/home/pertoldi/code/gerda/gerda-metadata/config/_aux/geruncfg"
+export GA_BASE_DIR="/home/pertoldi/code/gerda/data-active"
 
 # texlive
 export PATH="$PATH:/usr/local/texlive/2018/bin/x86_64-linux"
