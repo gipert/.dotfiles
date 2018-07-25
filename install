@@ -2,38 +2,14 @@
 
 if [ -f ./install ]; then
 
-  srcs=$(find `pwd` -maxdepth 1 -type f \( ! -iname '.*' ! -iname README.md ! -iname install \))
-
-  for f in $srcs; do
-    echo "ln -fs $f ~/.`basename $f`"
-    ln -fs $f ~/.`basename $f`
+  links=`cat linklist.txt`
+  for l in $links; do
+    mkdir -p ~/`dirname $l`
+    echo "ln -fs `pwd`/$l ~/$l"
+    ln -fs `pwd`/$l ~/$l
   done
 
-  fold=(
-    config
-    mutt
-    ncmcpp
-    ssh
-  )
-
-  for d in $fold; do
-    mkdir -p $d
-    for f in $(find `pwd`/$d -maxdepth 1 ! -iname $d); do
-      echo "ln -fs $f ~/.$d/`basename $f`"
-      ln -fs $f ~/.$d/`basename $f`
-    done
-  done
-
-  fold=(
-    vim
-    oh-my-zsh
-  )
-
-  for d in $fold; do
-    echo "ln -fs `pwd`/$d ~/.$d"
-    ln -fs `pwd`/$d ~/.$d
-  done
-
+  rm -f /tmp/xterm-256color-italic.terminfo
   wget -q https://gist.githubusercontent.com/sadsfae/0b4dd18670639f7dce941a1b2a9e4e9e/raw/908b48e6b6370da0568be8d138966c60240a50dd/xterm-256color-italic.terminfo -O '/tmp/xterm-256color-italic.terminfo'
   echo "Compiling xterm-256color-italic terminfo..."
   tic /tmp/xterm-256color-italic.terminfo

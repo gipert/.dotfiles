@@ -1,5 +1,5 @@
-[submodule "oh-my-zsh"]
-	path = oh-my-zsh
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
 	url = git@github.com:gipert/oh-my-zsh.git
 [submodule "vim/plugged/ale"]
 	path = vim/plugged/ale
