@@ -55,3 +55,6 @@
 [submodule "vim/plugged/vim-vue"]
 	path = vim/plugged/vim-vue
 	url = git@github.com:posva/vim-vue.git
+[submodule ".ranger"]
+	path = .ranger
+	url = git@github.com:ranger/ranger.git
