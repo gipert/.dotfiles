@@ -58,3 +58,57 @@
 [submodule "ranger"]
 	path = ranger
 	url = git@github.com:ranger/ranger.git
+[submodule ".vim/plugged/ale"]
+	path = .vim/plugged/ale
+	url = git@github.com:w0rp/ale.git
+[submodule ".vim/plugged/brew.vim"]
+	path = .vim/plugged/brew.vim
+	url = git@github.com:xu-cheng/brew.vim.git
+[submodule ".vim/plugged/FastFold"]
+	path = .vim/plugged/FastFold
+	url = git@github.com:Konfekt/FastFold.git
+[submodule ".vim/plugged/gruvbox"]
+	path = .vim/plugged/gruvbox
+	url = git@github.com:morhetz/gruvbox.git
+[submodule ".vim/plugged/julia-vim"]
+	path = .vim/plugged/julia-vim
+	url = git@github.com:JuliaEditorSupport/julia-vim.git
+[submodule ".vim/plugged/neomutt.vim"]
+	path = .vim/plugged/neomutt.vim
+	url = git@github.com:neomutt/neomutt.vim.git
+[submodule ".vim/plugged/typescript-vim"]
+	path = .vim/plugged/typescript-vim
+	url = git@github.com:leafgarland/typescript-vim.git
+[submodule ".vim/plugged/ultisnips"]
+	path = .vim/plugged/ultisnips
+	url = git@github.com:SirVer/ultisnips.git
+[submodule ".vim/plugged/vim-airline"]
+	path = .vim/plugged/vim-airline
+	url = git@github.com:vim-airline/vim-airline.git
+[submodule ".vim/plugged/vim-airline-themes"]
+	path = .vim/plugged/vim-airline-themes
+	url = git@github.com:vim-airline/vim-airline-themes.git
+[submodule ".vim/plugged/vim-fugitive"]
+	path = .vim/plugged/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule ".vim/plugged/vim-move"]
+	path = .vim/plugged/vim-move
+	url = git@github.com:matze/vim-move.git
+[submodule ".vim/plugged/vim-sensible"]
+	path = .vim/plugged/vim-sensible
+	url = git@github.com:tpope/vim-sensible.git
+[submodule ".vim/plugged/vim-snippets"]
+	path = .vim/plugged/vim-snippets
+	url = git@github.com:honza/vim-snippets.git
+[submodule ".vim/plugged/vimtex"]
+	path = .vim/plugged/vimtex
+	url = git@github.com:lervag/vimtex.git
+[submodule ".vim/plugged/vim-tex-fold"]
+	path = .vim/plugged/vim-tex-fold
+	url = git@github.com:matze/vim-tex-fold.git
+[submodule ".vim/plugged/vim-wheel"]
+	path = .vim/plugged/vim-wheel
+	url = git@github.com:reedes/vim-wheel.git
+[submodule ".vim/plugged/vim-vue"]
+	path = .vim/plugged/vim-vue
+	url = git@github.com:posva/vim-vue.git
