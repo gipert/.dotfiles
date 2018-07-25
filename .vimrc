@@ -9,9 +9,12 @@ set rtp+=~/.vim/templates
 
 " vim-plug settings
 call plug#begin('~/.vim/plugged')
-Plug 'lervag/vimtex'
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'SirVer/ultisnips'
+
+if v:version >= 704
+    Plug 'lervag/vimtex'
+    Plug 'SirVer/ultisnips'
+endif
+
 Plug 'honza/vim-snippets'
 Plug 'matze/vim-tex-fold'
 Plug 'Konfekt/FastFold'
