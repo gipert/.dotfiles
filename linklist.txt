@@ -8,6 +8,7 @@
 .config/ranger/rc.conf
 .config/ranger/rifle.conf
 .config/ranger/scope.sh
+.config/rofi
 .config/vis
 .config/zathura
 .config/user-dirs.dirs
