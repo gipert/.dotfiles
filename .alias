@@ -11,5 +11,6 @@ alias ...='cd ../..'
 alias ....='cd ../../../'
 alias .....='cd ../../../..'
 alias untar='tar xf'
+alias dotsync='cd ~/.dotfiles && git pull && cd - &> /dev/null'
 
 [[ -f ~/.alias_bis ]] && source ~/.alias_bis
