@@ -37,7 +37,11 @@ call plug#end()
 " this is to make sure that vim-sensible is loaded at this point
 runtime! plugin/sensible.vim
 " set shell
-set shell=/bin/zsh
+if executable('zsh')
+    set shell=zsh
+else
+    set shell=bash
+endif
 " for .tex filetype detection, needed for vimtex to work!
 let g:tex_flavor = 'latex'
 " mouse support!
