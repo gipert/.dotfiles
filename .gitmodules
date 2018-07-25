@@ -52,3 +52,6 @@
 [submodule "vim/plugged/vim-wheel"]
 	path = vim/plugged/vim-wheel
 	url = git@github.com:reedes/vim-wheel.git
+[submodule "vim/plugged/vim-vue"]
+	path = vim/plugged/vim-vue
+	url = git@github.com:posva/vim-vue.git
