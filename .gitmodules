@@ -112,3 +112,6 @@
 [submodule ".vim/plugged/vim-vue"]
 	path = .vim/plugged/vim-vue
 	url = git@github.com:posva/vim-vue.git
+[submodule ".vim/plugged/vim-commentary"]
+	path = .vim/plugged/vim-commentary
+	url = git@github.com:tpope/vim-commentary.git

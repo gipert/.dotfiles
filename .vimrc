@@ -35,6 +35,7 @@ Plug 'morhetz/gruvbox'
 Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
 Plug 'neomutt/neomutt.vim'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 " this is to make sure that vim-sensible is loaded at this point
