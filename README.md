@@ -5,3 +5,6 @@ Running on a heavily customized CentOS7. Theres an `install` script, if you want
 ![Screenshot 1](pics/screenshot-1.png)
 ![Screenshot 2](pics/screenshot-2.png)
 ![Screenshot 3](pics/screenshot-3.png)
+
+### TODOs
+* do not unset `TERM` over a ssh connection without X11 forwarding (`DISPLAY` is empty)
