@@ -37,9 +37,9 @@ xrandr --output DP-2 --mode 1920x1080 --pos 0x1920    --rotate right \
 feh --bg-tile ~/pictures/dark_exa_@2X.png
 
 xautolock -detectsleep \
-    -time 5 -notify 20 \
-    -notifier "notify-send -t 18000 -u critical 'Lock' 'Locking screen in 20 seconds.'" \
-    -locker "/bin/xlock -mode worm -count 5" &
+    -time 5 -notify 30 \
+    -notifier "notify-send -t 20000 -u normal -i /usr/share/icons/hicolor/48x48/apps/seahorse.png 'Security Service' 'Locking screen in 20 seconds...'" \
+    -locker "/bin/xlock -mode worm -count 5 -ncolors 200 -saturation 1 -size 1 -echokeys -echokey '*'" &
 
 lsyncd ~/.config/lsyncd.conf
 

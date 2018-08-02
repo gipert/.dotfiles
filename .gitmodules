@@ -115,3 +115,6 @@
 [submodule ".vim/plugged/vim-commentary"]
 	path = .vim/plugged/vim-commentary
 	url = git@github.com:tpope/vim-commentary.git
+[submodule ".vim/plugged/tabular"]
+	path = .vim/plugged/tabular
+	url = git@github.com:godlygeek/tabular.git

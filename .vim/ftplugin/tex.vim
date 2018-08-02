@@ -1,7 +1,7 @@
 " LaTex settings
 filetype indent on
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 "set expandtab
 set grepprg=grep\ -nH\ $*
 set spell

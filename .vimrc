@@ -5,7 +5,7 @@ set encoding=utf-8      " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 
 " add custom directory to runtimepath
-set rtp+=~/.vim/templates
+set runtimepath+=~/.vim/templates
 
 " vim-plug settings
 call plug#begin('~/.vim/plugged')
@@ -36,6 +36,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
 Plug 'neomutt/neomutt.vim'
 Plug 'tpope/vim-commentary'
+Plug 'godlygeek/tabular'
 call plug#end()
 
 " this is to make sure that vim-sensible is loaded at this point
@@ -58,7 +59,7 @@ set shiftwidth=4     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
 
 " set 72 max line width when composing in mutt
-au BufRead /tmp/mutt-* set tw=72
+autocmd BufRead /tmp/mutt-* set tw=72
 
 " cool chars
 set list
@@ -74,7 +75,7 @@ autocmd BufWritePre * %s/\s\+$//e
 colorscheme gruvbox
 set background=dark
 syntax on
-if has("autocmd")
+if has('autocmd')
   " Highlight TODO, FIXME, NOTE, INFO, BUG etc.
   if v:version > 701
     autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')

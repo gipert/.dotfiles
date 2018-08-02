@@ -1,3 +1,4 @@
+.config/dunst
 .config/htop
 .config/i3
 .config/mpd
