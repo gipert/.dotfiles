@@ -1,6 +1,7 @@
 .config/dunst
 .config/htop
 .config/i3
+.config/mailcap
 .config/mpd
 .config/ranger/colorschemes/default-gruvbox.py
 .config/ranger/colorschemes/gruvbox.py
@@ -14,7 +15,7 @@
 .config/zathura
 .config/user-dirs.dirs
 .config/user-dirs.locale
-.mutt/mailcap
+.config/signature
 .mutt/personal
 .mutt/work
 .ncmpcpp
@@ -30,6 +31,7 @@
 .hushlogin
 .muttrc
 .p9krc
+.pinerc
 .profile
 .tmux.conf
 .vimrc

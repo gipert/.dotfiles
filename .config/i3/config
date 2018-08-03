@@ -7,20 +7,20 @@ set $mod Mod4
 font pango:Meslo LG S DZ Nerd Font 9
 
 # set primary gruvbox colorscheme colors
-set $bg       #282828
-set $red      #cc241d
-set $green    #98971a
-set $yellow   #d79921
-set $blue     #458588
-set $purple   #b16286
-set $aqua     #689d68
-set $gray     #a89984
-set $darkgray #1d2021
-set $white    #ebdbb2
+set $bg       "#282828"
+set $red      "#cc241d"
+set $green    "#98971a"
+set $yellow   "#d79921"
+set $blue     "#458588"
+set $purple   "#b16286"
+set $aqua     "#689d68"
+set $gray     "#a89984"
+set $darkgray "#1d2021"
+set $white    "#ebdbb2"
 
 # blue gruvbox
 # class                 border    backgr    text      indicator child_border
-client.focused          $blue     $blue     $darkgray $purple   #303536
+client.focused          $blue     $blue     $darkgray $purple   "#303536"
 client.focused_inactive $darkgray $darkgray $yellow   $purple   $darkgray
 client.unfocused        $darkgray $darkgray $yellow   $purple   $darkgray
 client.urgent           $red      $red      $white    $red      $red
@@ -29,7 +29,7 @@ client.urgent           $red      $red      $white    $red      $red
 focus_follows_mouse no
 
 # Lock the screen
-bindsym $mod+Shift+l exec xlock -mode worm -count 5
+bindsym $mod+Shift+l exec "/bin/xlock -mode worm -count 5 -ncolors 200 -saturation 1 -size 1 -echokeys -echokey '*'"
 
 # set names for workspaces
 set $w1  "1:I"
@@ -172,7 +172,7 @@ bindsym $mod+r mode "resize"
 
 bar {
     colors {
-        background #00000000
+        background "#00000000"
         # text color used for blocks that do not have a color specified.
         statusline $yellow
         # workspaces section
@@ -188,7 +188,7 @@ bar {
     strip_workspace_numbers yes
 
     i3bar_command i3bar -t
-    status_command ~/code/installed/bumblebee-status/bumblebee-status \
+    status_command ~/.config/i3/bumblebee-status/bumblebee-status \
         -m github newmails docker nic weather amixer datetime \
         -t gruvbox-powerline
 }

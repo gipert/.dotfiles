@@ -118,3 +118,6 @@
 [submodule ".vim/plugged/tabular"]
 	path = .vim/plugged/tabular
 	url = git@github.com:godlygeek/tabular.git
+[submodule ".config/i3/bumblebee-status"]
+	path = .config/i3/bumblebee-status
+	url = git@github.com:gipert/bumblebee-status.git
