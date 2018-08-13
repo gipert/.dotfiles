@@ -20,7 +20,9 @@
 .mutt/work
 .ncmpcpp
 .oh-my-zsh
-.ssh/config
+.ssh/config.common
+.ssh/config.linux
+.ssh/config.mac
 .vim
 .alias
 .bash_profile
