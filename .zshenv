@@ -16,4 +16,4 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig:/usr/lib64/pkg
 export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:/usr/lib64"
 export EDITOR="vim"
 
-[[ -f ~/.zshenv_bis ]] && source ~/.zshenv_bis
+[ -f ~/.zshenv_bis ] && source ~/.zshenv_bis

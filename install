@@ -2,8 +2,15 @@
 
 if [ -f ./install ]; then
 
-  [ -f ~/.alias ] && mv ~/.alias ~/.alias_bis
-  [ -f ~/.zshenv ] && mv ~/.zshenv ~/.zshenv_bis
+  if [ -f ~/.alias  ] && [ ! -L ~/.alias  ]; then
+    echo 'mv ~/.alias ~/.alias_bis'
+    mv ~/.alias ~/.alias_bis
+  fi
+
+  if [ -f ~/.zshenv ] && [ ! -L ~/.zshenv ]; then
+    echo 'mv ~/.zshenv ~/.zshenv_bis'
+    mv ~/.zshenv ~/.zshenv_bis
+  fi
 
   links=`cat linklist.txt`
   for l in $links; do
