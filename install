@@ -2,6 +2,9 @@
 
 if [ -f ./install ]; then
 
+  [ -f ~/.alias ] && mv ~/.alias ~/.alias_bis
+  [ -f ~/.zshenv ] && mv ~/.zshenv ~/.zshenv_bis
+
   links=`cat linklist.txt`
   for l in $links; do
     mkdir -p ~/`dirname $l`
@@ -15,3 +18,5 @@ if [ -f ./install ]; then
 else
   echo "ERROR: you must run this script within the .dotfiles directory!"
 fi
+
+# vim: tabstop=2 shiftwidth=2

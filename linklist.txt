@@ -29,6 +29,8 @@
 .gitconfig
 .highlight.zsh
 .hushlogin
+.juliarc.jl
+.latexmkrc
 .muttrc
 .p9krc
 .pinerc
