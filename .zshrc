@@ -3,8 +3,6 @@ zstyle :compinstall filename '$HOME/.zshrc'
 autoload -Uz compinit
 compinit
 
-[ -f $HOME/.profile ] && source $HOME/.profile
-
 # OH-MY-ZSH
 ZSH="$HOME/.oh-my-zsh"
 DEFAULT_USER="pertoldi"
