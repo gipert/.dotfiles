@@ -7,4 +7,7 @@ Running on a heavily customized CentOS7. Theres an `install` script, if you want
 ![Screenshot 3](pics/screenshot-3.png)
 
 ### TODOs
+* fix ssh configs
 * do not unset `TERM` over a ssh connection without X11 forwarding (`DISPLAY` is empty)
+* fix font problem with 'fi'
+* `st` sucks more than other terminals...
