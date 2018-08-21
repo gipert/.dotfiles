@@ -1,7 +1,7 @@
 ! vim: syntax=xdefaults
 
 rofi.theme: gruvbox-dark
-rofi.font: Meslo LG S DZ Nerd Font 9
+rofi.font: MesloLGSDZ Nerd Font Mono 9
 
 rofi.modi: window,run,ssh,drun
 rofi.lines: 20
