@@ -6,4 +6,4 @@ application/msword; /usr/bin/xdg-open %s
 application/pdf; /bin/zathura %s
 application/postscript ; /usr/bin/xdg-open %s
 
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/html; vivaldi %s;
