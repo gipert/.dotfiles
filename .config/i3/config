@@ -4,7 +4,7 @@
 
 set $mod Mod4
 
-font pango:Meslo LG S DZ Nerd Font 9
+font pango:MesloLGSDZ Nerd Font 9
 
 # set primary gruvbox colorscheme colors
 set $bg       "#282828"
@@ -193,15 +193,7 @@ bar {
         -t gruvbox-powerline
 }
 
-exec --no-startup-id "i3-msg 'workspace 10:X; append_layout /home/pertoldi/.config/i3/layouts/workspace-10.json'"
-#exec --no-startup-id "i3-msg 'workspace 9:IX; append_layout /home/pertoldi/.config/i3/layouts/workspace-9.json'"
-exec --no-startup-id "i3-msg 'workspace 1:I;  append_layout /home/pertoldi/.config/i3/layouts/workspace-1.json'"
-
-exec --no-startup-id st -n htop -e htop
-exec --no-startup-id st -n ncmpcpp -e ncmpcpp
-exec --no-startup-id st -n vis -e vis
-#exec --no-startup-id vivaldi
-exec --no-startup-id st -n st-256color
+exec --no-startup-id ~/.config/i3/startup.sh
 
 assign [class="^ROOT$"] → number "11:ROOT"
 for_window [class="^ROOT$"] floating enable; workspace "11:ROOT"

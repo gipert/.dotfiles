@@ -1,4 +1,24 @@
-// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 5,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1028,
+       "width": 935,
+       "x": 1095,
+       "y": 417
+    },
+    "name": "Telegram",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^TelegramDesktop$",
+       "instance": "^Telegram$"
+       }
+    ],
+    "type": "con"
+}
+
 {
     "border": "pixel",
     "current_border_width": 5,
@@ -6,15 +26,16 @@
     "geometry": {
        "height": 1028,
        "width": 1890,
-       "x": 1095,
-       "y": 417
+       "x": 1105,
+       "y": 427
     },
-    "name": "i3: Layout saving in i3",
-    "percent": 1,
+    "name": "WhatsApp",
+    "percent": 0.5,
     "swallows": [
        {
-        "class": "^Vivaldi-stable$",
-        "instance": "^vivaldi-stable$"
+       "class": "^Vivaldi-stable$",
+       "instance": "^vivaldi-stable$",
+       "window_role": "^browser$"
        }
     ],
     "type": "con"
