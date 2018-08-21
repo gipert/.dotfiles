@@ -42,7 +42,7 @@ bind index,pager \Cn sidebar-next
 # Open the highlighted mailbox
 bind index,pager \Co sidebar-open
 
-set mailcap_path = ~/.mutt/mailcap
+set mailcap_path = ~/.config/mailcap
 auto_view text/html
 
 set query_command= "abook --mutt-query '%s'"

@@ -360,7 +360,7 @@ download-command-prefix=
 
 # Sets the search path for the mailcap configuration file.
 # NOTE: colon delimited under UNIX, semi-colon delimited under DOS/Windows/OS2.
-mailcap-search-path=~/.config/
+mailcap-search-path=~/.config/mailcap
 
 # Sets the search path for the mimetypes configuration file.
 # NOTE: colon delimited under UNIX, semi-colon delimited under DOS/Windows/OS2.
