@@ -11,14 +11,15 @@
 .config/ranger/rifle.conf
 .config/ranger/scope.sh
 .config/rofi
-.config/vis
+.config/vis/colors
+.config/vis/config
 .config/zathura
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/signature
 .mutt/personal
 .mutt/work
-.ncmpcpp
+.ncmpcpp/config
 .oh-my-zsh
 .ssh/config.common
 .ssh/config.linux
