@@ -16,8 +16,10 @@ alias dotsync='cd ~/.dotfiles && git pull && git submodule init && git submodule
 
 if [[ `uname` == Darwin ]]; then
   alias ssh='ssh -F ~/.ssh/config.mac'
+  alias rsync='rsync --rsh="ssh -F $HOME/.ssh/config.mac"'
 else
   alias ssh='ssh -F ~/.ssh/config.linux'
+  alias rsync='rsync --rsh="ssh -F $HOME/.ssh/config.linux"'
 fi
 
 [ -f ~/.alias_bis ] && source ~/.alias_bis
