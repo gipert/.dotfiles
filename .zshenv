@@ -10,6 +10,7 @@ addpath() {
                 [[ "${v: -1}" == ':' ]] && eval $3=$1$v || eval $3=$1:$v
             fi
     esac
+    eval export $3
 }
 
 if [[ `uname` == Darwin ]]; then
