@@ -66,7 +66,7 @@ set list
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 
 " automatically remove trailing whitespaces when saving
-autocmd BufWritePre * %s/\s\+$//e
+"autocmd BufWritePre * %s/\s\+$//e
 
 " TODO: clipboard integration
 "set clipboard=unnamedplus
