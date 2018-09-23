@@ -1,6 +1,6 @@
 # gruvbox
 
-set font                        "Meslo LG S DZ Nerd Font 9"
+set font                        "MesloLGSDZ Nerd Font Mono 9"
 set default-bg                  "#282828"
 set default-fg                  "#fbf1c7"
 
