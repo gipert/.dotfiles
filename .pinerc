@@ -129,7 +129,7 @@ goto-default-rule=
 # Sets message which cursor begins on. Choices: first-unseen, first-recent,
 # first-important, first-important-or-unseen, first-important-or-recent,
 # first, last. Default: "first-unseen".
-incoming-startup-rule=
+incoming-startup-rule=last
 
 # Allows a default answer for the prune folder questions. Choices: yes-ask,
 # yes-no, no-ask, no-no, ask-ask, ask-no. Default: "ask-ask".
@@ -429,7 +429,7 @@ address-book=~/.config/addressbook
 global-address-book=
 
 # Set by Alpine; controls beginning-of-month sent-mail pruning.
-last-time-prune-questioned=118.8
+last-time-prune-questioned=118.11
 
 # Set by Alpine; controls display of "new version" message.
 last-version-used=6.21
