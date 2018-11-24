@@ -19,7 +19,7 @@
             "percent": 0.62,
             "swallows": [
                {
-               "class": "^st-256color$",
+               "class": "^alacritty$",
                "instance": "^htop$"
                }
             ],
@@ -39,7 +39,7 @@
             "percent": 0.38,
             "swallows": [
                {
-               "class": "^st-256color$",
+               "class": "^alacritty$",
                "instance": "^vtop$"
                }
             ],
@@ -76,7 +76,7 @@
                     "percent": 0.54,
                     "swallows": [
                        {
-                       "class": "^st-256color$",
+                       "class": "^alacritty$",
                        "instance": "^ncmpcpp$"
                        }
                     ],
@@ -96,7 +96,7 @@
                     "percent": 0.46,
                     "swallows": [
                        {
-                       "class": "^st-256color$",
+                       "class": "^alacritty$",
                        "instance": "^vis$"
                        }
                     ],

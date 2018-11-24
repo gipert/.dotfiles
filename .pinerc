@@ -396,7 +396,7 @@ incoming-check-interval-secondary=
 incoming-check-list=
 
 # Specifies the number of dead letter files to keep when canceling.
-dead-letter-files=
+dead-letter-files=0
 
 # Sets the filename for the newmail fifo (named pipe). Unix only.
 newmail-fifo-path=

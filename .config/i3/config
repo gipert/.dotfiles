@@ -43,6 +43,7 @@ set $w8  "8:VIII"
 set $w9  "9:IX"
 set $w10 "10:X"
 set $w11 "11:ROOT"
+set $w12 "11:(° ͜ʖ°)"
 
 # assign workspaces
 workspace $w1  output DP-2
@@ -56,6 +57,7 @@ workspace $w8  output DP-1
 workspace $w9  output DP-1
 workspace $w10 output DP-1
 workspace $w11 output DP-1
+workspace $w12 output DP-1
 
 # no titles pls
 for_window [class="^.*"] border pixel 5
@@ -68,7 +70,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec urxvt256c
-bindsym $mod+Return exec st
+#bindsym $mod+Return exec st
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -127,6 +130,7 @@ bindsym $mod+8 workspace $w8
 bindsym $mod+9 workspace $w9
 bindsym $mod+0 workspace $w10
 bindsym $mod+minus workspace $w11
+bindsym $mod+plus workspace $w12
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $w1; workspace $w1
@@ -140,6 +144,7 @@ bindsym $mod+Shift+8 move container to workspace $w8; workspace $w8
 bindsym $mod+Shift+9 move container to workspace $w9; workspace $w9
 bindsym $mod+Shift+0 move container to workspace $w10; workspace $w10
 bindsym $mod+Shift+minus move container to workspace $w11; workspace $w11
+bindsym $mod+Shift+plus move container to workspace $w12; workspace $w12
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -195,5 +200,6 @@ bar {
 
 exec --no-startup-id ~/.config/i3/startup.sh
 
-assign [class="^ROOT$"] → number "11:ROOT"
-for_window [class="^ROOT$"] floating enable; workspace "11:ROOT"
+assign [class="^ROOT$"] → number $w11
+for_window [class="^ROOT$"] floating enable; workspace $w11
+assign [class="^bluejeans$"] → number $w12

@@ -13,8 +13,8 @@
     "percent": 1,
     "swallows": [
        {
-       "class": "^st-256color$",
-       "instance": "^st-256color$"
+       "class": "^alacritty$",
+       "instance": "^alacritty$"
        }
     ],
     "type": "con"

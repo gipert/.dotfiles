@@ -140,5 +140,9 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " vim-move settings
 let g:move_key_modifier = 'C'
 
+" vim-commentary settings
+autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
+autocmd FileType asm           setlocal commentstring=#\ %s
+
 " configuration file for c++ is ~/.vim/ftplugin/cpp.vim
 " configuration file for tex in ~/.vim/ftplugin/tex.vim
