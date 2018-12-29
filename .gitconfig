@@ -11,5 +11,5 @@
   status = auto
   branch = auto
   interactive = auto
-  ui = true
+	ui = true
   pager = true
