@@ -43,7 +43,7 @@ set $w8  "8:VIII"
 set $w9  "9:IX"
 set $w10 "10:X"
 set $w11 "11:ROOT"
-set $w12 "11:(° ͜ʖ°)"
+set $w12 "12:(° ͜ʖ°)"
 
 # assign workspaces
 workspace $w1  output DP-2
@@ -202,4 +202,10 @@ exec --no-startup-id ~/.config/i3/startup.sh
 
 assign [class="^ROOT$"] → number $w11
 for_window [class="^ROOT$"] floating enable; workspace $w11
+
+assign [class="^TopLevelShell$"] → number $w11
+for_window [class="^TopLevelShell$"]; workspace $w11
+assign [class="^Geant4$"] → number $w11
+for_window [class="^Geant4$"] floating enable; workspace $w11
+
 assign [class="^bluejeans$"] → number $w12

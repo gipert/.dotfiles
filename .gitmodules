@@ -121,3 +121,18 @@
 [submodule ".config/i3/bumblebee-status"]
 	path = .config/i3/bumblebee-status
 	url = git@github.com:gipert/bumblebee-status.git
+[submodule ".vim/plugged/vim-colors-solarized"]
+	path = .vim/plugged/vim-colors-solarized
+	url = git@github.com:altercation/vim-colors-solarized
+[submodule ".vim/plugged/vim-cpp-enhanced-highlight"]
+	path = .vim/plugged/vim-cpp-enhanced-highlight
+	url = git@github.com:octol/vim-cpp-enhanced-highlight
+[submodule ".vim/plugged/YouCompleteMe"]
+	path = .vim/plugged/YouCompleteMe
+	url = git@github.com:Valloric/YouCompleteMe
+[submodule ".vim/plugged/YCM-Generator"]
+	path = .vim/plugged/YCM-Generator
+	url = git@github.com:rdnetto/YCM-Generator
+[submodule ".vim/plugged/vim-windowswap"]
+	path = .vim/plugged/vim-windowswap
+	url = git@github.com:wesQ3/vim-windowswap
