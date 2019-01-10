@@ -1,3 +1,4 @@
+# Usage: addpath <path> after|before <var>
 addpath() {
     eval v=\$$3
     case ":$v:" in
