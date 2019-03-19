@@ -17,7 +17,8 @@ BASE_FLAGS = [
         '-std=c++11',
         '-xc++',
         '-I/usr/lib/',
-        '-I/usr/include/'
+        '-I/usr/include/',
+        '-I/home/pertoldi/.linuxbrew/include'
         ]
 
 SOURCE_EXTENSIONS = [
