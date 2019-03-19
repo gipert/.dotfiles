@@ -79,6 +79,7 @@ bindsym $mod+Shift+q kill
 # start rofi
 bindsym $mod+d exec "rofi -show run"
 bindsym $mod+s exec "rofi -show ssh"
+bindsym $mod+p exec "rofi-pass"
 
 # change focus
 bindsym $mod+Left  focus left
@@ -209,3 +210,9 @@ assign [class="^Geant4$"] → number $w11
 for_window [class="^Geant4$"] floating enable; workspace $w11
 
 assign [class="^bluejeans$"] → number $w12
+
+assign [class="^org-freehep-jas-JAS3$"] → number $w12
+for_window [class="^org-freehep-jas-JAS3$"] workspace $w12
+
+assign [class="^G4OpenGL$"] → number $w12
+for_window [class="^G4OpenGL$"] workspace $w12
