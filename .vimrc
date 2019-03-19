@@ -137,8 +137,10 @@ let g:ale_completion_enabled = 1
 let g:ale_linters = { 'python': ['flake8'] }
 
 " gutter options
-hi SignColumn ctermbg = black
-set signcolumn=yes
+if v:version >= 750
+  hi SignColumn ctermbg = black
+  set signcolumn=yes
+endif
 
 " YouCompleteMe settings
 let g:ycm_global_ycm_extra_conf                     = '~/.vim/.ycm_extra_conf.py'
