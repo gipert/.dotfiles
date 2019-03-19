@@ -19,8 +19,9 @@
             "percent": 1,
             "swallows": [
                {
-               "class": "^Vivaldi-stable$",
-               "instance": "^vivaldi-stable$"
+               "class": "^Google-chrome$",
+               "instance": "^google-chrome$",
+               "window_role": "^browser$"
                }
             ],
             "type": "con"

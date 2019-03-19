@@ -13,7 +13,8 @@
     "swallows": [
        {
        "class": "^TelegramDesktop$",
-       "instance": "^Telegram$"
+       "instance": "^Telegram$",
+       "title": "^Telegram$"
        }
     ],
     "type": "con"
@@ -33,8 +34,8 @@
     "percent": 0.5,
     "swallows": [
        {
-       "class": "^Vivaldi-stable$",
-       "instance": "^vivaldi-stable$",
+       "class": "^Google-chrome$",
+       "instance": "^google-chrome$",
        "window_role": "^browser$"
        }
     ],

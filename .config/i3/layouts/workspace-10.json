@@ -2,7 +2,7 @@
     "border": "normal",
     "floating": "auto_off",
     "layout": "splitv",
-    "percent": 0.46,
+    "percent": 0.43,
     "type": "con",
     "nodes": [
         {
@@ -10,17 +10,18 @@
             "current_border_width": 5,
             "floating": "auto_off",
             "geometry": {
-               "height": 388,
-               "width": 564,
+               "height": 768,
+               "width": 1024,
                "x": 0,
                "y": 0
             },
             "name": "htop",
-            "percent": 0.62,
+            "percent": 0.67,
             "swallows": [
                {
-               "class": "^alacritty$",
-               "instance": "^htop$"
+               "class": "^Alacritty$",
+               "instance": "^Alacritty$",
+               "title": "^htop$"
                }
             ],
             "type": "con"
@@ -30,17 +31,18 @@
             "current_border_width": 5,
             "floating": "auto_off",
             "geometry": {
-               "height": 388,
-               "width": 564,
+               "height": 768,
+               "width": 1024,
                "x": 0,
                "y": 0
             },
-            "name": "vtop",
-            "percent": 0.38,
+            "name": "vtop --theme gruvbox",
+            "percent": 0.33,
             "swallows": [
                {
-               "class": "^alacritty$",
-               "instance": "^vtop$"
+               "class": "^Alacritty$",
+               "instance": "^Alacritty$",
+               "title": "^vtop$"
                }
             ],
             "type": "con"
@@ -52,14 +54,35 @@
     "border": "normal",
     "floating": "auto_off",
     "layout": "splitv",
-    "percent": 0.54,
+    "percent": 0.57,
     "type": "con",
     "nodes": [
         {
+            "border": "pixel",
+            "current_border_width": 5,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 768,
+               "width": 1024,
+               "x": 0,
+               "y": 0
+            },
+            "name": "ncmpcpp",
+            "percent": 0.42,
+            "swallows": [
+               {
+               "class": "^Alacritty$",
+               "instance": "^Alacritty$",
+               "title": "^ncmpcpp$"
+               }
+            ],
+            "type": "con"
+        },
+        {
             "border": "normal",
             "floating": "auto_off",
-            "layout": "splitv",
-            "percent": 1,
+            "layout": "splith",
+            "percent": 0.58,
             "type": "con",
             "nodes": [
                 {
@@ -67,40 +90,72 @@
                     "current_border_width": 5,
                     "floating": "auto_off",
                     "geometry": {
-                       "height": 388,
-                       "width": 564,
+                       "height": 768,
+                       "width": 1024,
                        "x": 0,
                        "y": 0
                     },
-                    "name": "ncmpcpp",
-                    "percent": 0.54,
+                    "name": "vis",
+                    "percent": 0.65,
                     "swallows": [
                        {
-                       "class": "^alacritty$",
-                       "instance": "^ncmpcpp$"
+                       "class": "^Alacritty$",
+                       "instance": "^Alacritty$",
+                       "title": "^vis$"
                        }
                     ],
                     "type": "con"
                 },
                 {
-                    "border": "pixel",
-                    "current_border_width": 5,
+                    "border": "normal",
                     "floating": "auto_off",
-                    "geometry": {
-                       "height": 388,
-                       "width": 564,
-                       "x": 0,
-                       "y": 0
-                    },
-                    "name": "vis",
-                    "percent": 0.46,
-                    "swallows": [
-                       {
-                       "class": "^alacritty$",
-                       "instance": "^vis$"
-                       }
-                    ],
-                    "type": "con"
+                    "layout": "splitv",
+                    "percent": 0.35,
+                    "type": "con",
+                    "nodes": [
+                        {
+                            "border": "pixel",
+                            "current_border_width": 5,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 768,
+                               "width": 1024,
+                               "x": 0,
+                               "y": 0
+                            },
+                            "name": "vis",
+                            "percent": 0.5,
+                            "swallows": [
+                               {
+                               "class": "^Alacritty$",
+                               "instance": "^Alacritty$",
+                               "title": "^vis$"
+                               }
+                            ],
+                            "type": "con"
+                        },
+                        {
+                            "border": "pixel",
+                            "current_border_width": 5,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 768,
+                               "width": 1024,
+                               "x": 0,
+                               "y": 0
+                            },
+                            "name": "vis",
+                            "percent": 0.5,
+                            "swallows": [
+                               {
+                               "class": "^Alacritty$",
+                               "instance": "^Alacritty$",
+                               "title": "^vis$"
+                               }
+                            ],
+                            "type": "con"
+                        }
+                    ]
                 }
             ]
         }
