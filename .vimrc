@@ -16,7 +16,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'SirVer/ultisnips'
   endif
 
-  if hostname() ==# 'lxpertoldi.pd.infn.it'
+  " disable for .C files (ROOT macros).
+  " Not sure if this is the best way to do it
+  if hostname() ==# 'lxpertoldi.pd.infn.it' && expand('%:e') !=# 'C'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
   endif
@@ -130,7 +132,7 @@ let g:airline_powerline_fonts = 1
 " ale settings
 " Enable completion where available.
 let g:ale_lint_delay = 2000
-let g:ale_pattern_options = {'\.C': {'ale_enabled': 0}} " this is for ROOT macros
+let g:ale_pattern_options = {'\.C': {'ale_enabled': 1}} " this is for ROOT macros
 let g:ale_completion_enabled = 1
 let g:ale_linters = { 'python': ['flake8'] }
 
@@ -152,7 +154,7 @@ let g:move_key_modifier = 'C'
 " vim-commentary settings
 augroup commentary
   autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
-  autocmd FileType asm           setlocal commentstring=#\ %s
+  autocmd FileType asm,julia     setlocal commentstring=#\ %s
 augroup END
 
 " configuration file for c++ is ~/.vim/ftplugin/cpp.vim
