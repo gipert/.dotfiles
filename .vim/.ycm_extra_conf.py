@@ -18,7 +18,15 @@ BASE_FLAGS = [
         '-xc++',
         '-I/usr/lib/',
         '-I/usr/include/',
-        '-I/home/pertoldi/.linuxbrew/include'
+        '-I/home/pertoldi/.linuxbrew/include',
+        '-I/home/pertoldi/.linuxbrew/include/tam',
+        '-I/home/pertoldi/.linuxbrew/include/mgdo',
+        '-I/home/pertoldi/.linuxbrew/include/mage',
+        '-I/home/pertoldi/.linuxbrew/include/gerda-ada',
+        '-I/home/pertoldi/.linuxbrew/include/databricxx',
+        '-I/home/pertoldi/.linuxbrew/include/Geant4',
+        '-I/home/pertoldi/.linuxbrew/include/CLHEP',
+        '-I/home/pertoldi/code/progressbar'
         ]
 
 SOURCE_EXTENSIONS = [
