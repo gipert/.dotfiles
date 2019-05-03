@@ -161,6 +161,10 @@ bindsym XF86AudioNext exec ncmpcpp next
 bindsym XF86AudioLowerVolume exec amixer set Master 1%-
 bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
 
+# bind Mod+t to opening a floaing vtop instance
+for_window [title="^FVtopTerm$"] floating enable
+bindsym $mod+t exec alacritty --class "FVtopTerm" --title "FVtopTerm" -e vtop
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode

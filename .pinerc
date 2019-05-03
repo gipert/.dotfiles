@@ -111,7 +111,7 @@ fcc-name-rule=
 # Sets presentation order of messages in Index. Choices:
 # Subject, From, Arrival, Date, Size, To, Cc, OrderedSubj, Score, and Thread.
 # Order may be reversed by appending /Reverse. Default: "Arrival".
-sort-key=
+sort-key=Arrival/Reverse
 
 # #Sets presentation order of threads in thread index. Choices:
 #arrival, and thread.
@@ -415,7 +415,7 @@ incoming-folders=
 # List of directories where saved-message folders may be. First one is
 # the default for Saves. Example: Main {host1}mail/[], Desktop mail\[]
 # Syntax: optnl-label {optnl-imap-hostname}optnl-directory-path[]
-folder-collections={imap.pd.infn.it/SSL/user=pertoldi}mail/[]
+folder-collections=Active (remote) {imap.pd.infn.it/SSL/user=pertoldi}mail/[], Archived ~/.mailarchive/[]
 
 # List, only needed if nntp-server not set, or news is on a different host
 # than used for NNTP posting. Examples: News *[] or News *{host3/nntp}[]
@@ -433,7 +433,7 @@ address-book=~/.config/addressbook
 global-address-book=
 
 # Set by Alpine; controls beginning-of-month sent-mail pruning.
-last-time-prune-questioned=119.2
+last-time-prune-questioned=119.4
 
 # Set by Alpine; controls display of "new version" message.
 last-version-used=6.21
