@@ -75,7 +75,10 @@ feature-list=expose-hidden-config,
 	smime-sign-by-default,
 	smime-remember-passphrase,
 	no-smime-encrypt-by-default,
-	no-disable-sender
+	no-disable-sender,
+	no-copy-to-address-to-from-if-it-is-us,
+	enable-background-sending,
+	warn-if-blank-subject
 
 # Alpine executes these keys upon startup (e.g. to view msg 13: i,j,1,3,CR,v)
 initial-keystroke-list=
@@ -415,7 +418,8 @@ incoming-folders=
 # List of directories where saved-message folders may be. First one is
 # the default for Saves. Example: Main {host1}mail/[], Desktop mail\[]
 # Syntax: optnl-label {optnl-imap-hostname}optnl-directory-path[]
-folder-collections=Active (remote) {imap.pd.infn.it/SSL/user=pertoldi}mail/[], Archived ~/.mailarchive/[]
+folder-collections=Active (remote) {imap.pd.infn.it/SSL/user=pertoldi}mail/[],
+	Archived ~/.mailarchive/[]
 
 # List, only needed if nntp-server not set, or news is on a different host
 # than used for NNTP posting. Examples: News *[] or News *{host3/nntp}[]
@@ -433,7 +437,7 @@ address-book=~/.config/addressbook
 global-address-book=
 
 # Set by Alpine; controls beginning-of-month sent-mail pruning.
-last-time-prune-questioned=119.4
+last-time-prune-questioned=119.5
 
 # Set by Alpine; controls display of "new version" message.
 last-version-used=6.21
@@ -547,7 +551,7 @@ personal-print-category=
 patterns-roles=
 
 # Patterns and their actions are stored here.
-patterns-filters2=
+patterns-filters2=LIT:pattern="/NICK=CRAL filter/COMM=Why doesn't CRAL have its own mailing list?\\n/FROM=cral_padova@pd.infn.it/FLDTYPE=SPEC/FOLDER=INBOX" action="/FILTER=1/FOLDER={imap.pd.infn.it\/SSL\/user=pertoldi}mail\/Spam/NOKILL=1/STATN=CLR"
 
 # Patterns and their actions are stored here.
 patterns-scores2=

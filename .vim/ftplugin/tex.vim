@@ -13,25 +13,33 @@ let g:tex_no_error = 1
 " vimtex
 let g:vimtex_complete_enabled         = 1
 let g:vimtex_compiler_method          = 'latexmk'
-let g:vimtex_fold_enabled             = 0
-let g:vimtex_fold_manual              = 1
 let g:vimtex_motion_enabled           = 0
 let g:vimtex_imaps_enabled            = 0
 let g:vimtex_matchparen_enabled       = 0
 let g:vimtex_quickfix_open_on_warning = 0
 
+" folding (use vim-tex-fold currently)
+let g:vimtex_fold_enabled = 0
+let g:vimtex_fold_manual = 1
+" let g:vimtex_fold_types = {
+"        \ 'envs' : {
+"        \   'whitelist' : ['frame', 'figure', 'table'],
+"        \ },
+"        \ 'sections' : {
+"        \   'enabled' : 0,
+"        \ },
+"        \}
+
 if has('mac')
   let g:vimtex_view_method = 'skim'
 else
-  let g:vimtex_view_method = 'zathura'
+  " let g:vimtex_view_method = 'zathura'
 endif
-
-let g:vimtex_fold_sections = ['subsection', 'subsubsection']
 
 let g:vimtex_compiler_latexmk = {
 \                 'backend'    : 'jobs',
 \                 'background' : 1,
-\                 'build_dir'  : 'log',
+\                 'build_dir'  : '.auxtex',
 \                 'callback'   : 1,
 \                 'continuous' : 1,
 \                 'executable' : 'latexmk',

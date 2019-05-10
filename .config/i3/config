@@ -163,7 +163,7 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
 
 # bind Mod+t to opening a floaing vtop instance
 for_window [title="^FVtopTerm$"] floating enable
-bindsym $mod+t exec alacritty --class "FVtopTerm" --title "FVtopTerm" -e vtop
+bindsym $mod+t exec alacritty --class "FVtopTerm" --title "FVtopTerm" -e vtop -t gruvbox
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -181,6 +181,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
+    font pango:MesloLGSDZ Nerd Font 9
     colors {
         background "#00000000"
         # text color used for blocks that do not have a color specified.
@@ -199,7 +200,7 @@ bar {
 
     i3bar_command i3bar -t
     status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-        -m github newmails docker nic weather amixer datetime \
+        -m ncmpcpp xkcd github newmails docker_ps amixer cpu weather datetime dunst spacer \
         -t gruvbox-powerline
 }
 
