@@ -30,6 +30,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
+# start mpd server
+`command -v mpd` && mpd
+
 xset r rate 300 40
 
 # mouse, set acceleration and threshold
