@@ -2,6 +2,7 @@
 .config/dunst
 .config/htop
 .config/i3
+.config/kitty
 .config/mailcap
 .config/mpd
 .config/ranger/colorschemes/default-gruvbox.py
@@ -38,7 +39,6 @@
 .muttrc
 .p9krc
 .pinerc
-.profile
 .tmux.conf
 .vimrc
 .xinitrc
