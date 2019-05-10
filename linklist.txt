@@ -1,3 +1,4 @@
+.config/alacritty
 .config/dunst
 .config/htop
 .config/i3
