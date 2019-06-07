@@ -22,6 +22,7 @@ BASE_FLAGS = [
         '-I/home/pertoldi/.linuxbrew/include/tam',
         '-I/home/pertoldi/.linuxbrew/include/mgdo',
         '-I/home/pertoldi/.linuxbrew/include/mage',
+        '-I/home/pertoldi/.linuxbrew/include/gelatio',
         '-I/home/pertoldi/.linuxbrew/include/gerda-ada',
         '-I/home/pertoldi/.linuxbrew/include/databricxx',
         '-I/home/pertoldi/.linuxbrew/include/Geant4',

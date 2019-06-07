@@ -39,6 +39,11 @@ source $ZSH/oh-my-zsh.sh
 
 # Highlighting
 [ -f $HOME/.highlight.zsh ] && source "$HOME/.highlight.zsh"
+
+# functions
+[ -f $HOME/.zfunctions ] && source $HOME/.zfunctions
+
+# aliases
 [ -f $HOME/.alias ] && source $HOME/.alias
 
 # Alternative prompt

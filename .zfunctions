@@ -1,0 +1,46 @@
+rdocs() {
+    if [[ "$1" == "TMath" ]]; then
+        $BROWSER https://root.cern.ch/doc/v614/namespace$1.html
+    else
+        $BROWSER https://root.cern.ch/doc/v614/class$1.html
+    fi
+}
+
+docker2sing() {
+    docker run \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v $PWD:/output \
+        --privileged -t --rm \
+        singularityware/docker2singularity --name "$2" $1
+    chown `whoami`:`id -gn` "$2.simg"
+}
+
+ssh() {
+    if [[ `uname` == "Darwin" ]]; then
+        command ssh -F ~/.ssh/config.mac "$@"
+    elif [[ `hostname` == "lxpertoldi.pd.infn.it" ]]; then
+        if [[ $@ == "gerda-lngs" ]]; then
+            command sshpass -f ~/.secrets ssh -F ~/.ssh/config.linux gerda-lngs
+        else
+            command ssh -F ~/.ssh/config.linux "$@"
+        fi
+    else
+        command ssh -F ~/.ssh/config.linux "$@"
+    fi
+}
+
+rsync() {
+    if [[ `uname` == "Darwin" ]]; then
+        command rsync --progress --rsh="ssh -F $HOME/.ssh/config.mac" "$@"
+    elif [[ `hostname` == "lxpertoldi.pd.infn.it" ]]; then
+        if [[ `echo "$@" | grep -Eq '^gerda-lngs*'` -eq 0 ]]; then
+            command rsync --progress --rsh="sshpass -f $HOME/.secrets ssh -F $HOME/.ssh/config.linux" "$@"
+        else
+            command rsync --progress --rsh="ssh -F $HOME/.ssh/config.linux" "$@"
+        fi
+    else
+        command rsync --progress --rsh="ssh -F $HOME/.ssh/config.linux" "$@"
+    fi
+}
+
+# vim: syntax=sh

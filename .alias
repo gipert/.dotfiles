@@ -15,12 +15,4 @@ alias sudo='sudo HOME=$HOME ZSH_DISABLE_COMPFIX=true'
 alias dotsync='cd ~/.dotfiles && git pull && git submodule init && git submodule update && cd - &> /dev/null'
 alias time='/usr/bin/time -v'
 
-if [[ `uname` == Darwin ]]; then
-  alias ssh='ssh -F ~/.ssh/config.mac'
-  alias rsync='rsync --rsh="ssh -F $HOME/.ssh/config.mac" --progress'
-else
-  alias ssh='ssh -F ~/.ssh/config.linux'
-  alias rsync='rsync --rsh="ssh -F $HOME/.ssh/config.linux" --progress'
-fi
-
 [ -f ~/.alias_bis ] && source ~/.alias_bis

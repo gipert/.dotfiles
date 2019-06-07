@@ -43,5 +43,6 @@
 .vimrc
 .xinitrc
 .Xresources
+.zfunctions
 .zshenv
 .zshrc
