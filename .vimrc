@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
   " Not sure if this is the best way to do it
   if hostname() ==# 'lxpertoldi.pd.infn.it' && expand('%:e') !=# 'C'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
   endif
 
   Plug 'honza/vim-snippets'

@@ -1,5 +1,5 @@
 rofi.theme: gruvbox-dark
-rofi.font: MesloLGSDZ Nerd Font Mono 9
+rofi.font: SFMono Nerd Font 9
 
 rofi.modi: window,run,ssh,drun
 rofi.lines: 20

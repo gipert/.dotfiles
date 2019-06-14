@@ -4,7 +4,7 @@
 
 set $mod Mod4
 
-font pango:MesloLGSDZ Nerd Font 9
+font pango:SFMono Nerd Font 9
 
 # set primary gruvbox colorscheme colors
 set $bg       "#282828"
@@ -181,7 +181,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    font pango:MesloLGSDZ Nerd Font 9
+    font pango:SF Mono 10
     colors {
         background "#00000000"
         # text color used for blocks that do not have a color specified.
