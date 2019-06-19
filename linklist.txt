@@ -39,6 +39,8 @@
 .muttrc
 .p9krc
 .pinerc
+.rootlogon.C
+.rootrc
 .tmux.conf
 .vimrc
 .xinitrc
