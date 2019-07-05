@@ -59,6 +59,7 @@ if executable('zsh')
 else
   set shell=bash
 endif
+set nowrap
 " for .tex filetype detection, needed for vimtex to work!
 let g:tex_flavor = 'latex'
 " mouse support!

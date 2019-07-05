@@ -11,8 +11,9 @@ docker2sing() {
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v $PWD:/output \
         --privileged -t --rm \
-        singularityware/docker2singularity --name "$2" $1
-    chown `whoami`:`id -gn` "$2.simg"
+        singularityware/docker2singularity --name "image" $1
+    sudo chown `whoami`:`id -gn` "image.simg"
+    mv image.simg $2
 }
 
 ssh() {

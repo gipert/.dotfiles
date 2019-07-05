@@ -46,7 +46,8 @@ feh --bg-tile ~/pictures/dark_exa_@2X.png
 xautolock -detectsleep \
     -time 5 -notify 30 \
     -notifier "notify-send -u normal -i /usr/share/icons/hicolor/48x48/apps/seahorse.png 'Security Service' 'Locking screen in 20 seconds...'" \
-    -locker "/bin/xlock -mode worm -count 5 -ncolors 200 -saturation 1 -size 1 -echokeys -echokey '*'" &
+    -locker "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10" &
+    # -locker "/bin/xlock -mode random -modelist 'bug,coral,euler2d,flame,spline,worm,discrete,space' -ncolors 200 -echokeys -echokey '*'" &
 
 # select wm/de with: startx ~/.xinitrc session
 session=${1:-i3}
