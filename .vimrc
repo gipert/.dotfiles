@@ -16,8 +16,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'SirVer/ultisnips'
   endif
 
-  " disable for .C files (ROOT macros).
-  " Not sure if this is the best way to do it
+  " disable on other hosts and for .C files (ROOT macros).
+  " -- not sure if this is the best way to do it --
   if hostname() ==# 'lxpertoldi.pd.infn.it' && expand('%:e') !=# 'C'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
@@ -53,36 +53,39 @@ call plug#end()
 
 " this is to make sure that vim-sensible is loaded at this point
 runtime! plugin/sensible.vim
+
 " set shell
 if executable('zsh')
   set shell=zsh
 else
   set shell=bash
 endif
-set nowrap
-" for .tex filetype detection, needed for vimtex to work!
-let g:tex_flavor = 'latex'
-" mouse support!
-set mouse=a
-" line numbers
-set number
-" configure tabwidth and insert spaces instead of tabs
-set tabstop=4        " tab width is 4 spaces
-set shiftwidth=4     " indent also with 4 spaces
-set expandtab        " expand tabs to spaces
-" remove <F1> help keybind
+
+if has('mouse') " mouse support?
+  set mouse=a
+endif
+
+let g:tex_flavor='latex'       " for .tex filetype detection, needed for vimtex to work!
+set nowrap                     " auto-wrap is evil
+set incsearch                  " highlights what you are searching for as you type
+set ignorecase                 " ignores case in search patterns
+set smartcase                  " don't ignore case when the search pattern has uppercase
+set infercase                  " during keyword completion, fix case of new word (when ignore case is on)
+set number                     " line numbers
+set tabstop=4                  " tab width is 4 spaces
+set shiftwidth=4               " indent also with 4 spaces
+set expandtab                  " expand tabs to spaces
+set wildmode=longest:full,full " the default tab-completion behaviour is simply annoying
+set list                       " cool chars to highlight trailing spaces, end-of-lines and tabs
+set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
+
+" remove <F1> help keybind, I always hit it by mistake
 map <F1> <Nop>
-" the tab-completion default behaviour is simply annoying.
-set wildmode=longest:full,full
 
 " set 72 max line width when composing in mutt
 augroup my_mutt
   autocmd BufRead /tmp/mutt-* set tw=72
 augroup END
-
-" cool chars
-set list
-set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 
 " command to remove trailing whitespace
 command StripWhitespace %s/\s\+$//e
@@ -102,8 +105,8 @@ endif
 highlight NonText ctermfg=238
 highlight SpecialKey ctermfg=238
 
+" italic comments and colorscheme settings
 if $TERM !=? '' || has('gui_running')
-  " italic comments
   highlight Comment cterm=italic
 else
   colorscheme solarized
