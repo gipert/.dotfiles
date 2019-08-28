@@ -29,7 +29,7 @@ client.urgent           $red      $red      $white    $red      $red
 focus_follows_mouse no
 
 # Lock the screen
-bindsym $mod+Shift+l exec "/bin/xlock -mode worm -count 5 -ncolors 200 -saturation 1 -size 1 -echokeys -echokey '*'"
+bindsym $mod+Shift+l exec "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10"
 
 # set names for workspaces
 set $w1  "1:I"

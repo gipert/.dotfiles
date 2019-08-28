@@ -44,4 +44,9 @@ rsync() {
     fi
 }
 
+mvim() {
+    sed "s|Plug 'Valloric/YouCompleteMe'|\" Plug 'Valloric/YouCompleteMe'|g" ~/.vimrc > /tmp/minimal-vimrc
+    vim -u /tmp/minimal-vimrc "$@"
+}
+
 # vim: syntax=sh
