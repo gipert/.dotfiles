@@ -53,6 +53,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'godlygeek/tabular'
   Plug 'octol/vim-cpp-enhanced-highlight'
   Plug 'wesQ3/vim-windowswap'
+  Plug 'ararslan/license-to-vim'
 
 call plug#end()
 
@@ -161,6 +162,7 @@ let g:move_key_modifier = 'C'
 augroup commentary
   autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
   autocmd FileType asm,julia     setlocal commentstring=#\ %s
+  autocmd FileType sql           setlocal commentstring=--\ %s
 augroup END
 
 " configuration file for c++ is ~/.vim/ftplugin/cpp.vim
