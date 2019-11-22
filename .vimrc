@@ -161,8 +161,9 @@ let g:move_key_modifier = 'C'
 " vim-commentary settings
 augroup commentary
   autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
-  autocmd FileType asm,julia     setlocal commentstring=#\ %s
-  autocmd FileType sql           setlocal commentstring=--\ %s
+  autocmd FileType asm,julia setlocal commentstring=#\ %s
+  autocmd FileType lilypond setlocal commentstring=%\ %s
+  autocmd FileType sql setlocal commentstring=--\ %s
 augroup END
 
 " configuration file for c++ is ~/.vim/ftplugin/cpp.vim
