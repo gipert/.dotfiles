@@ -8,11 +8,6 @@ set nocompatible
 " add custom directory to runtimepath
 set runtimepath+=~/.vim/templates
 
-" Lilypond syntax highlighting on Mac
-if has('mac')
-  set runtimepath+=/Applications/LilyPond.app/Contents/Resources/share/lilypond/current/vim
-endif
-
 " vim-plug settings
 call plug#begin('~/.vim/plugged')
 
@@ -54,6 +49,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'octol/vim-cpp-enhanced-highlight'
   Plug 'wesQ3/vim-windowswap'
   Plug 'ararslan/license-to-vim'
+  Plug 'anowlcalledjosh/vim-lilypond'
 
 call plug#end()
 
