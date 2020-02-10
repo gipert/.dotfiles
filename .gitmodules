@@ -139,3 +139,6 @@
 [submodule ".vim/plugged/license-to-vim"]
 	path = .vim/plugged/license-to-vim
 	url = git@github.com:ararslan:license-to-vim
+[submodule ".vim/plugged/vim-lilypond"]
+	path = .vim/plugged/vim-lilypond
+	url = git@github.com:anowlcalledjosh/vim-lilypond
