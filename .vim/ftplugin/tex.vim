@@ -12,11 +12,13 @@ let g:tex_no_error = 1
 
 " vimtex
 let g:vimtex_complete_enabled         = 1
+let g:vimtex_complete_bib             = { 'simple': 1 }
 let g:vimtex_compiler_method          = 'latexmk'
 let g:vimtex_motion_enabled           = 0
 let g:vimtex_imaps_enabled            = 0
 let g:vimtex_matchparen_enabled       = 0
 let g:vimtex_quickfix_open_on_warning = 0
+let g:vimtex_quickfix_autoclose_after_keystrokes = 2
 
 " folding (use vim-tex-fold currently)
 let g:vimtex_fold_enabled = 0
@@ -51,25 +53,16 @@ let g:vimtex_compiler_latexmk = {
 \                        '-shell-escape',
 \                        ],
 \                }
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = [
-\                    're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
-\                    're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
-\                    're!\\hyperref\[[^]]*',
-\                    're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
-\                    're!\\(include(only)?|input){[^}]*',
-\                    're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
-\                    're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
-\                    're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
-\                    're!\\usepackage(\s*\[[^]]*\])?\s*\{[^}]*',
-\                    're!\\documentclass(\s*\[[^]]*\])?\s*\{[^}]*',
-\                    're!\\[A-Za-z]*',
-\                    ]
 
 let g:tex_fold_additional_envs = ['tikzpicture', 'titlepage']
 
 " YCM
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+augroup VimEnter
+    let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+augroup END
+
 let g:ycm_min_num_of_chars_for_completion = 99
 let g:ycm_seed_identifiers_with_syntax = 0

@@ -200,7 +200,7 @@ bar {
 
     i3bar_command i3bar -t
     status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-        -m ncmpcpp xkcd github newmails amixer cpu weather datetime dunst hostname\
+        -m ncmpcpp xkcd github newmails amixer cpu memory weather datetime dunst hostname\
         -a github newmails ncmpcpp \
         -t gruvbox-powerline
 }
