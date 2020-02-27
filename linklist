@@ -2,7 +2,7 @@
 .config/bspwm
 .config/dunst
 .config/gtk-3.0/settings.ini
-.config/htop
+.config/htop/htoprc
 .config/i3
 .config/kitty
 .config/mailcap
@@ -15,7 +15,7 @@
 .config/ranger/rc.conf
 .config/ranger/rifle.conf
 .config/ranger/scope.sh
-.config/rofi
+.config/rofi/config.lxpertoldi ~/.config/rofi/config
 .config/sxhkd
 .config/vis/colors
 .config/vis/config
@@ -25,7 +25,7 @@
 .config/signature
 .mutt/personal
 .mutt/work
-.ncmpcpp/config
+.ncmpcpp/config.lxpertoldi ~/.ncmpcpp/config
 .oh-my-zsh
 .ssh/config.common
 .ssh/config.linux

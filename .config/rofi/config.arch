@@ -1,0 +1,11 @@
+rofi.theme: gruvbox-dark
+rofi.font: MesloLGSDZ Nerd Font Mono 10
+
+rofi.modi: window,run,ssh,drun
+rofi.lines: 20
+rofi.case-sensitive: false
+rofi.matching: fuzzy
+rofi.terminal: alacritty
+rofi.ssh-command: {terminal} -e {ssh-client} -F /home/pertoldi/.ssh/config.linux {host}
+
+! vim: syntax=xdefaults
