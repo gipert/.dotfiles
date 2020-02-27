@@ -1,0 +1,25 @@
+#!/bin/sh
+
+sxhkd -m -1 &
+
+bspc monitor -d I II III IV V VI VII VIII IX X XI XII
+
+bspc config border_width       2
+bspc config window_gap         7
+bspc config top_padding        34
+bspc config bottom_padding     -7
+bspc config left_padding       -7
+bspc config right_padding      -7
+
+bspc config split_ratio        0.5
+bspc config borderless_monocle true
+
+bspc rule -a kitty rectangle=200x200
+bspc rule -a Google-chrome desktop=^12 follow=on
+bspc rule -a Gimp state=floating
+bspc rule -a Inkscape state=floating
+bspc rule -a Skype state=floating
+bspc rule -a Sxiv state=floating
+bspc rule -a Zathura state=tiled
+
+$HOME/.config/polybar/launch.sh

@@ -30,29 +30,42 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
-# start mpd server
-`command -v mpd` && mpd
+# wallpaper
+feh --bg-tile $HOME/pictures/dark_exa_@2X.png
 
+# adjust cursor speed
 xset r rate 300 40
 
 # mouse, set acceleration and threshold
-#xset mouse 7 1
-# mouse, set speed
-xinput set-prop 12 140 0.500000, 0.000000, 0.000000, 0.000000, 0.500000, 0.000000, 0.000000, 0.000000, 1.000000
-xrandr --output DP-2 --mode 1920x1080 --pos 0x1920    --rotate right \
-       --output DP-1 --mode 1920x1080 --pos 1080x2300 --rotate normal
-feh --bg-tile ~/pictures/dark_exa_@2X.png
-
-xautolock -detectsleep \
-    -time 5 -notify 30 \
-    -notifier "notify-send -u normal -i /usr/share/icons/hicolor/48x48/apps/seahorse.png 'Security Service' 'Locking screen in 20 seconds...'" \
-    -locker "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10" &
-    # -locker "/bin/xlock -mode random -modelist 'bug,coral,euler2d,flame,spline,worm,discrete,space' -ncolors 200 -echokeys -echokey '*'" &
+# xset mouse 7 1
 
 # select wm/de with: startx ~/.xinitrc session
-session=${1:-i3}
+session=${1:-bspwm}
+
+if [[ `hostname` == "lxpertoldi.pd.infn.it" ]]; then
+
+    session={$1:-i3}
+
+    # start mpd server
+    `command -v mpd` && mpd
+
+    # mouse, set speed
+    xinput set-prop 12 140 0.500000, 0.000000, 0.000000, 0.000000, \
+                    0.500000, 0.000000, 0.000000, 0.000000, 1.000000
+    # set monitors
+    xrandr --output DP-2 --mode 1920x1080 --pos 0x1920    --rotate right \
+           --output DP-1 --mode 1920x1080 --pos 1080x2300 --rotate normal
+
+    xautolock -detectsleep \
+       -time 5 -notify 30 \
+       -notifier "notify-send -u normal -i /usr/share/icons/hicolor/48x48/apps/seahorse.png 'Security Service' 'Locking screen in 20 seconds...'" \
+       -locker "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10" &
+       # -locker "/bin/xlock -mode random -modelist 'bug,coral,euler2d,flame,spline,worm,discrete,space' -ncolors 200 -echokeys -echokey '*'" &
+fi
 
 case "$session" in
+    bspwm)
+        exec bspwm ;;
     awesome)
         exec awesome ;;
     termite|term)

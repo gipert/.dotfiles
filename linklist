@@ -1,10 +1,13 @@
 .config/alacritty
+.config/bspwm
 .config/dunst
+.config/gtk-3.0/settings.ini
 .config/htop
 .config/i3
 .config/kitty
 .config/mailcap
 .config/mpd
+.config/polybar
 .config/ranger/colorschemes/default-gruvbox.py
 .config/ranger/colorschemes/gruvbox.py
 .config/ranger/commands.py
@@ -13,6 +16,7 @@
 .config/ranger/rifle.conf
 .config/ranger/scope.sh
 .config/rofi
+.config/sxhkd
 .config/vis/colors
 .config/vis/config
 .config/zathura

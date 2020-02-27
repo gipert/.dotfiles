@@ -1,0 +1,137 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+    kitty
+
+# program launcher
+super + @space
+    rofi -show run
+
+# program launcher
+super + p
+    rofi-pass
+
+# program launcher
+super + e
+    rofimoji
+
+# make sxhkd reload its configuration files:
+super + Escape
+    pkill -USR1 -x sxhkd
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + alt + shift + {q,r}
+    bspc {quit,wm -r}
+
+# close and kill
+super + {_,shift + }q
+    bspc node -{c,k}
+
+# ween the tiled and monocle layout
+super + f
+    bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+super + y
+    bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest node
+super + g
+    bspc node -s biggest
+
+#
+# state/flags
+#
+
+# set the window state
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+    bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus/swap the node in the given direction
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+# focus the older or newer node in the focus history
+super + {o,i}
+    bspc wm -h off; \
+    bspc node {older,newer} -f; \
+    bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0,apostrophe,igrave}
+    bspc {desktop -f,node -d} '^{1-9,10,11,12}'
+
+# focus desktop with 4-finger gesture
+button{10,11}
+    bspc desktop -f {prev,next}
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+    bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {Left,Down,Up,Right}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {Left,Down,Up,Right}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + alt + ctrl + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#
+# special keys
+#
+
+XF86Audio{Play,Stop,Prev,Next}
+    mpc {toggle,stop,prev,next}
+
+XF86Audio{Lower,Raise}Volume
+    amixer set Master unmute; \
+    amixer set Master {1%-,1%+}
+
+XF86AudioMute
+    pactl set-sink-mute 0 toggle
+
+XF86MonBrightness{Down,Up}
+    xbacklight -ctrl intel_backlight {-dec,-inc} 2
+
+XF86KbdBrightness{Down,Up}
+    xbacklight -ctrl smc::kbd_backlight {-dec,-inc} 5

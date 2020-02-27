@@ -12,7 +12,7 @@ if [ -f ./install ]; then
     mv ~/.zshenv ~/.zshenv_bis
   fi
 
-  links=`cat linklist.txt`
+  links=`cat $1`
   for l in $links; do
     mkdir -p ~/`dirname $l`
     echo "ln -fs `pwd`/$l ~/`dirname $l`/"
