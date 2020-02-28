@@ -51,3 +51,5 @@
 .zfunctions
 .zshenv
 .zshrc
+X11/xorg.conf.d/30-libinput.conf /usr/share/X11/xorg.conf.d/30-libinput.conf
+X11/xorg.conf.d/50-mtrack.conf /usr/share/X11/xorg.conf.d/50-mtrack.conf
