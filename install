@@ -16,11 +16,11 @@ if [ -f ./install ]; then
     file=`echo $line | sed 's/ .*//g'`
     dest=`echo $line | sed 's/.* //g'`
 
-    mkdir -p ~/`dirname $file`
+    mkdir -p ~/`dirname $dest`
 
     if [[ $dest == $file ]]; then
-      echo "ln -fs `pwd`/$file $HOME/"
-      ln -fs `pwd`/$file $HOME/
+      echo "ln -fs `pwd`/$file $HOME/`dirname $file`"
+      ln -fs `pwd`/$file $HOME/`dirname $file`
     else
       echo "ln -fs `pwd`/$file $dest"
       ln -fs `pwd`/$file "${dest/#\~/$HOME}"
