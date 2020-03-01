@@ -1,0 +1,55 @@
+.config/alacritty
+.config/bspwm
+.config/dunst
+.config/gtk-3.0/settings.ini
+.config/htop/htoprc.arch ~/.config/htop/htoprc
+.config/i3
+.config/kitty
+.config/mailcap
+.config/polybar
+.config/ranger/colorschemes/default-gruvbox.py
+.config/ranger/colorschemes/gruvbox.py
+.config/ranger/commands.py
+.config/ranger/commands_full.py
+.config/ranger/rc.conf
+.config/ranger/rifle.conf
+.config/ranger/scope.sh
+.config/rofi/config.arch ~/.config/rofi/config
+.config/sxhkd
+.config/vis/colors
+.config/vis/config
+.config/zathura
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.config/signature
+.mutt/personal
+.mutt/work
+.ncmpcpp/config.arch ~/.ncmpcpp/config
+.oh-my-zsh
+.ssh/config.common
+.ssh/config.linux
+.ssh/config.mac
+.vim
+.alias
+.bash_profile
+.bashrc
+.dircolors
+.gitconfig
+.highlight.zsh
+.hushlogin
+.juliarc.jl
+.latexmkrc
+.muttrc
+.p9krc
+.pinerc
+.rootlogon.C
+.rootrc
+.tmux.conf
+.vimrc
+.xinitrc
+.Xresources
+.zfunctions
+.zshenv
+.zshrc
+X11/xorg.conf.d/30-libinput.conf /usr/share/X11/xorg.conf.d/30-libinput.conf
+X11/xorg.conf.d/50-mtrack.conf /usr/share/X11/xorg.conf.d/50-mtrack.conf

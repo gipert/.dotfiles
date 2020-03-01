@@ -1,11 +1,14 @@
 .config/alacritty
 .config/biber/biber.conf
+.config/bspwm
 .config/dunst
-.config/htop
+.config/gtk-3.0/settings.ini
+.config/htop/htoprc
 .config/i3
 .config/kitty
 .config/mailcap
 .config/mpd
+.config/polybar
 .config/ranger/colorschemes/default-gruvbox.py
 .config/ranger/colorschemes/gruvbox.py
 .config/ranger/commands.py
@@ -13,7 +16,8 @@
 .config/ranger/rc.conf
 .config/ranger/rifle.conf
 .config/ranger/scope.sh
-.config/rofi
+.config/rofi/config.lxpertoldi ~/.config/rofi/config
+.config/sxhkd
 .config/vis/colors
 .config/vis/config
 .config/zathura
@@ -22,7 +26,7 @@
 .config/signature
 .mutt/personal
 .mutt/work
-.ncmpcpp/config
+.ncmpcpp/config.lxpertoldi ~/.ncmpcpp/config
 .oh-my-zsh
 .ssh/config.common
 .ssh/config.linux

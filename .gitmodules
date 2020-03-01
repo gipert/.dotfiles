@@ -136,9 +136,9 @@
 [submodule ".vim/plugged/vim-windowswap"]
 	path = .vim/plugged/vim-windowswap
 	url = git@github.com:wesQ3/vim-windowswap
-[submodule ".vim/plugged/license-to-vim"]
-	path = .vim/plugged/license-to-vim
-	url = git@github.com:ararslan:license-to-vim
+[submodule ".vim/plugged/singularity.lang"]
+	path = .vim/plugged/singularity.lang
+	url = git@github.com:singularityware/singularity.lang.git
 [submodule ".vim/plugged/vim-lilypond"]
 	path = .vim/plugged/vim-lilypond
-	url = git@github.com:anowlcalledjosh/vim-lilypond
+	url = git@github.com:anowlcalledjosh/vim-lilypond.git

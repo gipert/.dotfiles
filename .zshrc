@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 zstyle ':completion:*' rehash true
 zstyle :compinstall filename '$HOME/.zshrc'
 autoload -Uz compinit

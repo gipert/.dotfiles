@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 shopt -s checkwinsize
 function prompt_right() {
   echo -e "[\[\033[03;34m\]$(git branch 2>/dev/null | grep '^*' | sed s/..//)\[\033[00m\]]"

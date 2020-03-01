@@ -12,12 +12,20 @@ if [ -f ./install ]; then
     mv ~/.zshenv ~/.zshenv_bis
   fi
 
-  links=`cat linklist.txt`
-  for l in $links; do
-    mkdir -p ~/`dirname $l`
-    echo "ln -fs `pwd`/$l ~/`dirname $l`/"
-    ln -fs `pwd`/$l ~/`dirname $l`/
-  done
+  while read -r line; do
+    file=`echo $line | sed 's/ .*//g'`
+    dest=`echo $line | sed 's/.* //g'`
+
+    mkdir -p ~/`dirname $dest`
+
+    if [[ $dest == $file ]]; then
+      echo "ln -fs `pwd`/$file $HOME/`dirname $file`"
+      ln -fs `pwd`/$file $HOME/`dirname $file`
+    else
+      echo "ln -fs `pwd`/$file $dest"
+      ln -fs `pwd`/$file "${dest/#\~/$HOME}"
+    fi
+  done < $1
 
   echo "Compiling xterm-256color-italic terminfo..."
   tic xterm-256color-italic.terminfo
