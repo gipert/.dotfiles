@@ -22,15 +22,15 @@ ssh() {
 
 rsync() {
     if [[ `uname` == "Darwin" ]]; then
-        command rsync --progress --rsh="ssh -F $HOME/.ssh/config.mac" "$@"
+        command rsync -h --progress --rsh="ssh -F $HOME/.ssh/config.mac" "$@"
     elif [[ `hostname` == "lxpertoldi.pd.infn.it" ]]; then
         if [[ `echo "$@" | grep -Eq '^gerda-lngs*'` -eq 0 ]]; then
-            command rsync --progress --rsh="sshpass -f $HOME/.secrets ssh -F $HOME/.ssh/config.linux" "$@"
+            command rsync -h --progress --rsh="sshpass -f $HOME/.secrets ssh -F $HOME/.ssh/config.linux" "$@"
         else
-            command rsync --progress --rsh="ssh -F $HOME/.ssh/config.linux" "$@"
+            command rsync -h --progress --rsh="ssh -F $HOME/.ssh/config.linux" "$@"
         fi
     else
-        command rsync --progress --rsh="ssh -F $HOME/.ssh/config.linux" "$@"
+        command rsync -h --progress --rsh="ssh -F $HOME/.ssh/config.linux" "$@"
     fi
 }
 

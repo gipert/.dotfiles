@@ -1,4 +1,5 @@
 .config/alacritty
+.config/biber/biber.conf
 .config/dunst
 .config/htop
 .config/i3
