@@ -222,3 +222,6 @@ for_window [class="^org-freehep-jas-JAS3$"] workspace $w12
 
 assign [class="^G4OpenGL$"] → number $w12
 for_window [class="^G4OpenGL$"] workspace $w12
+
+assign [class="^MaGe$"] → number $w12
+for_window [class="^MaGe$"] workspace $w12
