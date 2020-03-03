@@ -10,7 +10,8 @@ compinit
 ZSH="$HOME/.oh-my-zsh"
 DEFAULT_USER="pertoldi"
 plugins=( \
-#         cp \
+         k \
+         enhancd \
          git \
          rsync \
          colored-man-pages \
