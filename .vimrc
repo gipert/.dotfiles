@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 
   if v:version >= 704
     Plug 'lervag/vimtex'
-    Plug 'SirVer/ultisnips'
+    " Plug 'SirVer/ultisnips'
   endif
 
   " disable on other hosts and for .C files (ROOT macros).
