@@ -44,7 +44,7 @@ session=${1:-bspwm}
 
 if [[ `hostname` == "lxpertoldi.pd.infn.it" ]]; then
 
-    session={$1:-i3}
+    session=${1:-i3}
 
     # start mpd server
     `command -v mpd` && mpd
