@@ -123,4 +123,10 @@ music() {
     fi
 }
 
+y() {
+    \sudo update-alternatives --set python /usr/bin/python2
+    \sudo yum "$@"
+    \sudo update-alternatives --set python /usr/bin/python3
+}
+
 # vim: syntax=sh

@@ -77,9 +77,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start rofi
-bindsym $mod+d exec "rofi -show run"
-bindsym $mod+s exec "rofi -show ssh"
-bindsym $mod+p exec "rofi-pass"
+bindsym $mod+d exec rofi -run-list-command "alias | awk -F[ =] {print $1}" -run-command "/bin/zsh -i -c '{cmd}'" -rnow -show run
+bindsym $mod+s exec rofi -show ssh
+bindsym $mod+p exec rofi-pass
 
 # change focus
 bindsym $mod+Left  focus left
@@ -225,3 +225,6 @@ for_window [class="^G4OpenGL$"] workspace $w12
 
 assign [class="^MaGe$"] → number $w12
 for_window [class="^MaGe$"] workspace $w12
+
+for_window [class="^itunes.exe$"] floating enable
+for_window [class="^zoom$"] floating enable
