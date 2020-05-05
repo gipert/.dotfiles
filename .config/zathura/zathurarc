@@ -1,6 +1,6 @@
 # gruvbox
 
-set font                        "SF Mono 9"
+set font                        "Fira Code 10"
 set default-bg                  "#282828"
 set default-fg                  "#fbf1c7"
 
