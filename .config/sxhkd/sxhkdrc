@@ -10,13 +10,17 @@ super + Return
 super + @space
     rofi -show run
 
-# program launcher
+# pass launcher
 super + p
     rofi-pass
 
-# program launcher
+# emoji picker
 super + e
     rofimoji
+
+# calculator
+super + c
+    rofi -show calc -modi calc -no-show-match -no-sort
 
 # make sxhkd reload its configuration files:
 super + Escape
