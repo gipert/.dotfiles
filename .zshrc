@@ -50,6 +50,9 @@ source $ZSH/oh-my-zsh.sh
 # aliases
 [ -f $HOME/.alias ] && source $HOME/.alias
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Alternative prompt
 if [ -z "$DISPLAY" ]; then
     PROMPT='[%F{red}%B%n%b%f@%M %~]'

@@ -78,7 +78,10 @@ feature-list=expose-hidden-config,
 	no-disable-sender,
 	no-copy-to-address-to-from-if-it-is-us,
 	enable-background-sending,
-	warn-if-blank-subject
+	warn-if-blank-subject,
+	mark-for-cc,
+	expunge-without-confirm,
+	expunge-without-confirm-everywhere
 
 # Alpine executes these keys upon startup (e.g. to view msg 13: i,j,1,3,CR,v)
 initial-keystroke-list=
@@ -114,11 +117,11 @@ fcc-name-rule=
 # Sets presentation order of messages in Index. Choices:
 # Subject, From, Arrival, Date, Size, To, Cc, OrderedSubj, Score, and Thread.
 # Order may be reversed by appending /Reverse. Default: "Arrival".
-sort-key=Arrival/Reverse
+sort-key=Thread/Reverse
 
 # #Sets presentation order of threads in thread index. Choices:
 #arrival, and thread.
-thread-sort-key=
+thread-sort-key=thread
 
 # Sets presentation order of address book entries. Choices: dont-sort,
 # fullname-with-lists-last, fullname, nickname-with-lists-last, nickname
@@ -136,11 +139,11 @@ goto-default-rule=
 # Sets message which cursor begins on. Choices: first-unseen, first-recent,
 # first-important, first-important-or-unseen, first-important-or-recent,
 # first, last. Default: "first-unseen".
-incoming-startup-rule=last
+incoming-startup-rule=first
 
 # Allows a default answer for the prune folder questions. Choices: yes-ask,
 # yes-no, no-ask, no-no, ask-ask, ask-no. Default: "ask-ask".
-pruning-rule=
+pruning-rule=no-no
 
 # Controls behavior when reopening an already open folder.
 folder-reopen-rule=
@@ -149,17 +152,17 @@ folder-reopen-rule=
 threading-display-style=
 
 # Style of THREAD INDEX or default MESSAGE INDEX when threading.
-threading-index-style=
+threading-index-style=coll
 
 # When threading, character used to indicate collapsed messages underneath.
-threading-indicator-character=
+threading-indicator-character=>
 
 # When threading, character used to indicate expanded messages underneath.
-threading-expanded-character=
+threading-expanded-character=.
 
 # When threading, character used to indicate this is the last reply
 # to the parent of this message.
-threading-lastreply-character=
+threading-lastreply-character=\
 
 # Allows a user to specify the threading style of specific folders
 threading-display-style-rule=
@@ -211,7 +214,7 @@ startup-rules=
 # If unset, the default is taken from your locale. That is usually the right
 # thing to use. Typical alternatives include UTF-8, ISO-8859-x, and EUC-JP
 # (where x is a number between 1 and 9).
-display-character-set=
+display-character-set=UTF-8
 
 # Reflects capabilities of the keyboard you have.
 # If unset, the default is to use the same value
@@ -437,7 +440,7 @@ address-book=~/.config/addressbook
 global-address-book=
 
 # Set by Alpine; controls beginning-of-month sent-mail pruning.
-last-time-prune-questioned=119.10
+last-time-prune-questioned=120.3
 
 # Set by Alpine; controls display of "new version" message.
 last-version-used=6.21

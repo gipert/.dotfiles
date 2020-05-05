@@ -35,7 +35,7 @@ let g:vimtex_fold_manual = 1
 if has('mac')
   let g:vimtex_view_method = 'skim'
 else
-  let g:vimtex_view_method = 'zathura'
+  " let g:vimtex_view_method = 'zathura'
 endif
 
 let g:vimtex_compiler_latexmk = {

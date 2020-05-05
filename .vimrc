@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 
   if v:version >= 704
     Plug 'lervag/vimtex'
-    Plug 'SirVer/ultisnips'
+    Plug 'SirVer/ultisnips', { 'tag': '*' }
   endif
 
   " disable on other hosts and for .C files (ROOT macros).
@@ -64,7 +64,7 @@ else
 endif
 
 if has('mouse') " mouse support?
-  set mouse=nv
+  set mouse=a
 endif
 
 let g:tex_flavor='latex'       " for .tex filetype detection, needed for vimtex to work!
@@ -81,8 +81,9 @@ set wildmode=longest:full,full " the default tab-completion behaviour is simply 
 set list                       " cool chars to highlight trailing spaces, end-of-lines and tabs
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 
-" remove <F1> help keybind, I always hit it by mistake
-map <F1> <Nop>
+" remove <F1> help and Ex mode keybind, I always hit it by mistake
+nnoremap <F1> <Nop>
+nnoremap Q <Nop>
 
 " set 72 max line width when composing in mutt
 augroup my_mutt
@@ -160,6 +161,10 @@ augroup commentary
   autocmd FileType asm,julia setlocal commentstring=#\ %s
   autocmd FileType lilypond setlocal commentstring=%\ %s
   autocmd FileType sql setlocal commentstring=--\ %s
+augroup END
+
+augroup filetypedetect
+  au BufNewFile,BufRead *.asy setf asy
 augroup END
 
 " configuration file for c++ is ~/.vim/ftplugin/cpp.vim
