@@ -7,7 +7,7 @@
 .config/i3
 .config/kitty
 .config/mailcap
-.config/mpd
+.config/mpd/mpd.conf
 .config/polybar
 .config/ranger/colorschemes/default-gruvbox.py
 .config/ranger/colorschemes/gruvbox.py
