@@ -27,7 +27,6 @@
 .mutt/personal
 .mutt/work
 .ncmpcpp/config
-.oh-my-zsh
 .ssh/config.common
 .ssh/config.linux
 .ssh/config.mac
@@ -42,7 +41,6 @@
 .juliarc.jl
 .latexmkrc
 .muttrc
-.p9krc
 .pinerc
 .rootlogon.C
 .rootrc

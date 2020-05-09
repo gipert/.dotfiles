@@ -28,8 +28,10 @@ if [ -f ./install ]; then
     fi
   done < $1
 
-  echo "Compiling xterm-256color-italic terminfo..."
-  tic xterm-256color-italic.terminfo
+  for f in `ls terminfo`; do
+    echo "tic -x $f"
+    tic -x "terminfo/$f"
+  done
 
 else
   echo "ERROR: you must run this script within the .dotfiles directory!"
