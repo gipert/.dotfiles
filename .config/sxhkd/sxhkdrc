@@ -77,8 +77,8 @@ super + {o,i}
     bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0,apostrophe,igrave}
-    bspc {desktop -f,node -d} '^{1-9,10,11,12}'
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
 
 # focus desktop with 4-finger gesture
 button{10,11}
@@ -133,9 +133,3 @@ XF86Audio{Lower,Raise}Volume
 
 XF86AudioMute
     pactl set-sink-mute 0 toggle
-
-XF86MonBrightness{Down,Up}
-    xbacklight -ctrl intel_backlight {-dec,-inc} 2
-
-XF86KbdBrightness{Down,Up}
-    xbacklight -ctrl smc::kbd_backlight {-dec,-inc} 5

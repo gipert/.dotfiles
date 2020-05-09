@@ -28,6 +28,7 @@ bcyn           = ${xrdb:color14}
 bwht           = ${xrdb:color15}
 
 [bar/music]
+monitor = DP-1
 override-redirect = true
 bottom = true
 width = 100%
@@ -70,15 +71,69 @@ module-margin-left = 1
 module-margin-right = 2
 font-0 = Fira Code:style=Regular:size=10;1
 font-1 = 3270Medium Nerd Font:size=11;1
-modules-left = bspwm
+modules-left = bspwm-hackintosh
+modules-center =
+modules-right = cpu memory alsa date hostname powermenu
+wm-restack = bspwm
+cursor-click = pointer
+
+[bar/lxpertoldi_hor]
+monitor = DP-1
+override-redirect = true
+width = 100%
+height = 27
+offset-x = 0
+offset-y = 0
+radius = 0.0
+fixed-center = false
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
+border-size = 4
+border-color = ${colors.background}
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+font-0 = Fira Code:style=Regular:size=10;1
+font-1 = 3270Medium Nerd Font:size=11;1
+modules-left = bspwm-lxpertoldi
+modules-center =
+modules-right = github cpu memory alsa date ethernet hostname powermenu
+wm-restack = bspwm
+cursor-click = pointer
+
+[bar/lxpertoldi_vert]
+monitor = DP-2
+override-redirect = true
+width = 100%
+height = 27
+offset-x = 0
+offset-y = 0
+radius = 0.0
+fixed-center = false
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
+border-size = 4
+border-color = ${colors.background}
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+font-0 = Fira Code:style=Regular:size=10;1
+font-1 = 3270Medium Nerd Font:size=11;1
+modules-left = bspwm-lxpertoldi
 modules-center =
 modules-right = cpu memory wlan backlight-acpi alsa battery date hostname powermenu
 wm-restack = bspwm
 cursor-click = pointer
 
 [module/hostname]
-type = custom/text
-content = "Hackintosh "
+type = custom/script
+exec = echo `hostname` ""
 
 [module/xwindow]
 type = internal/xwindow
@@ -124,6 +179,32 @@ label-urgent-padding = 1
 label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
+
+[module/bspwm-lxpertoldi]
+inherit = module/bspwm
+ws-icon-0 = "I;I"
+ws-icon-1 = "II;II"
+ws-icon-2 = "III;III"
+ws-icon-3 = "IV;IV"
+ws-icon-4 = "V;V"
+ws-icon-5 = "VI;VI"
+ws-icon-6 = "VII;VII"
+ws-icon-7 = "VIII;VIII"
+ws-icon-8 = "IX;IX"
+ws-icon-9 = "X;X"
+ws-icon-10 = "XI;XI"
+ws-icon-11 = "XII;XII"
+ws-icon-12 = "XIII;XIII"
+ws-icon-13 = "XIV;XIV"
+ws-icon-14 = "XV;XV"
+ws-icon-15 = "XVI;XVI"
+ws-icon-16 = "XVII;XVII"
+ws-icon-17 = "XVIII; "
+ws-icon-18 = "XIX; "
+ws-icon-19 = "XX; "
+
+[module/bspwm-hackintosh]
+inherit = module/bspwm
 ws-icon-0 = "I;I"
 ws-icon-1 = "II;II"
 ws-icon-2 = "III;III"
@@ -260,6 +341,25 @@ animation-packetloss-1 = 
 animation-packetloss-1-foreground = ${colors.background-alt}
 animation-packetloss-framerate = 1000
 
+[module/ethernet]
+type = internal/network
+interface = eno1
+interval = 3.0
+ping-interval = 3.0
+format-connected =   <label-connected>
+label-connected = %local_ip%
+format-connected-underline = ${colors.mag}
+format-disconnected = 
+format-disconnected-underline = ${colors.background-alt}
+format-disconnected-foreground = ${colors.background-alt}
+format-packetloss = <animation-packetloss> <label-connected>
+ramp-signal-foreground = ${colors.foreground-alt}
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = ${colors.ylw}
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = ${colors.background-alt}
+animation-packetloss-framerate = 1000
+
 [module/date]
 type = internal/date
 interval = 5
@@ -268,11 +368,11 @@ time = %H:%M:%S
 ; format-prefix = " "
 ; format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.blu}
-label =  %date%  %time%
+label =   %date%  %time%
 
 [module/alsa]
 type = internal/alsa
-format-volume = <ramp-volume> <label-volume>
+format-volume = <ramp-volume>  <label-volume>
 format-underline = ${colors.wht}
 label-volume = %percentage:2%%
 label-volume-foreground = ${root.foreground}
@@ -392,5 +492,13 @@ menu-2-0 = do-it
 menu-2-0-exec = poweroff
 menu-2-1 = nope
 menu-2-1-exec = menu-close
+
+[module/github]
+type = internal/github
+token = ${file:~/.github_token}
+user = gipert
+empty-notifications = false
+interval = 10
+api-url = https://hub.example.org/api/v3/
 
 ; vim:ft=dosini

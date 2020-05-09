@@ -8,6 +8,7 @@
 .config/mailcap
 .config/mpd/mpd.conf
 .config/polybar
+.config/pulse/client.conf
 .config/ranger/colorschemes/default-gruvbox.py
 .config/ranger/colorschemes/gruvbox.py
 .config/ranger/commands.py
@@ -15,7 +16,7 @@
 .config/ranger/rc.conf
 .config/ranger/rifle.conf
 .config/ranger/scope.sh
-.config/rofi/config.arch ~/.config/rofi/config
+.config/rofi/config
 .config/sxhkd
 .config/vis/colors
 .config/vis/config
@@ -25,7 +26,7 @@
 .config/signature
 .mutt/personal
 .mutt/work
-.ncmpcpp/config.arch ~/.ncmpcpp/config
+.ncmpcpp/config
 .oh-my-zsh
 .ssh/config.common
 .ssh/config.linux
@@ -49,8 +50,9 @@
 .vimrc
 .xinitrc
 .Xresources
-.zfunctions
+.zsh
 .zshenv
 .zshrc
+pictures/dark_exa_@2X.png
 X11/xorg.conf.d/30-libinput.conf /usr/share/X11/xorg.conf.d/30-libinput.conf
 X11/xorg.conf.d/50-mtrack.conf /usr/share/X11/xorg.conf.d/50-mtrack.conf

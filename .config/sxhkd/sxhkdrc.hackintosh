@@ -1,0 +1,21 @@
+#
+# focus/swap
+#
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0,apostrophe,igrave}
+    bspc {desktop -f,node -d} '^{1-9,10,11,12}'
+
+# focus desktop with 4-finger gesture
+button{10,11}
+    bspc desktop -f {prev,next}
+
+#
+# special keys
+#
+
+XF86MonBrightness{Down,Up}
+    xbacklight -ctrl intel_backlight {-dec,-inc} 2
+
+XF86KbdBrightness{Down,Up}
+    xbacklight -ctrl smc::kbd_backlight {-dec,-inc} 5

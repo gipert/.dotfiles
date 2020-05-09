@@ -42,9 +42,7 @@ xset r rate 300 40
 # select wm/de with: startx ~/.xinitrc session
 session=${1:-bspwm}
 
-if [[ `hostname` == "lxpertoldi.pd.infn.it" ]]; then
-
-    session=${1:-i3}
+if [[ `hostname` == "lxpertoldi" ]]; then
 
     # start mpd server
     `command -v mpd` && mpd

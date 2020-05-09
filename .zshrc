@@ -1,66 +1,85 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# history
+HISTFILE="$HOME/.zhistory"
+HISTSIZE=50000
+SAVEHIST=10000
+
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt inc_append_history     # add commands to HISTFILE in order of execution
+setopt share_history          # share command history data
+
+# completion
 zstyle ':completion:*' rehash true
+zstyle ':completion:*' menu select
 zstyle :compinstall filename '$HOME/.zshrc'
 autoload -Uz compinit
 compinit
+setopt COMPLETE_ALIASES
 
-# OH-MY-ZSH
-ZSH="$HOME/.oh-my-zsh"
-DEFAULT_USER="pertoldi"
-plugins=( \
-         k \
-         enhancd \
-         git \
-         rsync \
-         colored-man-pages \
-         colorize \
-         docker \
-         history \
-         history-substring-search \
-         zsh-navigation-tools \
-         sudo \
-         zsh-autosuggestions \
-         zsh-syntax-highlighting \
-         )
+source ~/.zplug/init.zsh
 
-if [ -z "$DISPLAY" ]; then
-    plugins=("${(@)plugins:#zsh-autosuggestions}")
-else
-    # powerlevel9k plugin
-    ZSH_THEME="powerlevel9k/powerlevel9k"
-    [ -f $HOME/.p9krc ] && source $HOME/.p9krc
+zplug "romkatv/powerlevel10k", as:theme, depth:1
+
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+zplug "plugins/extract",           from:oh-my-zsh
+zplug "plugins/git",               from:oh-my-zsh
+zplug "plugins/sudo",              from:oh-my-zsh
+zplug "plugins/colored-man-pages", from:oh-my-zsh
+
+zplug "b4b4r07/enhancd"
+zplug "supercrabtree/k"
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*linux*amd64*"
+zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
+
+zplug "~/.zsh", from:local
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
 fi
 
-DISABLE_AUTO_UPDATE="true"
-COMPLETION_WAITING_DOTS="true"
+zplug load
 
-source $ZSH/oh-my-zsh.sh
+# keybinds
+bindkey '^[[A'   history-substring-search-up
+bindkey '^[[B'   history-substring-search-down
+bindkey '^[[3~'  delete-char
+bindkey '^[3;5~' delete-char
+bindkey '\e[3~'  delete-char
+
+# powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # eval dircolors
-[ -f $HOME/.dircolors ] && eval "$(dircolors "$HOME/.dircolors")"
+[[ -f $HOME/.dircolors ]] && eval "$(dircolors "$HOME/.dircolors")"
 
-# Highlighting
-[ -f $HOME/.highlight.zsh ] && source "$HOME/.highlight.zsh"
-
-# functions
-[ -f $HOME/.zfunctions ] && source $HOME/.zfunctions
+# highlighting
+[[ -f $HOME/.highlight.zsh ]] && source "$HOME/.highlight.zsh"
 
 # aliases
-[ -f $HOME/.alias ] && source $HOME/.alias
+[[ -f $HOME/.alias ]] && source $HOME/.alias
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
-# Alternative prompt
-if [ -z "$DISPLAY" ]; then
-    PROMPT='[%F{red}%B%n%b%f@%M %~]'
-    PROMPT+='$(git_prompt_info)'
-    PROMPT+=' %(?.%F{cyan}.%F{red})%B%(!.#.$)%b%f '
-    ZSH_THEME_GIT_PROMPT_PREFIX=" [%F{yellow}%B"
-    ZSH_THEME_GIT_PROMPT_SUFFIX="%b%f]"
-    ZSH_THEME_GIT_PROMPT_DIRTY="%F{red}%B*%b%f"
-    ZSH_THEME_GIT_PROMPT_CLEAN=""
-    unset TERM  # any value of TERM breaks the prompt in tty :(
+# load powerlevel10k
+if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+else
+  [[ ! -f ~/.p10k-console.zsh ]] || source ~/.p10k-console.zsh
 fi

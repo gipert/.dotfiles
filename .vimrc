@@ -18,7 +18,7 @@ call plug#begin('~/.vim/plugged')
 
   " disable on other hosts and for .C files (ROOT macros).
   " -- not sure if this is the best way to do it --
-  if (hostname() ==# 'lxpertoldi.pd.infn.it' || hostname() ==# 'hackintosh') && expand('%:e') !=# 'C' && &filetype !=# 'julia'
+  if (hostname() ==# 'lxpertoldi' || hostname() ==# 'hackintosh') && expand('%:e') !=# 'C' && &filetype !=# 'julia'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
   endif
