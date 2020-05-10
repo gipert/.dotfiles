@@ -5,3 +5,5 @@
 #
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 [[ -f ~/.zshenv ]] && . ~/.zshenv
+
+which zsh > /dev/null && exec zsh
