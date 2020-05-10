@@ -9,13 +9,7 @@
 .config/mpd/mpd.conf
 .config/polybar
 .config/pulse/client.conf
-.config/ranger/colorschemes/default-gruvbox.py
-.config/ranger/colorschemes/gruvbox.py
-.config/ranger/commands.py
-.config/ranger/commands_full.py
 .config/ranger/rc.conf
-.config/ranger/rifle.conf
-.config/ranger/scope.sh
 .config/rofi/config
 .config/sxhkd
 .config/vis/colors

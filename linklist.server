@@ -1,11 +1,5 @@
 .config/htop/htoprc.lxpertoldi ~/.config/htop/htoprc
-.config/ranger/colorschemes/default-gruvbox.py
-.config/ranger/colorschemes/gruvbox.py
-.config/ranger/commands.py
-.config/ranger/commands_full.py
 .config/ranger/rc.conf
-.config/ranger/rifle.conf
-.config/ranger/scope.sh
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .ssh/config.common
