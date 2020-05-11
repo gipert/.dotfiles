@@ -1,5 +1,6 @@
 .config/htop/htoprc.lxpertoldi ~/.config/htop/htoprc
 .config/ranger/rc.conf
+.config/ranger/scope.sh
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .ssh/config.common

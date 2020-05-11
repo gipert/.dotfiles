@@ -10,6 +10,7 @@
 .config/polybar
 .config/pulse/client.conf
 .config/ranger/rc.conf
+.config/ranger/scope.sh
 .config/rofi/config
 .config/sxhkd
 .config/vis/colors
