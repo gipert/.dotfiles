@@ -487,9 +487,9 @@ menu-0-1-exec = menu-open-2
 menu-1-0 = nope
 menu-1-0-exec = menu-close
 menu-1-1 = do-it
-menu-1-1-exec = reboot
+menu-1-1-exec = systemctl reboot
 menu-2-0 = do-it
-menu-2-0-exec = poweroff
+menu-2-0-exec = systemctl poweroff
 menu-2-1 = nope
 menu-2-1-exec = menu-close
 
@@ -500,5 +500,12 @@ user = gipert
 empty-notifications = false
 interval = 10
 api-url = https://hub.example.org/api/v3/
+format = <label>
+label =   %notifications%
+format-underline = ${colors.grn}
+format-offline = <label-offline>
+format-offline-foreground = ${colors.bred}
+format-offline-underline = ${colors.bred}
+label-offline =   Offline
 
 ; vim:ft=dosini
