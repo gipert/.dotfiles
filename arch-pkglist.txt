@@ -44,9 +44,11 @@ networkmanager
 openssh
 otf-fira-code
 otf-fira-sans
+papis
 pass
 patch
 pavucontrol
+perl-file-mimeinfo
 pkgconf
 polybar
 python-pillow

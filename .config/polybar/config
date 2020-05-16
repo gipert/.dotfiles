@@ -47,7 +47,7 @@ module-margin-right = 2
 font-0 = Fira Code:style=Regular:size=10;2
 font-1 = 3270Medium Nerd Font:size=13;3
 modules-left =
-modules-center = mpd
+modules-center = mpd_hackintosh
 modules-right =
 cursor-click = pointer
 
@@ -100,7 +100,7 @@ font-0 = Fira Code:style=Regular:size=10;1
 font-1 = 3270Medium Nerd Font:size=11;1
 modules-left = bspwm-lxpertoldi
 modules-center =
-modules-right = github cpu memory alsa date ethernet hostname powermenu
+modules-right = mpd_lxpertoldi github cpu memory alsa date ethernet hostname powermenu
 wm-restack = bspwm
 cursor-click = pointer
 
@@ -240,7 +240,7 @@ label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-[module/mpd]
+[module/mpd_hackintosh]
 type = internal/mpd
 format-online = <label-song> <icon-stop> <toggle> <icon-prev> <label-time> <bar-progress> <icon-next>
 label-song = %artist%    %title% |
@@ -251,6 +251,22 @@ icon-play = 
 icon-pause = 
 icon-next = ﭠ
 label-song-maxlen = 150
+label-song-ellipsis = true
+bar-progress-width = 20
+bar-progress-indicator = █
+bar-progress-fill = █
+bar-progress-empty = ▒
+
+[module/mpd_lxpertoldi]
+type = internal/mpd
+format-online =   <label-song> <bar-progress> <label-time>
+format-playing = ${self.format-online}
+format-paused = ${self.format-online}
+format-playing-foreground = ${colors.foreground}
+format-paused-foreground = ${colors.foreground-alt}
+label-song = %title% - %artist%
+label-time = %elapsed% / %total%
+label-song-maxlen = 50
 label-song-ellipsis = true
 bar-progress-width = 20
 bar-progress-indicator = █

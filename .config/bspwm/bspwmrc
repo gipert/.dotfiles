@@ -13,9 +13,12 @@ bspc config top_monocle_padding -$top_padding
 
 bspc rule -a kitty rectangle=200x200
 bspc rule -a Google-chrome desktop=^10 follow=on
+bspc rule -a TelegramDesktop desktop=^9 follow=on
+bspc rule -a 'whatsapp-nativefier-d52542' desktop=^9 follow=on
 bspc rule -a Gimp state=floating
 bspc rule -a Inkscape state=floating
 bspc rule -a Skype state=floating
+bspc rule -a zoom state=floating
 bspc rule -a Sxiv state=floating
 bspc rule -a Zathura state=tiled
 bspc rule -a itunes.exe state=floating
@@ -42,9 +45,6 @@ elif [[ `hostname` == "lxpertoldi" ]]; then
     bspc rule -a Google-chrome desktop=^19 follow=on
     bspc rule -a TelegramDesktop desktop=^18 follow=on
     bspc rule -a 'whatsapp-nativefier-d52542' desktop=^18 follow=on
-
-    bspc config -m DP-1 bottom_padding $bottom_padding
-    bspc config -m DP-1 bottom_monocle_padding -$bottom_padding
 
 else
 

@@ -1,0 +1,8 @@
+[papers]
+dir = ~/documents/sci-bib/papers
+
+[books]
+dir = ~/documents/sci-bib/books
+
+[settings]
+opentool = xdg-open

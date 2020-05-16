@@ -54,6 +54,7 @@ fi
 zplug load
 
 # keybinds
+bindkey "^A"     vi-beginning-of-line
 bindkey '^[[A'   history-substring-search-up
 bindkey '^[[B'   history-substring-search-down
 bindkey '^[[3~'  delete-char
