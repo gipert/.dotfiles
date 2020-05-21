@@ -254,7 +254,7 @@ label-song-maxlen = 150
 label-song-ellipsis = true
 bar-progress-width = 20
 bar-progress-indicator = █
-bar-progress-fill = █
+bar-progress-fill = ▒
 bar-progress-empty = ▒
 
 [module/mpd_lxpertoldi]
@@ -262,15 +262,16 @@ type = internal/mpd
 format-online =   <label-song> <bar-progress> <label-time>
 format-playing = ${self.format-online}
 format-paused = ${self.format-online}
+format-stopped =
 format-playing-foreground = ${colors.foreground}
 format-paused-foreground = ${colors.foreground-alt}
 label-song = %title% - %artist%
 label-time = %elapsed% / %total%
-label-song-maxlen = 50
+label-song-maxlen = 45
 label-song-ellipsis = true
 bar-progress-width = 20
 bar-progress-indicator = █
-bar-progress-fill = █
+bar-progress-fill = ▒
 bar-progress-empty = ▒
 
 [module/xbacklight]
