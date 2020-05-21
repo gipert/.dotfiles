@@ -48,7 +48,7 @@ if [[ `hostname` == "lxpertoldi" ]]; then
     `command -v mpd` && mpd
 
     # mouse, set speed
-    xinput set-prop 12 153 0.4, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 1.0
+    xinput set-prop 14 171 0.3 0.0 0.0 0.0 0.5 0.0 0.0 0.0 1.0
 
     # set monitors
     xrandr --output DP-2 --mode 1920x1080 --pos 0x1920    --rotate right \
