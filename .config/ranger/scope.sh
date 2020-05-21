@@ -296,8 +296,12 @@ handle_mime() {
                 exit 2
             fi
             if [[ "$( tput colors )" -ge 256 ]]; then
-                local pygmentize_format='terminal256'
-                local highlight_format='xterm256'
+                # FIXME: for some reason 'tput colors' returns less than 256 colors
+                # inside ranger, so I just force using the ansi colors
+                local pygmentize_format='terminal'
+                local highlight_format='ansi'
+                # local pygmentize_format='terminal256'
+                # local highlight_format='xterm256'
             else
                 local pygmentize_format='terminal'
                 local highlight_format='ansi'
