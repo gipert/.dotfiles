@@ -129,7 +129,8 @@ XF86Audio{Play,Stop,Prev,Next}
 
 XF86Audio{Lower,Raise}Volume
     amixer set Master unmute; \
-    amixer set Master {1%-,1%+}
+    amixer set Master {2%-,2%+}; \
+    ~/.config/sxhkd/volume-popup
 
 XF86AudioMute
     pactl set-sink-mute 0 toggle

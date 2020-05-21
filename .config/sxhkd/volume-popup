@@ -1,0 +1,33 @@
+#!/bin/bash
+
+notification_id=2345
+n_chars=30
+fill_char="━"
+empty_char="─"
+timeout="2000"
+
+get_volume() {
+    amixer get Master | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1
+}
+
+is_mute() {
+    amixer get Master | grep '%' | grep -oE '[^ ]+$' | grep off > /dev/null
+}
+
+dump_bar() {
+    volume=$1
+    n_fill=$(awk "BEGIN {print $volume*$n_chars/100}" | cut -f1 -d.)
+    n_empty=$(($n_chars - $n_fill))
+    filled=$(seq -s $fill_char $(($n_fill + 1)) | sed 's/[0-9]//g')
+    empty=$(seq -s $empty_char $(($n_empty + 1)) | sed 's/[0-9]//g')
+    echo "${filled}${empty}"
+}
+
+if is_mute; then
+    dunstify -a "volume_level" -t $timeout -r $notification_id -u low "婢Muted"
+else
+    volume=$(get_volume)
+    bar=$(dump_bar `get_volume`)
+    msg=`printf "  $bar %+3s%%" $volume`
+    dunstify -a "volume_level" -t $timeout -r $notification_id -u low "$msg"
+fi
