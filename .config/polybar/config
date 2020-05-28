@@ -73,7 +73,7 @@ font-0 = Fira Code:style=Regular:size=10;1
 font-1 = 3270Medium Nerd Font:size=11;1
 modules-left = bspwm-hackintosh
 modules-center =
-modules-right = cpu memory alsa date hostname powermenu
+modules-right = cpu memory alsa wlan date hostname powermenu
 wm-restack = bspwm
 cursor-click = pointer
 
