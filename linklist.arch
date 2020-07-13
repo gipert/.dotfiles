@@ -25,7 +25,7 @@
 .ncmpcpp/config
 .ssh/config.common
 .ssh/config.linux
-.ssh/config.mac
+.ssh/config.hackintosh
 .vim
 .alias
 .bash_profile

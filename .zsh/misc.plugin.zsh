@@ -8,7 +8,7 @@ rdocs() {
 
 ssh() {
     if [[ `hostname` == "hackintosh" ]]; then
-        command ssh -F ~/.ssh/config.mac "$@"
+        command ssh -F ~/.ssh/config.hackintosh "$@"
     elif [[ `hostname` == "lxpertoldi" ]]; then
         if [[ $@ == "gerda-lngs" ]]; then
             command sshpass -f ~/.secrets ssh -F ~/.ssh/config.linux gerda-lngs
@@ -22,7 +22,7 @@ ssh() {
 
 rsync() {
     if [[ `hostname` == "hackintosh" ]]; then
-        command rsync -h --progress --rsh="ssh -F $HOME/.ssh/config.mac" "$@"
+        command rsync -h --progress --rsh="ssh -F $HOME/.ssh/config.hackintosh" "$@"
     elif [[ `hostname` == "lxpertoldi" ]]; then
         if [[ `echo "$@" | grep -Eq '^gerda-lngs*'` -eq 0 ]]; then
             command rsync -h --progress --rsh="sshpass -f $HOME/.secrets ssh -F $HOME/.ssh/config.linux" "$@"
