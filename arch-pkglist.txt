@@ -84,6 +84,7 @@ vtop
 wget
 whatsapp-nativefier-dark
 which
+xf86-video-intel
 xorg-bdftopcf
 xorg-iceauth
 xorg-luit
