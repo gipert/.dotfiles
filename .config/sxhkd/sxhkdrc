@@ -26,6 +26,10 @@ super + c
 super + Escape
     pkill -USR1 -x sxhkd
 
+# lock screen
+super + l
+    xtrlock
+
 #
 # bspwm hotkeys
 #
