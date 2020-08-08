@@ -54,6 +54,7 @@ polybar
 python-pillow
 python-pygments
 ranger
+reflector
 rofi
 rofi-calc
 rofi-pass
@@ -121,6 +122,7 @@ xorg-xvinfo
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
+xtrlock
 yay
 zathura
 zathura-djvu

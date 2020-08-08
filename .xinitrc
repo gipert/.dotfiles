@@ -48,20 +48,23 @@ if [[ `hostname` == "lxpertoldi" ]]; then
     `command -v mpd` && mpd
 
     # mouse, set speed
-    xinput set-prop 14 171 0.3 0.0 0.0 0.0 0.5 0.0 0.0 0.0 1.0
+    xinput set-prop 14 173 0.3 0.0 0.0 0.0 0.5 0.0 0.0 0.0 1.0
 
     # set monitors
     xrandr --output DP-2 --mode 1920x1080 --pos 0x1920    --rotate right \
            --output DP-1 --mode 1920x1080 --pos 1080x2300 --rotate normal
 
-    # xautolock -detectsleep \
-    #    -time 5 -notify 30 \
-    #    -notifier "notify-send -u normal -i /usr/share/icons/hicolor/48x48/apps/seahorse.png 'Security Service' 'Locking screen in 20 seconds...'" \
-    #    -locker "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10" &
-       # -locker "/bin/xlock -mode random -modelist 'bug,coral,euler2d,flame,spline,worm,discrete,space' -ncolors 200 -echokeys -echokey '*'" &
 elif [[ `hostname` == "hackintosh" ]]; then
+
     xrandr --output eDP-1 --auto --output HDMI-1 --right-of eDP-1
 fi
+
+xautolock -detectsleep \
+   -time 5 -notify 30 \
+   -notifier "notify-send -u normal -i /usr/share/icons/hicolor/48x48/apps/gcr-key-pair.png 'Security Service' 'Locking screen in 20 seconds...'" \
+   -locker "/sbin/xtrlock" &
+   # -locker "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10" &
+   # -locker "/bin/xlock -mode random -modelist 'bug,coral,euler2d,flame,spline,worm,discrete,space' -ncolors 200 -echokeys -echokey '*'" &
 
 case "$session" in
     bspwm)

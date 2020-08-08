@@ -17,7 +17,7 @@ setopt share_history          # share command history data
 # completion
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' menu select
-zstyle :compinstall filename '$HOME/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 setopt COMPLETE_ALIASES
@@ -84,3 +84,6 @@ if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
 else
   [[ ! -f ~/.p10k-console.zsh ]] || source ~/.p10k-console.zsh
 fi
+
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS+=singularity_venv
+POWERLEVEL9K_SINGULARITY_VENV_BACKGROUND=blue
