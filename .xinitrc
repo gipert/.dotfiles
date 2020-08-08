@@ -59,6 +59,8 @@ if [[ `hostname` == "lxpertoldi" ]]; then
     #    -notifier "notify-send -u normal -i /usr/share/icons/hicolor/48x48/apps/seahorse.png 'Security Service' 'Locking screen in 20 seconds...'" \
     #    -locker "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10" &
        # -locker "/bin/xlock -mode random -modelist 'bug,coral,euler2d,flame,spline,worm,discrete,space' -ncolors 200 -echokeys -echokey '*'" &
+elif [[ `hostname` == "hackintosh" ]]; then
+    xrandr --output eDP-1 --auto --output HDMI-1 --right-of eDP-1
 fi
 
 case "$session" in

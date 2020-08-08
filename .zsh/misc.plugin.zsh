@@ -91,7 +91,7 @@ music() {
 
             if ! ps aux | grep sshfs | grep -q /home/gipert/music; then
                 echo "INFO: mounting remote music library..."
-                sshfs pertoldi@localhost:/data/pertoldi/music ~/music -p 9093 -o idmap=user,ro
+                sshfs gipert@localhost:/data/pertoldi/music ~/music -p 9093 -o idmap=user,ro
             fi
 
             if ! ps aux | grep -q ' [m]pd'; then
