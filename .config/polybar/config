@@ -73,11 +73,12 @@ font-0 = Fira Code:style=Regular:size=10;1
 font-1 = 3270Medium Nerd Font:size=11;1
 modules-left = bspwm-hackintosh
 modules-center =
-modules-right = cpu memory alsa date hostname powermenu
+modules-right = cpu memory alsa date hostname dunst powermenu
 wm-restack = bspwm
 cursor-click = pointer
 
 [bar/lxpertoldi_hor]
+enable-ipc = true
 monitor = DP-1
 override-redirect = true
 width = 100%
@@ -100,11 +101,12 @@ font-0 = Fira Code:style=Regular:size=10;1
 font-1 = 3270Medium Nerd Font:size=11;1
 modules-left = bspwm-lxpertoldi
 modules-center =
-modules-right = mpd_lxpertoldi github cpu memory alsa date ethernet hostname powermenu
+modules-right = mpd_lxpertoldi github cpu memory alsa date ethernet hostname dunst powermenu
 wm-restack = bspwm
 cursor-click = pointer
 
 [bar/lxpertoldi_vert]
+enable-ipc = true
 monitor = DP-2
 override-redirect = true
 width = 100%
@@ -127,9 +129,17 @@ font-0 = Fira Code:style=Regular:size=10;1
 font-1 = 3270Medium Nerd Font:size=11;1
 modules-left = bspwm-lxpertoldi
 modules-center =
-modules-right = cpu memory wlan backlight-acpi alsa battery date hostname powermenu
+modules-right = cpu memory date hostname dunst
 wm-restack = bspwm
 cursor-click = pointer
+
+[module/dunst]
+type = custom/ipc
+initial = 1
+format-foreground = ${colors.ylw}
+
+hook-0 = echo "%{A1:notify-send "DUNST_COMMAND_PAUSE" && polybar-msg hook dunst 2:}%{A}" &
+hook-1 = echo "%{A1:notify-send "DUNST_COMMAND_RESUME" && polybar-msg hook dunst 1:}%{A}" &
 
 [module/hostname]
 type = custom/script
@@ -191,14 +201,14 @@ ws-icon-5 = "VI;VI"
 ws-icon-6 = "VII;VII"
 ws-icon-7 = "VIII;VIII"
 ws-icon-8 = "IX;IX"
-ws-icon-9 = "X;X"
+ws-icon-9 = "X;"
 ws-icon-10 = "XI;XI"
 ws-icon-11 = "XII;XII"
 ws-icon-12 = "XIII;XIII"
 ws-icon-13 = "XIV;XIV"
 ws-icon-14 = "XV;XV"
 ws-icon-15 = "XVI;XVI"
-ws-icon-16 = "XVII;XVII"
+ws-icon-16 = "XVII;"
 ws-icon-17 = "XVIII; "
 ws-icon-18 = "XIX; "
 ws-icon-19 = "XX; "
