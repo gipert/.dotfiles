@@ -10,7 +10,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../../'
 alias .....='cd ../../../..'
-alias dotsync='cd ~/.dotfiles && git pull && git submodule init && git submodule update && cd - &> /dev/null'
+alias dotsync='\cd ~/.dotfiles && git pull && git submodule init && git submodule update && \cd - &> /dev/null'
 alias time='/usr/bin/time -v'
 alias o='xdg-open'
 
