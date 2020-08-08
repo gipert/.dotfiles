@@ -12,9 +12,9 @@ bspc config gapless_monocle true
 bspc config top_monocle_padding -$top_padding
 
 bspc rule -a kitty rectangle=200x200
-bspc rule -a Google-chrome desktop=^10 follow=on
-bspc rule -a TelegramDesktop desktop=^9 follow=on
-bspc rule -a 'whatsapp-nativefier-d52542' desktop=^9 follow=on
+bspc rule -a Google-chrome desktop=^12 follow=on
+bspc rule -a TelegramDesktop desktop=^11 follow=on
+bspc rule -a 'whatsapp-nativefier-d52542' desktop=^11 follow=on
 bspc rule -a Gimp state=floating
 bspc rule -a Inkscape state=floating
 bspc rule -a Skype state=floating
@@ -34,7 +34,7 @@ if [[ `hostname` == "hackintosh" ]]; then
     # bspc config bottom_padding -7
     # bspc config left_padding -7
     # bspc config right_padding -7
-    bspc config bottom_padding $bottom_padding
+    # bspc config bottom_padding $bottom_padding
 
 elif [[ `hostname` == "lxpertoldi" ]]; then
 
