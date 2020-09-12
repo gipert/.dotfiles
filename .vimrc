@@ -167,6 +167,9 @@ augroup filetypedetect
   au BufNewFile,BufRead *.asy setf asy
 augroup END
 
+" Julia-Vim
+let g:latex_to_unicode_auto = 1
+
 " configuration file for c++ is ~/.vim/ftplugin/cpp.vim
 " configuration file for tex in ~/.vim/ftplugin/tex.vim
 
