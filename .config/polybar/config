@@ -74,7 +74,7 @@ font-0 = Fira Code:style=Regular:size=10;1
 font-1 = 3270Medium Nerd Font:size=11;1
 modules-left = bspwm-hackintosh
 modules-center =
-modules-right = cpu memory alsa backlight-acpi wlan battery date hostname powermenu
+modules-right = temperature cpu memory alsa backlight-acpi wlan battery date hostname powermenu
 wm-restack = bspwm
 cursor-click = pointer
 
@@ -482,18 +482,18 @@ animation-discharging-framerate = 7500
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
+thermal-zone = 1
 warn-temperature = 60
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
+format = <label>
+format-underline = ${colors.ylw}
+format-warn = <label-warn>
 format-warn-underline = ${self.format-underline}
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+label-warn-foreground = ${colors.ylw}
+ramp-0 = 1
+ramp-1 = 2
+ramp-2 = 3
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]

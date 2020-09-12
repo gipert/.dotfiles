@@ -8,7 +8,11 @@ rdocs() {
 
 ssh() {
     if [[ `hostname` == "hackintosh" ]]; then
-        command ssh -F ~/.ssh/config.hackintosh "$@"
+        if [[ $@ == "gerda-lngs" ]]; then
+            command sshpass -f ~/.secrets ssh -F ~/.ssh/config.hackintosh gerda-lngs
+        else
+            command ssh -F ~/.ssh/config.hackintosh "$@"
+        fi
     elif [[ `hostname` == "lxpertoldi" ]]; then
         if [[ $@ == "gerda-lngs" ]]; then
             command sshpass -f ~/.secrets ssh -F ~/.ssh/config.linux gerda-lngs

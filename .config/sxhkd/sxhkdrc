@@ -7,8 +7,9 @@ super + Return
     kitty
 
 # program launcher
+# rofi -run-list-command 'alias | cut -f1 -d=' -run-command "/bin/zsh -i -c '\{cmd\}'" -rnow -show run
 super + @space
-    rofi -run-list-command 'alias | cut -f1 -d=' -run-command "/bin/zsh -i -c '\{cmd\}'" -rnow -show run
+    rofi -show run
 
 # pass launcher
 super + p
@@ -137,4 +138,5 @@ XF86Audio{Lower,Raise}Volume
     ~/.config/sxhkd/volume-popup
 
 XF86AudioMute
-    pactl set-sink-mute 0 toggle
+    pactl set-sink-mute 0 toggle; \
+    ~/.config/sxhkd/volume-popup

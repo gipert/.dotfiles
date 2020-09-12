@@ -31,7 +31,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # wallpaper
-feh --bg-tile $HOME/pictures/dark_exa_@2X.png
+[[ `command -v feh` ]] && feh --bg-tile $HOME/pictures/dark_exa_@2X.png
 
 # adjust cursor speed
 xset r rate 300 40
@@ -42,10 +42,20 @@ xset r rate 300 40
 # select wm/de with: startx ~/.xinitrc session
 session=${1:-bspwm}
 
+# this to make xob work
+if [[ `command -v xob` ]]; then
+    rm -f /tmp/xobpipe
+    mkfifo /tmp/xobpipe
+    tail -f /tmp/xobpipe | xob &
+fi
+
+# start protonmail bridge
+[[ `command -v protonmail-bridge` ]] && protonmail-bridge --noninteractive &
+
 if [[ `hostname` == "lxpertoldi" ]]; then
 
     # start mpd server
-    `command -v mpd` && mpd
+    [[ `command -v mpd` ]] && mpd
 
     # mouse, set speed
     xinput set-prop 14 173 0.3 0.0 0.0 0.0 0.5 0.0 0.0 0.0 1.0
@@ -54,17 +64,17 @@ if [[ `hostname` == "lxpertoldi" ]]; then
     xrandr --output DP-2 --mode 1920x1080 --pos 0x1920    --rotate right \
            --output DP-1 --mode 1920x1080 --pos 1080x2300 --rotate normal
 
+    xautolock -detectsleep \
+        -time 5 -notify 30 \
+        -notifier "notify-send -u normal -i /usr/share/icons/hicolor/48x48/apps/gcr-key-pair.png 'Security Service' 'Locking screen in 20 seconds...'" \
+        -locker "/sbin/xtrlock" &
+            # -locker "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10" &
+            # -locker "/bin/xlock -mode random -modelist 'bug,coral,euler2d,flame,spline,worm,discrete,space' -ncolors 200 -echokeys -echokey '*'" &
+
 elif [[ `hostname` == "hackintosh" ]]; then
 
-    xrandr --output eDP1 --auto --output HDMI1 --right-of eDP1
+    xrandr --output eDP1 --auto --output HDMI1 --right-of eDP1 --auto
 fi
-
-xautolock -detectsleep \
-   -time 5 -notify 30 \
-   -notifier "notify-send -u normal -i /usr/share/icons/hicolor/48x48/apps/gcr-key-pair.png 'Security Service' 'Locking screen in 20 seconds...'" \
-   -locker "/sbin/xtrlock" &
-   # -locker "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10" &
-   # -locker "/bin/xlock -mode random -modelist 'bug,coral,euler2d,flame,spline,worm,discrete,space' -ncolors 200 -echokeys -echokey '*'" &
 
 case "$session" in
     bspwm)
