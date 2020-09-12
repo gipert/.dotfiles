@@ -23,6 +23,7 @@ bspc rule -a Sxiv state=floating
 bspc rule -a Zathura state=tiled
 bspc rule -a itunes.exe state=floating
 bspc rule -a ROOT state=floating
+bspc rule -a gksqt state=floating
 
 killall sxhkd
 
@@ -39,8 +40,8 @@ if [[ `hostname` == "hackintosh" ]]; then
 elif [[ `hostname` == "lxpertoldi" ]]; then
 
     sxhkd ~/.config/sxhkd/sxhkdrc.lxpertoldi &
-    bspc monitor DP-2 -d I II III IV V VI VII VIII IX X
-    bspc monitor DP-1 -d XI XII XIII XIV XV XVI XVII XVIII XIX XX
+    bspc monitor DP2 -d I II III IV V VI VII VIII IX X
+    bspc monitor DP1 -d XI XII XIII XIV XV XVI XVII XVIII XIX XX
 
     bspc rule -a Google-chrome desktop=^19 follow=on
     bspc rule -a TelegramDesktop desktop=^18 follow=on

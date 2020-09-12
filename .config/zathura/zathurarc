@@ -38,7 +38,7 @@ set recolor-keephue             "true"
 
 # Rest of your configs go here:
 
-set adjust-open width
+# set adjust-open width
 set pages-per-row 1
 #set smooth-scroll true
 set selection-clipboard clipboard

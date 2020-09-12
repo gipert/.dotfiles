@@ -61,8 +61,8 @@ if [[ `hostname` == "lxpertoldi" ]]; then
     xinput set-prop 14 173 0.3 0.0 0.0 0.0 0.5 0.0 0.0 0.0 1.0
 
     # set monitors
-    xrandr --output DP-2 --mode 1920x1080 --pos 0x1920    --rotate right \
-           --output DP-1 --mode 1920x1080 --pos 1080x2300 --rotate normal
+    xrandr --output DP2 --mode 1920x1080 --pos 0x1920    --rotate right \
+           --output DP1 --mode 1920x1080 --pos 1080x2300 --rotate normal
 
     xautolock -detectsleep \
         -time 5 -notify 30 \

@@ -440,10 +440,10 @@ address-book=~/.config/addressbook
 global-address-book=
 
 # Set by Alpine; controls beginning-of-month sent-mail pruning.
-last-time-prune-questioned=120.3
+last-time-prune-questioned=120.8
 
 # Set by Alpine; controls display of "new version" message.
-last-version-used=6.21
+last-version-used=6.22
 
 # This names the path to an alternative program, and any necessary arguments,
 # to be used in posting mail messages.  Example:
@@ -715,3 +715,29 @@ wp-state=
 
 # Web Alpine preferred width for message display in characters
 wp-columns=
+
+# Sets the path for the system ssl certificates issued by a trusted
+# certificate authority. Note that this could be a list of paths, if the same
+# pinerc is used in different systems. Alpine always chooses the first one that
+# it finds. Value must be an absolute path.
+system-certs-path=
+
+# Sets the path for the system ssl file container of certificates issued by a
+# certificate authority. Note that this could be a list of container files,
+# if the same pinerc is used in different systems. Alpine always chooses the,
+# first one that it finds. Value must be an absolute path.
+system-certs-file=
+
+# If this much time has elapsed at the time of a tcp read or write timeout,
+# Alpine will close the connection automatically without user intervention.
+# Setting this value to zero (the default) disables this. Setting this variable
+# to a smaller value than tcp-query-timeout will close the connection
+# automatically, and you will never be asked if you want to wait.
+close-connection-timeout=
+
+# A range in the form min,max that sets the minimum amd maximum versions of the
+# SSL protocol that Alpine will use when connecting to a secure server.
+encryption-protocol-range=
+
+# Your client-id and client-secret information to authenticate using XOAUTH2
+xoauth2-info=
