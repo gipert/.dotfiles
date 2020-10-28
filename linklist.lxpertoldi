@@ -13,7 +13,7 @@
 .config/pulse/client.conf
 .config/ranger/rc.conf
 .config/ranger/scope.sh
-.config/rofi/config
+.config/rofi/config.rasi
 .config/sxhkd
 .config/vis/colors
 .config/vis/config
