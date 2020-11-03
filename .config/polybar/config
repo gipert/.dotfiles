@@ -49,7 +49,6 @@ font-1 = 3270Medium Nerd Font:size=13;3
 modules-left =
 modules-center = mpd_hackintosh
 modules-right =
-cursor-click = pointer
 
 [bar/hackintosh]
 monitor = eDP1
@@ -76,7 +75,6 @@ modules-left = bspwm-hackintosh
 modules-center =
 modules-right = temperature cpu memory alsa backlight-acpi wlan battery date hostname powermenu
 wm-restack = bspwm
-cursor-click = pointer
 
 [bar/lxpertoldi_hor]
 enable-ipc = true
@@ -104,7 +102,6 @@ modules-left = bspwm-lxpertoldi
 modules-center =
 modules-right = mpd_lxpertoldi github cpu memory alsa date ethernet hostname dunst powermenu
 wm-restack = bspwm
-cursor-click = pointer
 
 [bar/lxpertoldi_vert]
 enable-ipc = true
@@ -132,7 +129,6 @@ modules-left = bspwm-lxpertoldi
 modules-center =
 modules-right = cpu memory date hostname dunst
 wm-restack = bspwm
-cursor-click = pointer
 
 [module/dunst]
 type = custom/ipc
@@ -190,6 +186,8 @@ label-urgent-padding = 1
 label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
+enable-click = false
+enable-scroll = false
 
 [module/bspwm-lxpertoldi]
 inherit = module/bspwm
@@ -354,8 +352,8 @@ label = %gb_used%
 type = internal/network
 interface = wlp2s0b1
 interval = 3.0
-ping-interval = 3.0
-format-connected = 直 <label-connected>
+; ping-interval = 3.0
+format-connected = <ramp-signal>直 <label-connected>
 label-connected = %essid%
 format-connected-underline = ${colors.mag}
 format-disconnected = 睊
@@ -368,6 +366,14 @@ animation-packetloss-0-foreground = ${colors.ylw}
 animation-packetloss-1 = 
 animation-packetloss-1-foreground = ${colors.background-alt}
 animation-packetloss-framerate = 1000
+ramp-signal-0 = ▁
+ramp-signal-1 = ▂
+ramp-signal-2 = ▃
+ramp-signal-3 = ▄
+ramp-signal-4 = ▅
+ramp-signal-5 = ▆
+ramp-signal-6 = ▇
+ramp-signal-7 = █
 
 [module/ethernet]
 type = internal/network
