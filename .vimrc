@@ -138,7 +138,7 @@ let g:airline_powerline_fonts = 1
 let g:ale_lint_delay = 2000
 let g:ale_pattern_options = {'\.C': {'ale_enabled': 1}} " this is for ROOT macros
 let g:ale_completion_enabled = 1
-let g:ale_linters = { 'python': ['flake8'] }
+let g:ale_linters = { 'cpp': [] } " let YCM do its job
 
 " gutter options
 if v:version >= 750

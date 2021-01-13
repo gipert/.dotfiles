@@ -9,14 +9,14 @@ super + Return
 # program launcher
 # rofi -run-list-command 'alias | cut -f1 -d=' -run-command "/bin/zsh -i -c '\{cmd\}'" -rnow -show run
 super + @space
-    rofi -show run
+    rofi -m -1 -show run
 
 # pass launcher
 super + p
     rofi-pass
 
 # emoji picker
-super + e
+super + j
     rofimoji
 
 # calculator
@@ -83,11 +83,7 @@ super + {o,i}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'
-
-# focus desktop with 4-finger gesture
-button{10,11}
-    bspc desktop -f {prev,next}
+    bspc {desktop -f,node -d} {I,II,III,IV,V,VI,VII,VIII,IX,X}
 
 #
 # preselect

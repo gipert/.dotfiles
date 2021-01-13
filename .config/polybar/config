@@ -76,6 +76,32 @@ modules-center =
 modules-right = temperature cpu memory alsa backlight-acpi wlan battery date hostname powermenu
 wm-restack = bspwm
 
+[bar/hackintosh_ext]
+monitor = ${env:MONITOR:HDMI1}
+override-redirect = true
+width = 100%
+height = 27
+offset-x = 0
+offset-y = 0
+radius = 0.0
+fixed-center = false
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
+border-size = 4
+border-color = ${colors.background}
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+font-0 = Fira Code:style=Regular:size=10;1
+font-1 = 3270Medium Nerd Font:size=11;1
+modules-left = bspwm-hackintosh
+modules-center =
+modules-right = temperature cpu memory alsa backlight-acpi wlan battery date hostname powermenu
+wm-restack = bspwm
+
 [bar/lxpertoldi_hor]
 enable-ipc = true
 monitor = DP1
@@ -225,7 +251,8 @@ ws-icon-7 = "VIII;VIII"
 ws-icon-8 = "IX;IX"
 ws-icon-9 = "X;X"
 ws-icon-10 = "XI;"
-ws-icon-11 = "XII;"
+ws-icon-11 = "XII;"
+ws-icon-12 = "external;external"
 
 [module/i3]
 type = internal/i3
@@ -350,7 +377,8 @@ label = %gb_used%
 
 [module/wlan]
 type = internal/network
-interface = wlp2s0b1
+; interface = wlp2s0b1
+interface = wlp2s0
 interval = 3.0
 ; ping-interval = 3.0
 format-connected = <ramp-signal>直 <label-connected>

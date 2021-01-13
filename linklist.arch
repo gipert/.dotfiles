@@ -20,6 +20,7 @@
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/signature
+.config/xob
 .mutt/personal
 .mutt/work
 .ncmpcpp/config

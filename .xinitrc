@@ -30,6 +30,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
+# needed for rofi-pass to work properly
+setxkbmap it
+
+# I want the compose key on Alt_L
+# xmodmap -e "keycode 64 = Multi_key"
+
 # wallpaper
 [[ `command -v feh` ]] && feh --bg-tile $HOME/pictures/dark_exa_@2X.png
 
@@ -46,7 +52,7 @@ session=${1:-bspwm}
 if [[ `command -v xob` ]]; then
     rm -f /tmp/xobpipe
     mkfifo /tmp/xobpipe
-    tail -f /tmp/xobpipe | xob &
+    tail -f /tmp/xobpipe | xob -s volume &
 fi
 
 # start protonmail bridge
