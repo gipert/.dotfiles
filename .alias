@@ -14,4 +14,16 @@ alias dotsync='\cd ~/.dotfiles && git pull && git submodule init && git submodul
 alias time='/usr/bin/time -v'
 alias o='xdg-open'
 
+if ! command -v ranger &> /dev/null; then
+    alias ranger='~/.ranger/ranger.py'
+fi
+
+if ! command -v ranger &> /dev/null; then
+    printf "GNU ranger not found, install it? [y/N]: "
+    if read -q; then
+        echo;
+        \git clone https://github.com/ranger/ranger.git ~/.ranger
+    fi
+fi
+
 [ -f ~/.alias_bis ] && source ~/.alias_bis
