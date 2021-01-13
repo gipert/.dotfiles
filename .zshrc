@@ -54,12 +54,14 @@ fi
 zplug load
 
 # keybinds
+bindkey -v
 bindkey "^A"     vi-beginning-of-line
 bindkey '^[[A'   history-substring-search-up
 bindkey '^[[B'   history-substring-search-down
 bindkey '^[[3~'  delete-char
 bindkey '^[3;5~' delete-char
 bindkey '\e[3~'  delete-char
+bindkey -r '^[' # Alt+key does not trigger vi-cmd-mode anymore
 
 # powerlevel10k instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then

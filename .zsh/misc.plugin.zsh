@@ -105,7 +105,7 @@ music() {
 
             if ! ps aux | grep polybar | grep -q music; then
                 echo "INFO: enabling music bar..."
-                bspc config bottom_padding 29 && \
+                bspc config -m eDP1 bottom_padding 29 && \
                 polybar music &> ~/.config/polybar/music.log & disown && \
                 echo $! > ~/.config/polybar/polybar.pid
             fi
@@ -125,6 +125,14 @@ music() {
     else
         echo "ERROR: works only on 'hackintosh'"
     fi
+}
+
+# duplicate_monitor <screen> <position>
+duplicate_monitor() {
+    xrandr --output eDP1 --auto --output $1 --$2 eDP1 --auto
+    bspc monitor $1 -d external
+    pkill -xf 'polybar hackintosh_ext'
+    MONITOR=$1 polybar hackintosh_ext & disown
 }
 
 # vim: syntax=sh
