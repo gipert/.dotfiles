@@ -1,5 +1,6 @@
 .vim/.netrwhist
 .vim/spell/*.add.spl
+.vim/plugged
 
 # junk
 *.swp
