@@ -5,7 +5,6 @@
 .config/user-dirs.locale
 .ssh/config.common
 .ssh/config.linux
-.ssh/config.mac
 .vim
 .alias
 .bash_profile
