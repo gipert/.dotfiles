@@ -50,7 +50,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'godlygeek/tabular'
   Plug 'octol/vim-cpp-enhanced-highlight'
   Plug 'wesQ3/vim-windowswap'
-  Plug 'anowlcalledjosh/vim-lilypond'
+  Plug 'sersorrel/vim-lilypond'
   Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
 
 call plug#end()

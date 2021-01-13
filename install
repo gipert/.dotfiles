@@ -18,8 +18,8 @@ if [ -f ./install ]; then
   echo "INFO: linking (ln -fs) dotfiles in $1"
 
   while read -r line; do
-    local file=`echo $line | sed 's/ .*//g'`
-    local dest=`echo $line | sed 's/.* //g'`
+    file=`echo $line | sed 's/ .*//g'`
+    dest=`echo $line | sed 's/.* //g'`
 
     if [[ $dest == $file ]]; then
       mkdir -p $HOME/`dirname $dest`
