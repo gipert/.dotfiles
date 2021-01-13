@@ -15,15 +15,14 @@ alias time='/usr/bin/time -v'
 alias o='xdg-open'
 
 if ! command -v ranger &> /dev/null; then
-    alias ranger='~/.ranger/ranger.py'
-fi
-
-if [[ ! -f ~/.ranger/ranger.py ]]; then
-    printf "GNU ranger not found, install it? [y/N]: "
-    if read; then
-        echo;
-        \git clone https://github.com/ranger/ranger.git ~/.ranger
+    if [[ ! -f ~/.ranger/ranger.py ]]; then
+        printf "GNU ranger not found, install it? [y/N]: "; read ans
+        if [ "$ans" != "${ans#[Yy]}" ]; then
+            echo
+            \git clone https://github.com/ranger/ranger.git ~/.ranger
+        fi
     fi
+    alias ranger='~/.ranger/ranger.py'
 fi
 
 [ -f ~/.alias_bis ] && source ~/.alias_bis

@@ -85,14 +85,11 @@ fi
 # aliases
 [[ -f $HOME/.alias ]] && source $HOME/.alias
 
-# fzf
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-
 # load powerlevel10k
 if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
   [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 else
-  [[ ! -f ~/.p10k-console.zsh ]] || source ~/.p10k-console.zsh
+  [[ ! -f ~/.zsh/p10k-console.zsh ]] || source ~/.p10k-console.zsh
 fi
 
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS+=singularity_venv
