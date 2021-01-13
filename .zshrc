@@ -22,6 +22,11 @@ autoload -Uz compinit
 compinit
 setopt COMPLETE_ALIASES
 
+# install zplug
+if [[ ! -f ~/.zplug/init.zsh ]]; then
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+fi
+
 source ~/.zplug/init.zsh
 
 zplug "romkatv/powerlevel10k", as:theme, depth:1

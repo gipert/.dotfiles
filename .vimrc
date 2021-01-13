@@ -55,6 +55,12 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
+" auto-install missing plugins at startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
+
 " this is to make sure that vim-sensible is loaded at this point
 runtime! plugin/sensible.vim
 
