@@ -55,7 +55,9 @@ docker2sing() {
 
 docker() {
     if [[ "$1" == "run" ]]; then
-        command docker run -v $HOME:$HOME -w $PWD --rm -it "${@:2}"
+        local mode=":"
+        [[ `uname` == "Darwin" ]] && mode=":delegated"
+        command docker run -v ${HOME}:${HOME}${mode} -w $PWD --rm -it "${@:2}"
     elif [[ "$1" == "build" ]]; then
         command docker build --rm "${@:2}"
     else

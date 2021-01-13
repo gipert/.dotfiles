@@ -38,7 +38,10 @@ zplug "plugins/colored-man-pages", from:oh-my-zsh
 
 zplug "b4b4r07/enhancd"
 zplug "supercrabtree/k"
-zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*linux*amd64*"
+
+os=`echo $(uname) | tr '[:upper:]' '[:lower:]'`
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*${os}*amd64*"
+
 zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
 
 zplug "~/.zsh", from:local
