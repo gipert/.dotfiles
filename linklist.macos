@@ -44,7 +44,6 @@
 .rootrc
 .tmux.conf
 .vimrc
-.xinitrc
 .Xresources
 .zsh
 .zshenv
