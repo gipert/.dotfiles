@@ -11,6 +11,8 @@
 .config/papis/config
 .config/polybar
 .config/pulse/client.conf
+.config/ranger/colorschemes/default-gruvbox.py
+.config/ranger/colorschemes/gruvbox.py
 .config/ranger/rc.conf
 .config/ranger/scope.sh
 .config/rofi/config.rasi
