@@ -25,9 +25,9 @@
 .mutt/personal
 .mutt/work
 .ncmpcpp/config
+.ssh/config
 .ssh/config.common
-.ssh/config.linux
-.ssh/config.hackintosh
+.ssh/config.imac-casa
 .vim
 .alias
 .bash_profile

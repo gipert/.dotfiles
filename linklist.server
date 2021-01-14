@@ -5,8 +5,8 @@
 .config/ranger/scope.sh
 .config/user-dirs.dirs
 .config/user-dirs.locale
+.ssh/config
 .ssh/config.common
-.ssh/config.linux
 .vim
 .alias
 .bash_profile

@@ -7,21 +7,16 @@ rdocs() {
 }
 
 ssh() {
-    if [[ `hostname` == "hackintosh" ]]; then
-        if [[ $@ == "gerda-lngs" ]]; then
-            command sshpass -f ~/.secrets ssh -F ~/.ssh/config.hackintosh gerda-lngs
-        else
-            command ssh -F ~/.ssh/config.hackintosh "$@"
-        fi
-    elif [[ `hostname` == "lxpertoldi" ]]; then
-        if [[ $@ == "gerda-lngs" ]]; then
-            command sshpass -f ~/.secrets ssh -F ~/.ssh/config.linux gerda-lngs
-        else
-            command ssh -F ~/.ssh/config.linux "$@"
-        fi
-    else
-        command ssh -F ~/.ssh/config.linux "$@"
-    fi
+
+    local host=`hostname | cut -f 1 -d.`
+    local config="$HOME/.ssh/config"
+
+    for f in \ls ~/.ssh/config.*; do
+        [[ "$f" == "config.common" ]] && continue
+        [[ "$f" == "config.$host" ]] && config="$HOME/.ssh/config.$host"
+    done
+
+    command ssh -F "$config" "$@"
 }
 
 rsync() {
