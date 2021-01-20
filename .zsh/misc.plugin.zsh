@@ -6,30 +6,33 @@ rdocs() {
     fi
 }
 
-ssh() {
+_get_ssh_config() {
 
     local host=`hostname | cut -f 1 -d.`
     local config="$HOME/.ssh/config"
 
     for f in \ls ~/.ssh/config.*; do
-        [[ "$f" == "config.common" ]] && continue
-        [[ "$f" == "config.$host" ]] && config="$HOME/.ssh/config.$host"
+        local file=`basename "$f"`
+        [[ "$file" == "config.common" ]] && continue
+        [[ "$file" == "config.$host" ]] && config="$HOME/.ssh/config.$host"
     done
 
-    command ssh -F "$config" "$@"
+    echo "$config"
+}
+
+ssh() {
+    if [[ `echo "$@" | grep -Eq '^gerda-lngs*'` -eq 0 ]]; then
+        command sshpass -f $HOME/.sshpass ssh -F "`_get_ssh_config`" "$@"
+    else
+        command ssh -F "`_get_ssh_config`" "$@"
+    fi
 }
 
 rsync() {
-    if [[ `hostname` == "hackintosh" ]]; then
-        command rsync -h --progress --rsh="ssh -F $HOME/.ssh/config.hackintosh" "$@"
-    elif [[ `hostname` == "lxpertoldi" ]]; then
-        if [[ `echo "$@" | grep -Eq '^gerda-lngs*'` -eq 0 ]]; then
-            command rsync -h --progress --rsh="sshpass -f $HOME/.secrets ssh -F $HOME/.ssh/config.linux" "$@"
-        else
-            command rsync -h --progress --rsh="ssh -F $HOME/.ssh/config.linux" "$@"
-        fi
+    if [[ `echo "$@" | grep -Eq '^gerda-lngs*'` -eq 0 ]]; then
+        command rsync -h --progress --rsh="sshpass -f $HOME/.sshpass ssh -F '`_get_ssh_config`'" "$@"
     else
-        command rsync -h --progress --rsh="ssh -F $HOME/.ssh/config.linux" "$@"
+        command rsync -h --progress --rsh="ssh -F '`_get_ssh_config`'" "$@"
     fi
 }
 
