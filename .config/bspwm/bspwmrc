@@ -27,6 +27,7 @@ bspc rule -a itunes.exe state=floating
 bspc rule -a ROOT state=floating
 bspc rule -a gksqt state=floating
 bspc rule -a Steam state=floating
+bspc rule -a 'Cisco AnyConnect Secure Mobility Client' state=floating
 
 killall sxhkd
 

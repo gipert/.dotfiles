@@ -21,7 +21,7 @@ _get_ssh_config() {
 }
 
 ssh() {
-    if [[ `echo "$@" | grep -Eq '^gerda-lngs*'` -eq 0 ]]; then
+    if echo "$@" | \grep -Eq '^gerda-lngs*'; then
         command sshpass -f $HOME/.sshpass ssh -F "`_get_ssh_config`" "$@"
     else
         command ssh -F "`_get_ssh_config`" "$@"
