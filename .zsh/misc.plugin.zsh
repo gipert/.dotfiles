@@ -1,8 +1,8 @@
 rdocs() {
     if [[ "$1" == "TMath" ]]; then
-        $BROWSER https://root.cern.ch/doc/v614/namespace$1.html
+        $BROWSER https://root.cern.ch/doc/v622/namespace$1.html
     else
-        $BROWSER https://root.cern.ch/doc/v614/class$1.html
+        $BROWSER https://root.cern.ch/doc/v622/class$1.html
     fi
 }
 
@@ -29,7 +29,7 @@ ssh() {
 }
 
 rsync() {
-    if echo "$@" | grep -Eq '^gerda-lngs*'; then
+    if echo "$@" | \grep -Eq 'gerda-lngs'; then
         command rsync -h --progress --rsh="sshpass -f $HOME/.sshpass ssh -F '`_get_ssh_config`'" "$@"
     else
         command rsync -h --progress --rsh="ssh -F '`_get_ssh_config`'" "$@"
