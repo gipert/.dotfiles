@@ -21,7 +21,7 @@ _get_ssh_config() {
 }
 
 ssh() {
-    if echo "$@" | \grep -Eq '^gerda-lngs*'; then
+    if echo "$@" | \grep -Eq '^gerda-lngs*' && command -v sshpass; then
         command sshpass -f $HOME/.sshpass ssh -F "`_get_ssh_config`" "$@"
     else
         command ssh -F "`_get_ssh_config`" "$@"
@@ -29,7 +29,7 @@ ssh() {
 }
 
 rsync() {
-    if echo "$@" | \grep -Eq 'gerda-lngs'; then
+    if echo "$@" | \grep -Eq 'gerda-lngs' && command -v sshpass; then
         command rsync -h --progress --rsh="sshpass -f $HOME/.sshpass ssh -F '`_get_ssh_config`'" "$@"
     else
         command rsync -h --progress --rsh="ssh -F '`_get_ssh_config`'" "$@"
