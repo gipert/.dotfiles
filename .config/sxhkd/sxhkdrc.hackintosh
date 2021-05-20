@@ -18,6 +18,10 @@ button{10,11}
 # special keys
 #
 
+XF86AudioMute
+    pactl set-sink-mute 0 toggle; \
+    ~/.config/sxhkd/volume-popup
+
 XF86MonBrightness{Down,Up}
     xbacklight -ctrl intel_backlight {-dec,-inc} 2
 

@@ -21,7 +21,7 @@ _get_ssh_config() {
 }
 
 ssh() {
-    if echo "$@" | \grep -Eq '^gerda-lngs*' && command -v sshpass; then
+    if echo "$@" | \grep -Eq '^gerda-lngs*' && command -v sshpass > /dev/null; then
         command sshpass -f $HOME/.sshpass ssh -F "`_get_ssh_config`" "$@"
     else
         command ssh -F "`_get_ssh_config`" "$@"
@@ -29,7 +29,7 @@ ssh() {
 }
 
 rsync() {
-    if echo "$@" | \grep -Eq 'gerda-lngs' && command -v sshpass; then
+    if echo "$@" | \grep -Eq 'gerda-lngs' && command -v sshpass > /dev/null; then
         command rsync -h --progress --rsh="sshpass -f $HOME/.sshpass ssh -F '`_get_ssh_config`'" "$@"
     else
         command rsync -h --progress --rsh="ssh -F '`_get_ssh_config`'" "$@"
@@ -133,6 +133,13 @@ duplicate_monitor() {
     bspc monitor $1 -d external
     pkill -xf 'polybar hackintosh_ext'
     MONITOR=$1 polybar hackintosh_ext & disown
+}
+
+rand_wallpaper() {
+    if command -v feh > /dev/null && [ -d ~/pictures/wallpapers ]; then
+        img=$(ls ~/pictures/wallpapers/ | grep -E '.(png|jpe?g)'  | sort -R | tail -n 1)
+        feh --bg-tile "$HOME/pictures/wallpapers/$img"
+    fi
 }
 
 # vim: syntax=sh

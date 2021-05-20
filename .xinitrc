@@ -1,85 +1,44 @@
 #!/bin/sh
 
-userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
-sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
-
-# merge in defaults and keymaps
-
-if [ -f "$sysresources" ]; then
-    xrdb -merge "$sysresources"
-fi
-
-if [ -f "$sysmodmap" ]; then
-    xmodmap "$sysmodmap"
-fi
-
-if [ -f "$userresources" ]; then
-    xrdb -merge "$userresources"
-fi
-
-if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
-fi
-
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
-    for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-        [ -x "$f" ] && . "$f"
-    done
-    unset f
-fi
-
-# needed for rofi-pass to work properly
-setxkbmap it
-
-# I want the compose key on Alt_L
-# xmodmap -e "keycode 64 = Multi_key"
-
 # wallpaper
-[[ `command -v feh` ]] && feh --bg-tile $HOME/pictures/dark_exa_@2X.png
+if command -v feh > /dev/null && [ -d ~/pictures/wallpapers ]; then
+    img=$(ls ~/pictures/wallpapers/ | grep -E '.(png|jpe?g)'  | sort -R | tail -n 1)
+    feh --bg-tile "$HOME/pictures/wallpapers/$img"
+fi
 
-# adjust cursor speed
+# adjust cursor repeat rate
 xset r rate 300 40
 
 # mouse, set acceleration and threshold
-# xset mouse 7 1
+xinput set-prop "USB Optical Mouse" "libinput Accel Speed" 1.0
 
 # select wm/de with: startx ~/.xinitrc session
 session=${1:-bspwm}
 
 # this to make xob work
-if [[ `command -v xob` ]]; then
-    rm -f /tmp/xobpipe
-    mkfifo /tmp/xobpipe
-    tail -f /tmp/xobpipe | xob -s volume &
-fi
+[[ `command -v xob` ]] && ~/.config/xob/launch.sh
 
-# start protonmail bridge
-[[ `command -v protonmail-bridge` ]] && protonmail-bridge --noninteractive &
+if [[ `hostname` == "thinkpad" ]]; then
 
-if [[ `hostname` == "lxpertoldi" ]]; then
+    # needed for rofi-pass to work properly
+    setxkbmap de
 
-    # start mpd server
-    [[ `command -v mpd` ]] && mpd
+# elif [[ `hostname` == "lxpertoldi" ]]; then
 
-    # mouse, set speed
-    xinput set-prop 14 173 0.3 0.0 0.0 0.0 0.5 0.0 0.0 0.0 1.0
+#     # mouse, set speed
+#     xinput set-prop 14 173 0.3 0.0 0.0 0.0 0.5 0.0 0.0 0.0 1.0
 
-    # set monitors
-    xrandr --output DP2 --mode 1920x1080 --pos 0x1920    --rotate right \
-           --output DP1 --mode 1920x1080 --pos 1080x2300 --rotate normal
+#     # set monitors
+#     xrandr --output DP2 --mode 1920x1080 --pos 0x1920    --rotate right \
+#            --output DP1 --mode 1920x1080 --pos 1080x2300 --rotate normal
 
-    xautolock -detectsleep \
-        -time 5 -notify 30 \
-        -notifier "notify-send -u normal -i /usr/share/icons/hicolor/48x48/apps/gcr-key-pair.png 'Security Service' 'Locking screen in 20 seconds...'" \
-        -locker "/sbin/xtrlock" &
-            # -locker "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10" &
-            # -locker "/bin/xlock -mode random -modelist 'bug,coral,euler2d,flame,spline,worm,discrete,space' -ncolors 200 -echokeys -echokey '*'" &
+#     xautolock -detectsleep \
+#         -time 5 -notify 30 \
+#         -notifier "notify-send -u normal -i /usr/share/icons/hicolor/48x48/apps/gcr-key-pair.png 'Security Service' 'Locking screen in 20 seconds...'" \
+#         -locker "/sbin/xtrlock" &
+#             # -locker "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10" &
+#             # -locker "/bin/xlock -mode random -modelist 'bug,coral,euler2d,flame,spline,worm,discrete,space' -ncolors 200 -echokeys -echokey '*'" &
 
-elif [[ `hostname` == "hackintosh" ]]; then
-
-    xrandr --output eDP1 --auto --output HDMI1 --right-of eDP1 --auto
 fi
 
 case "$session" in

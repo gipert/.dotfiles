@@ -18,8 +18,10 @@ BASE_FLAGS = [
         '-xc++',
         '-I/usr/lib/',
         '-I/usr/include/',
-        '-I/home/gipert/code/utils',
-        '-I/home/gipert/code/bat'
+        '-I/usr/include/nlohmann',
+        '-I/home/gipert/.local/include',
+        '-I/home/gipert/sw/src/tools',
+        '-I/home/gipert/sw/src/progressbar',
         ]
 
 SOURCE_EXTENSIONS = [

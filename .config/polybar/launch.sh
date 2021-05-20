@@ -5,7 +5,10 @@ killall -q polybar
 # If all your bars have ipc enabled, you can also use
 # polybar-msg cmd quit
 
-if [[ `hostname` == "hackintosh" ]]; then
+if [[ `hostname` == "thinkpad" ]]; then
+    echo "---" | tee -a /tmp/polybar_thinkpad.log
+    polybar thinkpad >> /tmp/polybar_thinkpad.log 2>&1 &
+elif [[ `hostname` == "hackintosh" ]]; then
     echo "---" | tee -a /tmp/polybar_hackintosh.log
     polybar hackintosh >> /tmp/polybar_hackintosh.log 2>&1 &
 elif [[ `hostname` == "lxpertoldi" ]]; then

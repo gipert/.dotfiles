@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [[ $(pacmd list-sinks | awk '/muted/ { print $2 }') == "yes" ]]; then
-    echo 0! > /tmp/xobpipe
+if ! amixer get Master | grep -q '\[on\]'; then
+    echo 0! > /tmp/xobpipe-volume
 else
     level=$(amixer get Master | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1)
-    echo $level > /tmp/xobpipe
+    echo $level > /tmp/xobpipe-volume
 fi
