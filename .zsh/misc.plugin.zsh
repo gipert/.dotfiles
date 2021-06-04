@@ -21,7 +21,7 @@ _get_ssh_config() {
 }
 
 ssh() {
-    if echo "$@" | \grep -Eq '^gerda-lngs*' && command -v sshpass > /dev/null; then
+    if echo "$@" | \grep -Eq '^lngs-gerda*' && command -v sshpass > /dev/null; then
         command sshpass -f $HOME/.sshpass ssh -F "`_get_ssh_config`" "$@"
     else
         command ssh -F "`_get_ssh_config`" "$@"
@@ -29,7 +29,7 @@ ssh() {
 }
 
 rsync() {
-    if echo "$@" | \grep -Eq 'gerda-lngs' && command -v sshpass > /dev/null; then
+    if echo "$@" | \grep -Eq 'lngs-gerda' && command -v sshpass > /dev/null; then
         command rsync -h --progress --rsh="sshpass -f $HOME/.sshpass ssh -F '`_get_ssh_config`'" "$@"
     else
         command rsync -h --progress --rsh="ssh -F '`_get_ssh_config`'" "$@"
@@ -140,6 +140,12 @@ rand_wallpaper() {
         img=$(ls ~/pictures/wallpapers/ | grep -E '.(png|jpe?g)'  | sort -R | tail -n 1)
         feh --bg-tile "$HOME/pictures/wallpapers/$img"
     fi
+}
+
+_fzf_complete_cp() {
+    _fzf_complete -- "$@" < <(
+        cat $ENHANCD_DIR/enhancd.log
+    )
 }
 
 # vim: syntax=sh
