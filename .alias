@@ -19,9 +19,11 @@ if ! command -v ranger &> /dev/null; then
         printf "GNU ranger not found, install it? [y/N]: "; read ans
         if [ "$ans" != "${ans#[Yy]}" ]; then
             \git clone https://github.com/ranger/ranger.git ~/.ranger
+            alias ranger='~/.ranger/ranger.py'
         fi
+    else
+        alias ranger='~/.ranger/ranger.py'
     fi
-    alias ranger='~/.ranger/ranger.py'
 fi
 
 [ -f ~/.alias_bis ] && source ~/.alias_bis

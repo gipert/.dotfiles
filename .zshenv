@@ -35,3 +35,5 @@ export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export EDITOR="vim"
 
 [ -z "$SINGULARITY_CONTAINER" ] && [ -f ~/.zshenv_bis ] && source ~/.zshenv_bis
+
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
