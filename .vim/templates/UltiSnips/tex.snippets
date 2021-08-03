@@ -15,70 +15,6 @@ def common():
 \renewcommand{\phi}{\varphi}"""
 endglobal
 
-snippet gerdaslides "Template for presentation on behalf of GERDA" b
-%! TEX program = xelatex
-% {{{ PREAMBLE
-\documentclass[10pt,aspectratio=169]{beamer}
-
-`!p snip.rv = common()`
-
-\newcommand{\gerda}{\textsc{Gerda}}
-\newcommand{\nbb}{\nu\beta\beta}
-\newcommand{\Tzero}{T^{0\nu}_{1/2}}
-\newcommand{\Ttwo}{T^{2\nu}_{1/2}}
-
-\newcommand{\people}{${1:Luigi Pertoldi [\\texttt\{pertoldi@pd.infn.it\}}]}
-\newcommand{\mydate}{${2:`date +%d/%m/%Y`}}
-\newcommand{\place}{${3:PLACE}}
-
-% metropolis theme options
-\usetheme[numbering=fraction,block=fill]{metropolis}
-\setbeamertemplate{frame footer}{{\people} --- \textsc{\place} --- {\mydate}}
-\title{${4:TITLE}}
-\titlegraphic{\vspace{3.7cm}\begin{flushright}\includegraphics[width=1.8cm]{img/infn-logo.pdf}\hspace{5mm}\includegraphics[width=1.8cm]{img/unipd-logo.pdf}\hspace{5mm}\includegraphics[width=1.8cm]{img/gerda-logo.png}\end{flushright}}
-\date{{\place} --- \mydate}
-\author{\people}
-\institute{Università degli Studi di Padova \\\\ INFN -- Sezione di Padova}
-
-% {{{ customization
-\usepackage{appendixnumberbeamer}
-\setbeamercovered{dynamic}
-% for heavier glyphs
-%\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
-% usage: \begin{simpleblock} ... \end{simpleblock}
-\usepackage[most]{tcolorbox}
-\newtcolorbox{simpleblock}{
-%  enhanced,  % does not work with tikz/external
-  boxsep=0.25ex,
-%  arc=1.25ex,
-  arc=0ex,
-  opacityframe=.6,
-  opacityback=.6,
-  colback=bg!80!fg,
-  colframe=white,
-  boxrule=0pt,
-}
-% }}}
-% {{{ colors
-%\setbeamercolor{background canvas}{bg=white}
-\newcommand{\mlbrown}[1]{\textcolor{mLightBrown}{#1}}
-\newcommand{\mdbrown}[1]{\textcolor{mDarkBrown}{#1}}
-\newcommand{\mlgreen}[1]{\textcolor{mLightGreen}{#1}}
-\newcommand{\mdteal}[1]{\textcolor{mDarkTeal}{#1}}
-% }}}
-% }}}
-\begin{document}
-\maketitle
-%\begin{frame}{Index}
-%	\setbeamertemplate{section in toc}[sections numbered]
-%	\tableofcontents%[hideallsubsections]
-%\end{frame}
-\begin{frame}{}
-	$0
-\end{frame}
-\end{document}
-endsnippet
-
 snippet tolcolors "Paul Tol colors from mtheme" b
 % Available aliases: \<color>{<text>}
 %
@@ -99,6 +35,15 @@ snippet tolcolors "Paul Tol colors from mtheme" b
 \newcommand{\tdgreen}[1]{\textcolor{TolDarkGreen}{#1}}
 \newcommand{\tlbrown}[1]{\textcolor{TolLightBrown}{#1}}
 \newcommand{\tdbrown}[1]{\textcolor{TolDarkBrown}{#1}}
+endsnippet
+
+snippet columns "" b
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+	\end{column}
+	\begin{column}{0.5\textwidth}
+	\end{column}
+\end{columns}
 endsnippet
 
 snippet grmdfont "template for Garamond typesetted article" b

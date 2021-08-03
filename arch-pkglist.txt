@@ -63,7 +63,7 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 ranger
 reflector
-rocketchat-desktop
+rocketchat-client-bin
 rofi
 rofi-calc
 rofi-pass
@@ -102,13 +102,13 @@ vim-spell-de
 vim-spell-en
 vtop
 wget
-whatsapp-nativefier-dark
+whatsapp-nativefier
 which
 xob
 xorg
 xtrlock
 zathura
 zathura-djvu
-zathura-pdf-poppler
+zathura-pdf-mupdf
 zathura-ps
 zsh
