@@ -1,0 +1,4 @@
+#!/bin/bash
+
+amixer set Master unmute
+amixer set Master "$1"

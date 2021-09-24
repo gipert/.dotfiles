@@ -10,5 +10,5 @@ super + alt + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
     bspc {desktop -f,node -d} '^{11,12,13,14,15,16,17,18,19,20}'
 
 XF86AudioMute
-    pactl set-sink-mute 0 toggle; \
-    ~/.config/sxhkd/volume-popup
+    ~/.config/sxhkd/bin/audio-mute-toggle; \
+    ~/.config/sxhkd/bin/audio-popup

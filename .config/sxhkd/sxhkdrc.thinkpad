@@ -35,9 +35,9 @@ super + alt + ctrl + {Left,Down,Up,Right}
 #
 
 XF86AudioMute
-    pactl set-sink-mute 3 toggle; \
-    ~/.config/sxhkd/volume-popup
+    ~/.config/sxhkd/bin/audio-mute-toggle; \
+    ~/.config/sxhkd/bin/audio-popup
 
 XF86MonBrightness{Down,Up}
     xbacklight {-dec,-inc} 2; \
-    ~/.config/sxhkd/brightness-popup
+    ~/.config/sxhkd/bin/audio-popup
