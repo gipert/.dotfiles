@@ -7,7 +7,7 @@ super + {_,shift + }{1-9,0,ssharp,dead_acute}
     bspc {desktop -f,node -d} {I,II,III,IV,V,VI,VII,VIII,IX,X,XI,XII}
 
 # for external monitor
-super + {_,shift + } e + x
+super + {_,shift + } e
     bspc {desktop -f,node -d} external
 
 # focus desktop with 4-finger gesture
@@ -40,4 +40,4 @@ XF86AudioMute
 
 XF86MonBrightness{Down,Up}
     xbacklight {-dec,-inc} 2; \
-    ~/.config/sxhkd/bin/audio-popup
+    ~/.config/sxhkd/bin/brightness-popup

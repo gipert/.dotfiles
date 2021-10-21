@@ -43,13 +43,12 @@ set pages-per-row 1
 #set smooth-scroll true
 set selection-clipboard clipboard
 # set incremental-search true
-set guioptions ""
+set guioptions 'vh'
 
 # set window-title-home-tilde true
 set window-title-basename true
 # set statusbar-home-tilde true
 set show-hidden true
-set show-scrollbars true
 
 map d scroll half-down
 map u scroll half-up

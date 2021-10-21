@@ -13,43 +13,40 @@ bspc config borderless_monocle true
 bspc config top_monocle_padding -$top_padding
 
 bspc rule -a kitty rectangle=200x200
-bspc rule -a Google-chrome desktop=XII follow=on
-bspc rule -a firefox desktop=XII follow=on
-bspc rule -a TelegramDesktop desktop=XI follow=on
-bspc rule -a 'whatsapp-nativefier-d52542' desktop=XI follow=on
 bspc rule -a Gimp state=floating
 bspc rule -a Inkscape state=floating
 bspc rule -a Skype state=floating
 bspc rule -a zoom state=floating
-bspc rule -a Sxiv state=floating
 bspc rule -a Zathura state=tiled
 bspc rule -a itunes.exe state=floating
 bspc rule -a ROOT state=floating
 bspc rule -a gksqt state=floating
+bspc rule -a matplotlib state=floating
 bspc rule -a Steam state=floating
 bspc rule -a 'Cisco AnyConnect Secure Mobility Client' state=floating
+bspc rule -a mpv state=floating
+bspc rule -a clight-gui state=floating
+
+bspc rule -a firefox desktop=XII follow=on
+bspc rule -a TelegramDesktop desktop=XI follow=on
+bspc rule -a whatsapp-nativefier-d40211 desktop=XI follow=on
+bspc rule -a Thunderbird desktop=X follow=on
+bspc rule -a Slack desktop=IX follow=on
+bspc rule -a Rocket.Chat desktop=IX follow=on
+
+bspc rule -a '*' sticky=false
 
 killall sxhkd
 
-if [[ `hostname` == "hackintosh" ]]; then
+if [[ `hostname` == "thinkpad" ]]; then
 
-    sxhkd -m -1 ~/.config/sxhkd/sxhkdrc.hackintosh &
+    sxhkd ~/.config/sxhkd/sxhkdrc.thinkpad &
     bspc monitor eDP1 -d I II III IV V VI VII VIII IX X XI XII
 
-    # bspc config bottom_padding -7
-    # bspc config left_padding -7
-    # bspc config right_padding -7
-    # bspc config bottom_padding $bottom_padding
-
-elif [[ `hostname` == "lxpertoldi" ]]; then
-
-    sxhkd ~/.config/sxhkd/sxhkdrc.lxpertoldi &
-    bspc monitor DP2 -d I II III IV V VI VII VIII IX X
-    bspc monitor DP1 -d XI XII XIII XIV XV XVI XVII XVIII XIX XX
-
-    bspc rule -a Google-chrome desktop=^19 follow=on
-    bspc rule -a TelegramDesktop desktop=^18 follow=on
-    bspc rule -a 'whatsapp-nativefier-d52542' desktop=^18 follow=on
+    top_padding=63
+    bspc config window_gap 14
+    bspc config top_padding $top_padding
+    bspc config top_monocle_padding -$top_padding
 
 else
 

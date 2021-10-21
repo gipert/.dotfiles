@@ -1,5 +1,6 @@
 [settings]
 screenchange-reload = true
+pseudo-transparency = true
 
 [global/wm]
 margin-top = 5
@@ -27,176 +28,59 @@ bmag           = ${xrdb:color13}
 bcyn           = ${xrdb:color14}
 bwht           = ${xrdb:color15}
 
-[bar/music]
-monitor = eDP1
+[bar/laptop]
 override-redirect = true
-bottom = true
 width = 100%
-height = 25
+height = 27
+offset-x = 0
+offset-y = 0
+radius = 0
 fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 border-size = 2
-border-color = ${colors.background-alt}
-padding-left = 0
-padding-right = 2
-module-margin-left = 1
-module-margin-right = 2
-font-0 = Fira Code:style=Regular:size=10;2
-font-1 = 3270Medium Nerd Font:size=13;3
-modules-left =
-modules-center = mpd_hackintosh
-modules-right =
-
-[bar/hackintosh]
-monitor = eDP1
-override-redirect = true
-width = 100%
-height = 27
-offset-x = 0
-offset-y = 0
-radius = 0.0
-fixed-center = false
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size = 3
-line-color = #f00
-border-size = 4
 border-color = ${colors.background}
 padding-left = 0
 padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
-font-0 = Fira Code:style=Regular:size=10;1
-font-1 = 3270Medium Nerd Font:size=11;1
+font-0 = Fira Code:style=Regular:size=9;1
+font-1 = 3270Medium Nerd Font:size=10;1
 modules-left = bspwm-hackintosh
 modules-center =
-modules-right = temperature cpu memory alsa backlight-acpi wlan battery date hostname powermenu
+modules-right = system-bluetooth-bluetoothctl temperature cpu memory alsa backlight-acpi wlan battery date hostname powermenu
 wm-restack = bspwm
 
-[bar/hackintosh_ext]
-monitor = ${env:MONITOR:HDMI1}
-override-redirect = true
-width = 100%
-height = 27
-offset-x = 0
-offset-y = 0
-radius = 0.0
-fixed-center = false
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size = 3
-line-color = #f00
-border-size = 4
-border-color = ${colors.background}
-padding-left = 0
-padding-right = 2
-module-margin-left = 1
-module-margin-right = 2
-font-0 = Fira Code:style=Regular:size=10;1
-font-1 = 3270Medium Nerd Font:size=11;1
-modules-left = bspwm-hackintosh
-modules-center =
-modules-right = temperature cpu memory alsa backlight-acpi wlan battery date hostname powermenu
-wm-restack = bspwm
-
-[bar/lxpertoldi_hor]
+[bar/thinkpad]
 enable-ipc = true
-monitor = DP1
-override-redirect = true
-width = 100%
-height = 27
-offset-x = 0
-offset-y = 0
-radius = 0.0
-fixed-center = false
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size = 3
-line-color = #f00
+dpi = 192
+inherit = bar/laptop
+monitor = ${env:MONITOR:eDP1}
+height = 54
+line-size = 5
 border-size = 4
-border-color = ${colors.background}
+border-right-size = 0
+border-left-size = 0
+; border-bottom-color = ${colors.background-alt}
 padding-left = 0
 padding-right = 2
 module-margin-left = 1
-module-margin-right = 2
-font-0 = Fira Code:style=Regular:size=10;1
-font-1 = 3270Medium Nerd Font:size=11;1
-modules-left = bspwm-lxpertoldi
-modules-center =
-modules-right = mpd_lxpertoldi github cpu memory alsa date ethernet hostname dunst powermenu
-wm-restack = bspwm
-
-[bar/lxpertoldi_vert]
-enable-ipc = true
-monitor = DP2
-override-redirect = true
-width = 100%
-height = 27
-offset-x = 0
-offset-y = 0
-radius = 0.0
-fixed-center = false
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size = 3
-line-color = #f00
-border-size = 4
-border-color = ${colors.background}
-padding-left = 0
-padding-right = 2
-module-margin-left = 1
-module-margin-right = 2
-font-0 = Fira Code:style=Regular:size=10;1
-font-1 = 3270Medium Nerd Font:size=11;1
-modules-left = bspwm-lxpertoldi
-modules-center =
-modules-right = cpu memory date hostname dunst
-wm-restack = bspwm
+module-margin-right = 1
+modules-left = bspwm-thinkpad
+modules-right = mpd system-bluetooth-bluetoothctl cpu temperature memory alsa wlan ethernet battery date dunst hostname powermenu
 
 [module/dunst]
 type = custom/ipc
 initial = 1
 format-foreground = ${colors.ylw}
-
-hook-0 = echo "%{A1:notify-send "DUNST_COMMAND_PAUSE" && polybar-msg hook dunst 2:}%{A}" &
-hook-1 = echo "%{A1:notify-send "DUNST_COMMAND_RESUME" && polybar-msg hook dunst 1:}%{A}" &
+hook-0 = echo "%{A1:dunstctl set-paused true && polybar-msg hook dunst 2:}%{A}" &
+hook-1 = echo "%{A1:dunstctl set-paused false && polybar-msg hook dunst 1:}%{A}" &
 
 [module/hostname]
 type = custom/script
 exec = echo `hostname` ""
-
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
@@ -215,7 +99,7 @@ label-empty-padding = 1
 enable-click = false
 enable-scroll = false
 
-[module/bspwm-lxpertoldi]
+[module/bspwm-thinkpad]
 inherit = module/bspwm
 ws-icon-0 = "I;I"
 ws-icon-1 = "II;II"
@@ -225,61 +109,27 @@ ws-icon-4 = "V;V"
 ws-icon-5 = "VI;VI"
 ws-icon-6 = "VII;VII"
 ws-icon-7 = "VIII;VIII"
-ws-icon-8 = "IX;IX"
-ws-icon-9 = "X;"
-ws-icon-10 = "XI;XI"
-ws-icon-11 = "XII;XII"
-ws-icon-12 = "XIII;XIII"
-ws-icon-13 = "XIV;XIV"
-ws-icon-14 = "XV;XV"
-ws-icon-15 = "XVI;XVI"
-ws-icon-16 = "XVII;"
-ws-icon-17 = "XVIII; "
-ws-icon-18 = "XIX; "
-ws-icon-19 = "XX; "
-
-[module/bspwm-hackintosh]
-inherit = module/bspwm
-ws-icon-0 = "I;I"
-ws-icon-1 = "II;II"
-ws-icon-2 = "III;III"
-ws-icon-3 = "IV;IV"
-ws-icon-4 = "V;V"
-ws-icon-5 = "VI;VI"
-ws-icon-6 = "VII;VII"
-ws-icon-7 = "VIII;VIII"
-ws-icon-8 = "IX;IX"
-ws-icon-9 = "X;X"
+ws-icon-8 = "IX;"
+ws-icon-9 = "X;"
 ws-icon-10 = "XI;"
 ws-icon-11 = "XII;"
 ws-icon-12 = "external;external"
 
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-label-unfocused = %index%
-label-unfocused-padding = 2
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+[module/mpd]
+type = internal/mpd
+format-online = <label-song> <toggle> <label-time>
+label-song =  %title% / %artist%
+label-time = %elapsed% (%total%)
+label-offline = ﱙ
+icon-play = 
+icon-pause = 
+label-song-maxlen = 40
+label-song-ellipsis = true
 
-[module/mpd_hackintosh]
+[module/mpd-rich]
 type = internal/mpd
 format-online = <label-song> <icon-stop> <toggle> <icon-prev> <label-time> <bar-progress> <icon-next>
-label-song = %artist%    %title% |
+label-song = %artist%  %title% |
 label-time = %elapsed%
 icon-prev = ﭢ
 icon-stop = 
@@ -293,29 +143,12 @@ bar-progress-indicator = █
 bar-progress-fill = ▒
 bar-progress-empty = ▒
 
-[module/mpd_lxpertoldi]
-type = internal/mpd
-format-online =   <label-song> <bar-progress> <label-time>
-format-playing = ${self.format-online}
-format-paused = ${self.format-online}
-format-stopped =
-format-playing-foreground = ${colors.foreground}
-format-paused-foreground = ${colors.foreground-alt}
-label-song = %title% - %artist%
-label-time = %elapsed% / %total%
-label-song-maxlen = 45
-label-song-ellipsis = true
-bar-progress-width = 20
-bar-progress-indicator = █
-bar-progress-fill = ▒
-bar-progress-empty = ▒
-
-[module/xbacklight]
+[module/backlight-acpi]
 type = internal/xbacklight
+card = intel_backlight
 format = <ramp> <label>
 format-underline = ${colors.wht}
 label = %percentage:2%%
-; label = 
 bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = #fff
@@ -336,16 +169,11 @@ ramp-6 = 
 ramp-7 = 
 ramp-8 = 
 
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
 [module/cpu]
 type = internal/cpu
-interval = 0.5
+interval = 0.1
 format = <label> <ramp-coreload>
-format-prefix = " "
+format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.red}
 label = %percentage:2%%
@@ -377,8 +205,7 @@ label = %gb_used%
 
 [module/wlan]
 type = internal/network
-; interface = wlp2s0b1
-interface = wlp2s0
+interface = wlp0s20f3
 interval = 3.0
 ; ping-interval = 3.0
 format-connected = <ramp-signal>直 <label-connected>
@@ -405,10 +232,10 @@ ramp-signal-7 = █
 
 [module/ethernet]
 type = internal/network
-interface = eno1
+interface = enp0s31f6
 interval = 3.0
-ping-interval = 3.0
-format-connected =   <label-connected>
+; ping-interval = 3.0
+format-connected =  <label-connected>
 label-connected = %local_ip%
 format-connected-underline = ${colors.mag}
 format-disconnected = 
@@ -427,14 +254,12 @@ type = internal/date
 interval = 5
 date = "%a %d/%m/%y"
 time = %H:%M:%S
-; format-prefix = " "
-; format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.blu}
-label =   %date%  %time%
+label =  %date%  %time%
 
 [module/alsa]
 type = internal/alsa
-format-volume = <ramp-volume>  <label-volume>
+format-volume = <ramp-volume> <label-volume>
 format-underline = ${colors.wht}
 label-volume = %percentage:2%%
 label-volume-foreground = ${root.foreground}
@@ -461,27 +286,11 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 
-[module/pulseaudio]
-type = internal/pulseaudio
-sink = alsa_output.pci-0000_00_1b.0.analog-stereo
-use-ui-max = true
-interval = 1
-format-volume = <ramp-volume> <label-volume>
-format-underline = ${colors.wht}
-label-volume = %percentage:2%%
-label-volume-foreground = ${root.foreground}
-format-muted-prefix = "婢 "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = muted
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = ADP1
-full-at = 98
+full-at = 100
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.ylw}
@@ -516,11 +325,14 @@ animation-discharging-framerate = 7500
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 1
 warn-temperature = 60
 format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.ylw}
 format-warn = <label-warn>
+format-warn-prefix = " "
+format-warn-prefix-foreground = ${colors.ylw}
 format-warn-underline = ${self.format-underline}
 label = %temperature-c%
 label-warn = %temperature-c%
@@ -555,19 +367,11 @@ menu-2-0-exec = systemctl poweroff
 menu-2-1 = nope
 menu-2-1-exec = menu-close
 
-[module/github]
-type = internal/github
-token = ${file:~/.github_token}
-user = gipert
-empty-notifications = false
-interval = 10
-api-url = https://hub.example.org/api/v3/
-format = <label>
-label =   %notifications%
-format-underline = ${colors.grn}
-format-offline = <label-offline>
-format-offline-foreground = ${colors.bred}
-format-offline-underline = ${colors.bred}
-label-offline =   Offline
+[module/system-bluetooth-bluetoothctl]
+type = custom/script
+format-underline = ${colors.blu}
+exec = ~/.config/polybar/system-bluetooth-bluetoothctl.sh
+tail = true
+click-left = ~/.config/polybar/system-bluetooth-bluetoothctl.sh --toggle &
 
 ; vim:ft=dosini
