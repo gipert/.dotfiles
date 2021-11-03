@@ -1,35 +1,38 @@
 [global]
-font = Fira Sans 10
+font = Fira Sans 11
 markup = yes
-format = "<b><big>%s</big></b>\n%b"
+format = "<big><b>%s</b> – <i>%a</i></big>\n %b"
 alignment = center
 word_wrap = yes
 ignore_newline = yes
 show_indicators = no
-browser = google-chrome-stable
+browser = firefox
 line_height = 0
-max_icon_size = 70
+max_icon_size = 60
 icon_path = /usr/share/icons/Adwaita/32x32/status/:/usr/share/icons/Adwaita/32x32/devices/
 
 monitor = 0
 follow = keyboard
 sort = no
+notification_limit = 3
 indicate_hidden = yes
 show_age_threshold = -1
 stack_duplicates = yes
-hide_duplicates_count = yes
 idle_threshold = 5
 sticky_history = yes
 history_length = 15
-separator_height = 4
+separator_height = 2
 separator_color = frame
 
-geometry = "800x100-40-40"
-corner_radius = 6
-frame_width = 4
+width = "400"
+height = "100"
+origin = bottom-right
+offset = 30x30
+corner_radius = 5
+frame_width = 2
 icon_position = right
 shrink = no
-padding = 10
+padding = 7
 horizontal_padding = 10
 frame_color = "#504945"
 
