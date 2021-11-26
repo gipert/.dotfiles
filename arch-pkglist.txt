@@ -63,7 +63,6 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 ranger
 reflector
-rocketchat-client-bin
 rofi
 rofi-calc
 rofi-pass

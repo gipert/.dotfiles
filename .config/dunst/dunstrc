@@ -1,7 +1,7 @@
 [global]
 font = Fira Sans 11
 markup = yes
-format = "<big><b>%s</b> – <i>%a</i></big>\n %b"
+format = "<b>%s</b> – <i>%a</i>\n %b"
 alignment = center
 word_wrap = yes
 ignore_newline = yes

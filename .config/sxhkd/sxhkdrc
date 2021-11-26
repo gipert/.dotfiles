@@ -129,5 +129,5 @@ XF86Audio{Play,Stop,Prev,Next}
     mpc {toggle,stop,prev,next}
 
 XF86Audio{Lower,Raise}Volume
-    ~/.config/sxhkd/bin/audio-volume {2%-,2%+}; \
+    ~/.config/sxhkd/bin/audio-volume {5%-,5%+}; \
     ~/.config/sxhkd/bin/audio-popup

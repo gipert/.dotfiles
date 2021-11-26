@@ -55,11 +55,19 @@ monitor_setup() {
             xrandr --output "$2" --auto --scale 2x2 --same-as eDP1
             bspc config bottom_padding -240
             ;;
+        movie)
+            xrandr --auto --output HDMI1 --auto --scale 2x2
+            xrandr --output eDP1 --off
+            killall polybar
+            MONITOR=HDMI1 polybar thinkpad & disown
+            bspc monitor HDMI1 -d I II III IV V VI VII VIII IX X XI XII
+            ;;
         default | *)
             ext_monitors=$(xrandr --query | grep '\bconnected\b' | awk '{print $1}' | grep -v 'eDP1')
             while IFS= read -r m; do
                 xrandr --output $m --off
             done <<< "$ext_monitors"
+            xrandr --auto --output eDP1
             killall polybar
             MONITOR=eDP1 polybar thinkpad & disown
             bspc monitor eDP1 -d I II III IV V VI VII VIII IX X XI XII
