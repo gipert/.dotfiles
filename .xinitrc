@@ -53,22 +53,6 @@ if [[ `hostname` == "thinkpad" ]]; then
     # needed for rofi-pass to work properly
     setxkbmap de
 
-# elif [[ `hostname` == "lxpertoldi" ]]; then
-
-#     # mouse, set speed
-#     xinput set-prop 14 173 0.3 0.0 0.0 0.0 0.5 0.0 0.0 0.0 1.0
-
-#     # set monitors
-#     xrandr --output DP2 --mode 1920x1080 --pos 0x1920    --rotate right \
-#            --output DP1 --mode 1920x1080 --pos 1080x2300 --rotate normal
-
-#     xautolock -detectsleep \
-#         -time 5 -notify 30 \
-#         -notifier "notify-send -u normal -i /usr/share/icons/hicolor/48x48/apps/gcr-key-pair.png 'Security Service' 'Locking screen in 20 seconds...'" \
-#         -locker "/sbin/xtrlock" &
-#             # -locker "/bin/xlock -mode euler2d -erasedelay 0 -ncolors 200 -echokeys -echokey '*' -lockdelay 10" &
-#             # -locker "/bin/xlock -mode random -modelist 'bug,coral,euler2d,flame,spline,worm,discrete,space' -ncolors 200 -echokeys -echokey '*'" &
-
 fi
 
 case "$session" in

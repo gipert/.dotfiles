@@ -17,5 +17,3 @@ elif [[ `hostname` == "lxpertoldi" ]]; then
     echo "---" | tee -a /tmp/polybar_lxpertoldi_hor.log
     polybar lxpertoldi_hor >> /tmp/polybar_lxpertoldi_hor.log 2>&1 &
 fi
-
-echo "Bars launched..."

@@ -53,7 +53,7 @@ monitor_setup() {
             ;;
         mirror)
             xrandr --output "$2" --auto --scale 2x2 --same-as eDP1
-            bspc config bottom_padding -240
+            # bspc config bottom_padding -240
             ;;
         movie)
             xrandr --auto --output HDMI1 --auto --scale 2x2

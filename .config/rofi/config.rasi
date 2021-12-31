@@ -3,9 +3,11 @@ configuration {
     lines: 20;
     font: "Fira Code 10";
     terminal: "kitty";
+    run-command: "{cmd} &> /dev/null";
     ssh-command: "{terminal} -e {ssh-client} -F /home/pertoldi/.ssh/config.linux {host}";
     case-sensitive: false;
     matching: "fuzzy";
-    theme: "gruvbox-dark";
     dpi: 192;
 }
+
+@theme "gruvbox-dark"

@@ -11,6 +11,10 @@ line_height = 0
 max_icon_size = 60
 icon_path = /usr/share/icons/Adwaita/32x32/status/:/usr/share/icons/Adwaita/32x32/devices/
 
+mouse_left_click = close_current
+mouse_middle_click = do_action, close_current
+mouse_right_click = close_all
+
 monitor = 0
 follow = keyboard
 sort = no
@@ -21,8 +25,6 @@ stack_duplicates = yes
 idle_threshold = 5
 sticky_history = yes
 history_length = 15
-separator_height = 2
-separator_color = frame
 
 width = "400"
 height = "100"
@@ -35,6 +37,8 @@ shrink = no
 padding = 7
 horizontal_padding = 10
 frame_color = "#504945"
+separator_height = 2
+separator_color = frame
 
 [urgency_low]
 foreground  = "#EBDBB2"
