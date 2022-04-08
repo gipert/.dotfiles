@@ -57,11 +57,3 @@ dockerX11() {
         docker "$@"
     fi
 }
-
-pip() {
-    if [[ "$1" == "install" ]]; then
-        command pip install --user "${@:2}"
-    else
-        command pip "${@}"
-    fi
-}

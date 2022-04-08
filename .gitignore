@@ -1,6 +1,7 @@
 .vim/.netrwhist
 .vim/spell/*.add.spl
 .vim/plugged
+.config/polybar/*.log
 
 # junk
 *.swp

@@ -10,6 +10,10 @@ super + {_,shift + }{1-9,0,ssharp,dead_acute}
 super + {_,shift + } e
     bspc {desktop -f,node -d} external
 
+# for vertical monitor
+super + {_,shift + } v
+    bspc {desktop -f,node -d} vertical
+
 # focus desktop with 4-finger gesture
 button{10,11}
     bspc desktop -f {prev,next}

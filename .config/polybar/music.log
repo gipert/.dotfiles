@@ -1,4 +1,0 @@
-polybar|notice:  Parsing config file: /home/gipert/.config/polybar/config
-polybar|notice:  Loaded font "Fira Code:style=Regular:size=10" (name=Fira Code, offset=2, file=/usr/share/fonts/TTF/FiraCode-Regular.ttf)
-polybar|notice:  Loaded font "3270Medium Nerd Font:size=13" (name=3270Medium Nerd Font, offset=3, file=/usr/share/fonts/OTF/3270-Medium Nerd Font Complete.otf)
-polybar|notice:  Termination signal received, shutting down...

@@ -3,7 +3,7 @@ configuration {
     lines: 20;
     font: "Fira Code 10";
     terminal: "kitty";
-    run-command: "{cmd} &> /dev/null";
+    run-command: "{cmd}";
     ssh-command: "{terminal} -e {ssh-client} -F /home/pertoldi/.ssh/config.linux {host}";
     case-sensitive: false;
     matching: "fuzzy";

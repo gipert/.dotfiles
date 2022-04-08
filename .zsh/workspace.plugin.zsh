@@ -41,36 +41,95 @@ music() {
     fi
 }
 
+get_connected_monitors() {
+    xrandr --query | grep '\bconnected\b' | awk '{print $1}' | grep -v '${builtin_s}'
+}
+
+is_monitor_connected() {
+    for mon in "$@"; do
+        if ! xrandr --query | grep ${mon} | grep ' connected ' &> /dev/null; then
+            echo "ERROR: monitor ${mon} is not connected"
+            return 1;
+        fi
+    done
+}
+
 monitor_setup() {
+
+    local builtin_s='eDP1'
+    local external_s=${2:-HDMI1}
+    is_monitor_connected ${builtin_s} || return 1
+
+    killall polybar
+
     case "$1" in
+
         office)
-            xrandr --output eDP1 --auto --output HDMI1 --auto --scale 2x2 --right-of eDP1
-            killall polybar
-            MONITOR=HDMI1 polybar thinkpad & disown
-            MONITOR=eDP1 polybar thinkpad & disown
-            bspc monitor HDMI1 -d I II III IV V VI VII VIII IX X XI XII
-            bspc monitor eDP1 -d external
+            local main_s='DP2'
+            local vert_s='HDMI1'
+
+            xrandr --output ${builtin_s} --auto
+            MONITOR=${builtin_s} polybar thinkpad & disown
+            bspc monitor ${builtin_s} -d external
+
+            if is_monitor_connected ${main_s}; then
+                xrandr --output ${main_s} --auto --mode 3840x2160 --right-of ${builtin_s}
+                MONITOR=${main_s} polybar thinkpad & disown
+                bspc monitor ${main_s} -d I II III IV V VI VII VIII IX X XI XII
+            fi
+
+            if is_monitor_connected ${vert_s}; then
+                xrandr --output ${vert_s} --auto --scale 2 --rotate left --right-of ${main_s}
+                MONITOR=${vert_s} polybar vertical & disown
+                bspc monitor ${vert_s} -d vertical
+            fi
             ;;
+
+        external)
+            is_monitor_connected ${external_s} || return 1
+
+            xrandr --output ${builtin_s} --auto
+            MONITOR=${builtin_s} polybar thinkpad & disown
+            bspc monitor ${builtin_s} -d external
+
+            xrandr --output ${external_s} --auto --scale 2 --right-of ${builtin_s}
+            MONITOR=${external_s} polybar thinkpad & disown
+            bspc monitor ${external_s} -d I II III IV V VI VII VIII IX X XI XII
+            ;;
+
         mirror)
-            xrandr --output "$2" --auto --scale 2x2 --same-as eDP1
+            is_monitor_connected ${external_s} || return 1
+
+            xrandr --output ${builtin_s} --auto
+            MONITOR=${builtin_s} polybar thinkpad & disown
+            bspc monitor ${builtin_s} -d I II III IV V VI VII VIII IX X XI XII
+
+            xrandr --output ${external_s} --auto --scale 2 --same-as ${builtin_s}
             # bspc config bottom_padding -240
             ;;
+
         movie)
-            xrandr --auto --output HDMI1 --auto --scale 2x2
-            xrandr --output eDP1 --off
-            killall polybar
-            MONITOR=HDMI1 polybar thinkpad & disown
-            bspc monitor HDMI1 -d I II III IV V VI VII VIII IX X XI XII
+            is_monitor_connected ${external_s} || return 1
+
+            xrandr --auto --output ${external_s} --auto --scale 2
+            MONITOR=${external_s} polybar thinkpad & disown
+            bspc monitor ${external_s} -d I II III IV V VI VII VIII IX X XI XII
+
+            xrandr --output ${builtin_s} --off
             ;;
+
         default | *)
-            ext_monitors=$(xrandr --query | grep '\bconnected\b' | awk '{print $1}' | grep -v 'eDP1')
+
+            # shut all monitors off
             while IFS= read -r m; do
+                echo "INFO: shutting off $m"
                 xrandr --output $m --off
-            done <<< "$ext_monitors"
-            xrandr --auto --output eDP1
-            killall polybar
-            MONITOR=eDP1 polybar thinkpad & disown
-            bspc monitor eDP1 -d I II III IV V VI VII VIII IX X XI XII
+            done <<< "$(get_connected_monitors)"
+
+            # switch builtin display on
+            xrandr --output ${builtin_s} --auto
+            MONITOR=${builtin_s} polybar thinkpad & disown
+            bspc monitor ${builtin_s} -d I II III IV V VI VII VIII IX X XI XII
             ;;
     esac
 }

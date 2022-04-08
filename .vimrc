@@ -145,6 +145,7 @@ let g:ale_lint_delay = 2000
 let g:ale_pattern_options = {'\.C': {'ale_enabled': 1}} " this is for ROOT macros
 let g:ale_completion_enabled = 1
 let g:ale_linters = { 'cpp': [] } " let YCM do its job
+let g:ale_python_flake8_options = '--max-line-length 999'
 
 " gutter options
 if v:version >= 750
