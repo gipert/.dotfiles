@@ -43,6 +43,7 @@ zplug "plugins/colored-man-pages", from:oh-my-zsh
 
 zplug "b4b4r07/enhancd"
 zplug "supercrabtree/k"
+zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
 
 os=`echo $(uname) | tr '[:upper:]' '[:lower:]'`
 zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*${os}*amd64*"

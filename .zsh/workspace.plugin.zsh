@@ -65,7 +65,7 @@ monitor_setup() {
     case "$1" in
 
         office)
-            local main_s='DP2'
+            local main_s='DP2' # DP2 | DVI-I-2-2
             local vert_s='HDMI1'
 
             xrandr --output ${builtin_s} --auto
