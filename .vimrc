@@ -52,6 +52,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'wesQ3/vim-windowswap'
   Plug 'sersorrel/vim-lilypond', { 'branch': 'main' }
   Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
+  Plug 'rhysd/vim-clang-format'
 
 call plug#end()
 

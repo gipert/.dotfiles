@@ -26,11 +26,13 @@ bspc rule -a Steam state=floating
 bspc rule -a 'Cisco AnyConnect Secure Mobility Client' state=floating
 bspc rule -a mpv state=floating
 bspc rule -a clight-gui state=floating
+bspc rule -a Pavucontrol state=floating
+bspc rule -a gnuplot_qt state=floating
 
 bspc rule -a firefox desktop=XII follow=on
 bspc rule -a TelegramDesktop desktop=XI follow=on
 bspc rule -a whatsapp-nativefier-d40211 desktop=XI follow=on
-bspc rule -a Thunderbird desktop=X follow=on
+bspc rule -a thunderbird desktop=X follow=on
 bspc rule -a Slack desktop=IX follow=on
 bspc rule -a Rocket.Chat desktop=IX follow=on
 
