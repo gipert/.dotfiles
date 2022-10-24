@@ -1,0 +1,6 @@
+# figure.dpi: 192
+lines.linewidth: 1.0
+lines.markersize: 2
+figure.autolayout: True
+yaxis.labellocation: top
+xaxis.labellocation: right
