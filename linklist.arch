@@ -26,6 +26,7 @@
 .config/user-dirs.locale
 .config/signature
 .config/xob
+.cgdb/cgdbrc
 .mutt/personal
 .mutt/work
 .ncmpcpp/config
