@@ -28,6 +28,7 @@
 .config/signature
 .config/xob
 .cgdb/cgdbrc
+.gdbinit
 .mutt/personal
 .mutt/work
 .ncmpcpp/config
