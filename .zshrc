@@ -45,10 +45,9 @@ zplug "b4b4r07/enhancd"
 zplug "supercrabtree/k"
 zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
 
-os=`echo $(uname) | tr '[:upper:]' '[:lower:]'`
-zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*${os}*amd64*"
-
-zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
+zplug "junegunn/fzf", \
+  hook-build:"./install --bin && ln -sr bin/fzf $ZPLUG_HOME/bin", \
+  use:"shell/*.zsh"
 
 zplug "~/.zsh", from:local
 
