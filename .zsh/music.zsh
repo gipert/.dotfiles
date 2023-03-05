@@ -43,12 +43,20 @@ music() {
 
 cdrip() {
 
+    # TODO> printouts
+    # TODO> do not print error at end of for loop
+    # TODO> catch discid failure
+    # TODO> check if script exits when cdparanoia fails
+
     local output="$HOME/ripped"
     mkdir -p "$output"
 
+    # quit if CD not inserted
     cdparanoia -Q || return 1
 
-    for tr in $(seq 99); do
+    # rip CD with cdparanoia and encode to FLAC
+    # in one go (all hail Unix pipes)
+    for tr in $(seq 99); do # a CD can hold up to 99 tracks
         cdparanoia \
             --log-summary="$output/cdparanoia.log" \
             --abort-on-skip \
@@ -60,27 +68,36 @@ cdrip() {
             --force \
             --best \
         || break
-
     done
 
-    eject
-
-    # https://musicbrainz.org/doc/Disc_ID
+    # calculate MusicBrainz release [1] with disc ID [2]
+    # note: CD must be in!
+    # note: needs "pip install discid musicbrainzngs"
+    #
+    # [1] https://musicbrainz.org/doc/Disc_ID
+    # [2] https://musicbrainz.org/doc/Release
     pycode='
 import discid
 import musicbrainzngs
-musicbrainzngs.set_useragent("gipert", "v0.1", "gipert@pm.me")
+musicbrainzngs.set_useragent("cdrip", "v0.1", "gipert@pm.me")
 data = musicbrainzngs.get_releases_by_discid(discid.read().id)
 print(":".join([r["id"] for r in data["disc"]["release-list"]]))
 '
-    musicbrainz_releases=$(python -c "$pycode")
+    musicbrainz_releases=$(python -c "$pycode") || return 1
+    echo "MusicBrainz releases found: $musicbrainz_releases"
 
-    # TODO: configuration dotfile
+    # now we can safely eject the CD
+    eject
+
+    # import and autotag music with beets
+    # further customization in ~/.config/beets/config.yaml
     beet --directory "$HOME/music" \
         import \
         --move \
-        --search-id $musicbrainz_discid \
-        "$output"
+        --search-id "$musicbrainz_releases" \
+        -- "$output" || return 1
 
+    # finally remove temporary directory if empty
+    rm "$output/cdparanoia.log"
     [ "$(ls -A $output)" ] || rm -r "$output"
 }
