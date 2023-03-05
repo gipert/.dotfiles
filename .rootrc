@@ -9,6 +9,7 @@ Gui.DocPropFont:            -*-helvetica-medium-r-*-*-24-*-*-*-*-*-iso8859-1
 Gui.IconFont:               -*-helvetica-medium-r-*-*-20-*-*-*-*-*-iso8859-1
 Gui.StatusFont:             -*-helvetica-medium-r-*-*-20-*-*-*-*-*-iso8859-1
 Browser.IconStyle:           big
+Browser.Name: TRootBrowser
 
 # Activate malloc/new, free/delete calls via the TMemStat class.
 # The parameter buffersize is the number of calls to malloc or free that can be

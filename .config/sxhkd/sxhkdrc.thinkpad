@@ -43,5 +43,5 @@ XF86AudioMute
     ~/.config/sxhkd/bin/audio-popup
 
 XF86MonBrightness{Down,Up}
-    xbacklight {-dec,-inc} 2; \
+    xbacklight {-dec,-inc} 5; \
     ~/.config/sxhkd/bin/brightness-popup

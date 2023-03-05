@@ -1,0 +1,4 @@
+directory: ~/music
+plugins: fetchart embedart
+import:
+  move: yes

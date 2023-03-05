@@ -16,7 +16,7 @@ let g:vimtex_complete_bib             = { 'simple': 1 }
 let g:vimtex_compiler_method          = 'latexmk'
 let g:vimtex_motion_enabled           = 0
 let g:vimtex_imaps_enabled            = 0
-let g:vimtex_matchparen_enabled       = 0
+let g:vimtex_matchparen_enabled       = 1
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_quickfix_autoclose_after_keystrokes = 2
 

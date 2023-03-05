@@ -29,6 +29,8 @@ fi
 
 source ~/.zplug/init.zsh
 
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 zplug "zsh-users/zsh-autosuggestions"

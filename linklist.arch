@@ -1,4 +1,5 @@
 .config/alacritty
+.config/beets.config.yaml
 .config/biber/biber.conf
 .config/bspwm
 .config/dunst
