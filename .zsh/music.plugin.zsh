@@ -1,4 +1,5 @@
-music() {
+function music() {
+
     if [[ `hostname` == "hackintosh" ]]; then
         if [[ "$1" == "--enable" ]]; then
 
@@ -41,25 +42,41 @@ music() {
     fi
 }
 
-cdrip() {
+function cdrip() {
+    #
+    #  CDRIP
+    # =======
+    #
+    # Rip Audio CD with cdparanoia, FLAC-encode it and auto tag it with beets
+    #
+    # Prerequisites:
+    #  - cdparanoia            -> https://xiph.org/paranoia
+    #  - flac                  -> https://xiph.org/flac
+    #  - python-musicbrainzngs -> https://pypi.org/project/musicbrainzngs
+    #  - python-discid         -> https://pypi.org/project/discid
+    #  - beets                 -> https://beets.io
+    #
+    #  On Arch Linux install: cdparanoia python-musicbrainzngs python-discid beets
 
-    # TODO> printouts
-    # TODO> do not print error at end of for loop
-    # TODO> catch discid failure
-    # TODO> check if script exits when cdparanoia fails
+    setopt pipe_fail
+    setopt local_options
 
     local output="$HOME/ripped"
     mkdir -p "$output"
 
     # quit if CD not inserted
-    cdparanoia -Q || return 1
+    cdparanoia --search-for-drive --query || return 1
+
+    local ntracks=$(cdparanoia --query |& grep OK | wc -l)
 
     # rip CD with cdparanoia and encode to FLAC
     # in one go (all hail Unix pipes)
-    for tr in $(seq 99); do # a CD can hold up to 99 tracks
+    for tr in $(seq $ntracks); do
         cdparanoia \
+            --search-for-drive \
             --log-summary="$output/cdparanoia.log" \
             --abort-on-skip \
+            # --disable-paranoia \
             -- "$tr" - \
         | flac - \
             -o "$output/track-$tr.flac" \
@@ -67,7 +84,7 @@ cdrip() {
             --silent \
             --force \
             --best \
-        || break
+        || return 1
     done
 
     # calculate MusicBrainz release [1] with disc ID [2]
@@ -76,14 +93,14 @@ cdrip() {
     #
     # [1] https://musicbrainz.org/doc/Disc_ID
     # [2] https://musicbrainz.org/doc/Release
-    pycode='
+    local pycode='
 import discid
 import musicbrainzngs
 musicbrainzngs.set_useragent("cdrip", "v0.1", "gipert@pm.me")
 data = musicbrainzngs.get_releases_by_discid(discid.read().id)
 print(":".join([r["id"] for r in data["disc"]["release-list"]]))
 '
-    musicbrainz_releases=$(python -c "$pycode") || return 1
+    local musicbrainz_releases=$(python -c "$pycode") || return 1
     echo "MusicBrainz releases found: $musicbrainz_releases"
 
     # now we can safely eject the CD
