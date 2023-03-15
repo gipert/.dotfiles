@@ -68,7 +68,11 @@ function cdrip() {
     mkdir -p "$output"
 
     # quit if CD not inserted
-    cdparanoia --search-for-drive --query || return 1
+    if ! cdparanoia --search-for-drive --query; then
+       echo "cdrip> CD-ROM might be still loading, retrying in 10 seconds..."
+       sleep 10
+       cdparanoia --search-for-drive --query || return 1
+    fi
 
     local cddbinfo=($(cd-discid))
     local ntracks=$cddbinfo[2]
