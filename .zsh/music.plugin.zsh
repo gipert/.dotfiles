@@ -49,14 +49,17 @@ function cdrip() {
     #
     # Rip Audio CD with cdparanoia, FLAC-encode it and auto tag it with beets
     #
+    # Usage: cdrip [cdparanoia options]
+    #
     # Prerequisites:
+    #  - cd-discid             -> http://linukz.org/cd-discid.shtml
     #  - cdparanoia            -> https://xiph.org/paranoia
     #  - flac                  -> https://xiph.org/flac
     #  - python-musicbrainzngs -> https://pypi.org/project/musicbrainzngs
     #  - python-discid         -> https://pypi.org/project/discid
     #  - beets                 -> https://beets.io
     #
-    #  On Arch Linux install: cdparanoia python-musicbrainzngs python-discid beets
+    #  On Arch Linux install: cd-discid cdparanoia flac python-musicbrainzngs python-discid beets
 
     setopt pipe_fail
     setopt local_options
@@ -67,7 +70,8 @@ function cdrip() {
     # quit if CD not inserted
     cdparanoia --search-for-drive --query || return 1
 
-    local ntracks=$(cdparanoia --query |& grep OK | wc -l)
+    local cddbinfo=($(cd-discid))
+    local ntracks=$cddbinfo[2]
 
     # rip CD with cdparanoia and encode to FLAC
     # in one go (all hail Unix pipes)
@@ -76,7 +80,7 @@ function cdrip() {
             --search-for-drive \
             --log-summary="$output/cdparanoia.log" \
             --abort-on-skip \
-            # --disable-paranoia \
+            "$@" \
             -- "$tr" - \
         | flac - \
             -o "$output/track-$tr.flac" \
