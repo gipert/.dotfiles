@@ -102,11 +102,22 @@ function cdrip() {
     # [1] https://musicbrainz.org/doc/Disc_ID
     # [2] https://musicbrainz.org/doc/Release
     local pycode='
+from sys import exit
 import discid
 import musicbrainzngs
+
 musicbrainzngs.set_useragent("cdrip", "v0.1", "gipert@pm.me")
-data = musicbrainzngs.get_releases_by_discid(discid.read().id)
-print(":".join([r["id"] for r in data["disc"]["release-list"]]))
+
+disc = discid.read()
+data = None
+try:
+  data = musicbrainzngs.get_releases_by_discid(disc.id)
+except musicbrainzngs.musicbrainz.ResponseError as e:
+  print("ERROR: could not find the disc ID in the musicbrainz database, please submit it through the following URL:")
+  print(">>>", disc.submission_url)
+  exit(1)
+else:
+  print(":".join([r["id"] for r in data["disc"]["release-list"]]))
 '
     local musicbrainz_releases=$(python -c "$pycode") || return 1
     echo "MusicBrainz releases found: $musicbrainz_releases"
