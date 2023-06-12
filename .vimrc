@@ -53,6 +53,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'sersorrel/vim-lilypond', { 'branch': 'main' }
   Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
   Plug 'rhysd/vim-clang-format'
+  Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
 
 call plug#end()
 
@@ -74,6 +75,7 @@ endif
 
 if has('mouse') " mouse support?
   set mouse=a
+  set ttymouse=sgr " kitty compatibility
 endif
 
 let g:tex_flavor='latex'       " for .tex filetype detection, needed for vimtex to work!
@@ -89,6 +91,7 @@ set expandtab                  " expand tabs to spaces
 set wildmode=longest:full,full " the default tab-completion behaviour is simply annoying
 set list                       " cool chars to highlight trailing spaces, end-of-lines and tabs
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
+set nofoldenable " I don't want any folding by default
 
 " remove <F1> help and Ex mode keybind, I always hit it by mistake
 nnoremap <F1> <Nop>
@@ -168,7 +171,7 @@ let g:move_key_modifier = 'C'
 " vim-commentary settings
 augroup commentary
   autocmd FileType c,cpp,cs,java,asy setlocal commentstring=//\ %s
-  autocmd FileType asm,julia,singularity setlocal commentstring=#\ %s
+  autocmd FileType asm,julia,singularity,snakemake setlocal commentstring=#\ %s
   autocmd FileType lilypond setlocal commentstring=%\ %s
   autocmd FileType sql setlocal commentstring=--\ %s
 augroup END

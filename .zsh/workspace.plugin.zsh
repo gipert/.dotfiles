@@ -13,6 +13,8 @@ is_monitor_connected() {
 
 monitor_setup() {
 
+    # FIXME: bspc monitor -r does not work!
+
     local scale=1
     if [[ "$1" == "--scale" ]]; then
         scale=$2
@@ -37,7 +39,7 @@ monitor_setup() {
             # turn on built-in and kill all the others
             xrandr --output ${builtin_s} --auto
             MONITOR=${builtin_s} polybar thinkpad & disown
-            bspc monitor any -r
+            # bspc monitor any -r
             bspc monitor ${builtin_s} -d external
 
             if is_monitor_connected ${main_s}; then
@@ -54,7 +56,7 @@ monitor_setup() {
 
             xbacklight -set 80
             setxkbmap us
-            xset r rate 300 40
+            # xset r rate 300 40
             ;;
 
         external)
@@ -62,7 +64,7 @@ monitor_setup() {
 
             xrandr --output ${builtin_s} --auto
             MONITOR=${builtin_s} polybar thinkpad & disown
-            bspc monitor any -r
+            # bspc monitor any -r
             bspc monitor ${builtin_s} -d external
 
             xrandr --output ${external_s} --auto --scale $scale --right-of ${builtin_s}
@@ -77,7 +79,7 @@ monitor_setup() {
             xrandr --output ${external_s} --auto --scale $scale --same-as ${builtin_s}
 
             MONITOR=${builtin_s} polybar thinkpad & disown
-            bspc monitor any -r
+            # bspc monitor any -r
             bspc monitor ${builtin_s} -d I II III IV V VI VII VIII IX X XI XII
             ;;
 
@@ -86,7 +88,7 @@ monitor_setup() {
 
             xrandr --auto --output ${external_s} --primary --auto --scale $scale
             MONITOR=${external_s} polybar thinkpad & disown
-            bspc monitor any -r
+            # bspc monitor any -r
             bspc monitor ${external_s} -d I II III IV V VI VII VIII IX X XI XII
 
             xrandr --output ${builtin_s} --off
@@ -96,7 +98,7 @@ monitor_setup() {
             monitor_setup --scale 2 movie
 
             setxkbmap us
-            xset r rate 300 40
+            # xset r rate 300 40
             ;;
 
         default | *)
@@ -111,11 +113,11 @@ monitor_setup() {
             # switch builtin display on
             xrandr --output ${builtin_s} --auto
             MONITOR=${builtin_s} polybar thinkpad & disown
-            bspc monitor any -r
+            # bspc monitor any -r
             bspc monitor ${builtin_s} -d I II III IV V VI VII VIII IX X XI XII
 
             setxkbmap de
-            xset r rate 300 40
+            # xset r rate 300 40
             ;;
     esac
 }

@@ -20,7 +20,7 @@ zstyle ':completion:*' menu select
 zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
-setopt COMPLETE_ALIASES
+setopt complete_aliases
 
 # install zplug
 if [[ ! -f ~/.zplug/init.zsh ]]; then
@@ -48,7 +48,7 @@ zplug "supercrabtree/k"
 zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
 
 zplug "junegunn/fzf", \
-  hook-build:"./install --bin && ln -sr bin/fzf $ZPLUG_HOME/bin", \
+  hook-build:"./install --bin && ln -fsr bin/fzf $ZPLUG_HOME/bin", \
   use:"shell/*.zsh"
 
 zplug "~/.zsh", from:local

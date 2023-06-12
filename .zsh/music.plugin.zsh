@@ -76,13 +76,14 @@ function cdrip() {
 
     local cddbinfo=($(cd-discid))
     local ntracks=$cddbinfo[2]
+    local logfile="$output/info.log"
 
     # rip CD with cdparanoia and encode to FLAC
     # in one go (all hail Unix pipes)
-    for tr in $(seq $ntracks); do
+    for tr in $(seq -w 1 $ntracks); do
         cdparanoia \
             --search-for-drive \
-            --log-summary="$output/cdparanoia.log" \
+            --log-summary="$logfile" \
             --abort-on-skip \
             "$@" \
             -- "$tr" - \
@@ -120,7 +121,7 @@ else:
   print(":".join([r["id"] for r in data["disc"]["release-list"]]))
 '
     local musicbrainz_releases=$(python -c "$pycode") || return 1
-    echo "MusicBrainz releases found: $musicbrainz_releases"
+    echo "MusicBrainz releases found: $musicbrainz_releases" | tee "$logfile"
 
     # now we can safely eject the CD
     eject
@@ -134,6 +135,6 @@ else:
         -- "$output" || return 1
 
     # finally remove temporary directory if empty
-    rm "$output/cdparanoia.log"
+    rm "$logfile"
     [ "$(ls -A $output)" ] || rm -r "$output"
 }

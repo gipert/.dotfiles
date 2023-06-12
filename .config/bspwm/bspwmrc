@@ -12,7 +12,11 @@ bspc config gapless_monocle true
 bspc config borderless_monocle true
 bspc config top_monocle_padding -$top_padding
 
-bspc rule -a kitty rectangle=200x200
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
+
+bspc rule -a kittytmp state=floating
 bspc rule -a Gimp state=floating
 bspc rule -a Inkscape state=floating
 bspc rule -a Skype state=floating

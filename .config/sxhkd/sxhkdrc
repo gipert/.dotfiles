@@ -6,10 +6,18 @@
 super + Return
     kitty
 
+# terminal emulator
+super + shift + Return
+    kitty --class kittytmp
+
 # program launcher
 # rofi -run-list-command 'alias | cut -f1 -d=' -run-command "/bin/zsh -i -c '\{cmd\}'" -rnow -show run
 super + @space
     rofi -m -1 -show run
+
+# remote shell
+super + r
+    rofi -m -1 -show ssh
 
 # pass launcher
 super + p

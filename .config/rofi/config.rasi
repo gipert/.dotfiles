@@ -4,7 +4,7 @@ configuration {
     font: "Fira Code 10";
     terminal: "kitty";
     run-command: "{cmd}";
-    ssh-command: "{terminal} -e {ssh-client} -F /home/pertoldi/.ssh/config.linux {host}";
+    ssh-command: "{terminal} -e ssh {host}";
     case-sensitive: false;
     matching: "fuzzy";
     dpi: 192;
