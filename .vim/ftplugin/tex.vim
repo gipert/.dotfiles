@@ -39,20 +39,14 @@ else
 endif
 
 let g:vimtex_compiler_latexmk = {
-\                 'backend'    : 'jobs',
-\                 'background' : 1,
-\                 'build_dir'  : '.auxtex',
-\                 'callback'   : 1,
-\                 'continuous' : 1,
-\                 'executable' : 'latexmk',
-\                 'options'    : [
-\                        '-pdf',
-\                        '-verbose',
-\                        '-file-line-error',
-\                        '-interaction=nonstopmode',
-\                        '-shell-escape',
-\                        ],
-\                }
+\  'options': [
+\    '-pdf',
+\    '-verbose',
+\    '-file-line-error',
+\    '-interaction=nonstopmode',
+\    '-shell-escape',
+\  ],
+\}
 
 let g:tex_fold_additional_envs = ['tikzpicture', 'titlepage']
 

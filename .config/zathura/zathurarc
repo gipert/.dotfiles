@@ -40,6 +40,7 @@ set recolor-keephue             "true"
 
 # set adjust-open width
 set pages-per-row 1
+set first-page-column left
 #set smooth-scroll true
 set selection-clipboard clipboard
 # set incremental-search true
