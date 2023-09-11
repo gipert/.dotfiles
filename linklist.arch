@@ -18,6 +18,7 @@
 .config/ranger/rc.conf
 .config/ranger/scope.sh
 .config/rofi/config.rasi
+.config/rofi-pass
 .config/sxhkd
 .config/systemd/user/geoclue-agent.service
 .config/systemd/user/protonmail-bridge.service
