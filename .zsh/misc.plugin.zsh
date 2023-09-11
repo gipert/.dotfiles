@@ -1,8 +1,8 @@
 rdocs() {
     if [[ "$1" == "TMath" ]]; then
-        $BROWSER https://root.cern.ch/doc/v622/namespace$1.html
+        $BROWSER https://root.cern.ch/doc/v628/namespace$1.html
     else
-        $BROWSER https://root.cern.ch/doc/v622/class$1.html
+        $BROWSER https://root.cern.ch/doc/v628/class$1.html
     fi
 }
 
