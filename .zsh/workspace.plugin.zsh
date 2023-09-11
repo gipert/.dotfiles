@@ -97,6 +97,7 @@ monitor_setup() {
         home)
             monitor_setup --scale 2 movie
 
+            pacmd set-default-sink 3
             setxkbmap us
             # xset r rate 300 40
             ;;
