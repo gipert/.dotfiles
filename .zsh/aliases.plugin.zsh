@@ -35,8 +35,9 @@ mvim() {
 
 docker() {
     if [[ "$1" == "run" ]]; then
-        local mode=":"
+        local mode=""
         [[ `uname` == "Darwin" ]] && mode=":delegated"
+        echo $mode
         command docker run -v ${HOME}:${HOME}${mode} -w $PWD --rm -it "${@:2}"
     elif [[ "$1" == "build" ]]; then
         command docker build --rm "${@:2}"
