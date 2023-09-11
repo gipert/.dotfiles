@@ -64,6 +64,38 @@ function cdrip() {
     setopt pipe_fail
     setopt local_options
 
+    local offset=0
+    local cdparanoia_opts=()
+
+    local options='v'
+    local longoptions='offset:,disable-paranoia'
+    parsed=$(getopt --name `basename $0` --options $options --longoptions $longoptions -- "$@")
+    [ $? -eq 0 ] || exit 1
+    eval set -- "$parsed"
+    while true; do
+        case "$1" in
+            -v)
+                set -xv
+                shift
+                ;;
+            --offset)
+                offset=$2
+                shift 2
+                ;;
+            --disable-paranoia)
+                cdparanoia_opts+=($1)
+                shift
+                ;;
+            --)
+                shift
+                break
+                ;;
+            *)
+              echo "ERROR: bad configuration"
+              ;;
+        esac
+    done
+
     local output="$HOME/ripped"
     mkdir -p "$output"
 
@@ -85,10 +117,11 @@ function cdrip() {
             --search-for-drive \
             --log-summary="$logfile" \
             --abort-on-skip \
-            "$@" \
+            "${cdparanoia_opts[@]}" \
             -- "$tr" - \
         | flac - \
-            -o "$output/track-$tr.flac" \
+            --output-name "$output/track-$((tr+offset)).flac" \
+            --tag track=$((tr+offset)) \
             --warnings-as-errors \
             --silent \
             --force \
