@@ -2,35 +2,27 @@
 filetype indent on
 set tabstop=2
 set shiftwidth=2
-"set expandtab
 set grepprg=grep\ -nH\ $*
 set spell
-NoMatchParen
+set spelllang=en_us
+set tw=90
 
 " disable builtin syntax checking
 let g:tex_no_error = 1
 
-" vimtex
-let g:vimtex_complete_enabled         = 1
-let g:vimtex_complete_bib             = { 'simple': 1 }
-let g:vimtex_compiler_method          = 'latexmk'
-let g:vimtex_motion_enabled           = 0
-let g:vimtex_imaps_enabled            = 0
-let g:vimtex_matchparen_enabled       = 1
+" vimtex settings
+let g:vimtex_motion_enabled = 0
+" use UltiSnips
+let g:vimtex_imaps_enabled = 0
+
+" quickfix window
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_quickfix_autoclose_after_keystrokes = 2
 
-" folding (use vim-tex-fold currently)
+" use vim-tex-fold instead of built-in
 let g:vimtex_fold_enabled = 0
 let g:vimtex_fold_manual = 1
-" let g:vimtex_fold_types = {
-"        \ 'envs' : {
-"        \   'whitelist' : ['frame', 'figure', 'table'],
-"        \ },
-"        \ 'sections' : {
-"        \   'enabled' : 0,
-"        \ },
-"        \}
+let g:tex_fold_additional_envs = ['tikzpicture', 'titlepage']
 
 if has('mac')
   let g:vimtex_view_method = 'skim'
@@ -48,9 +40,7 @@ let g:vimtex_compiler_latexmk = {
 \  ],
 \}
 
-let g:tex_fold_additional_envs = ['tikzpicture', 'titlepage']
-
-" YCM
+" Enable YCM
 if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
 endif
