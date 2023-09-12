@@ -11,21 +11,21 @@ set runtimepath+=~/.vim/templates
 " vim-plug settings
 call plug#begin('~/.vim/plugged')
 
-  if v:version >= 704
+  if v:version >= 800
     Plug 'lervag/vimtex'
     Plug 'SirVer/ultisnips', { 'tag': '*' }
+    Plug 'honza/vim-snippets'
   endif
 
   " disable on other hosts and for .C files (ROOT macros).
   " -- not sure if this is the best way to do it --
-  if (has('macunix') || hostname() ==# 'lxpertoldi' || hostname() ==# 'hackintosh' || hostname() ==# 'thinkpad')
-        \ && expand('%:e') !=# 'C' && &filetype !=# 'julia'
+  if (has('macunix') || hostname() ==# 'lxpertoldi' || hostname() ==# 'thinkpad')
+        \ && expand('%:e') !=# 'C' && &filetype !=# 'julia' && &filetype !=# 'asm'
 
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
   endif
 
-  Plug 'honza/vim-snippets'
   Plug 'matze/vim-tex-fold'
   Plug 'Konfekt/FastFold'
   Plug 'reedes/vim-wheel'
@@ -66,6 +66,12 @@ autocmd VimEnter *
 " this is to make sure that vim-sensible is loaded at this point
 runtime! plugin/sensible.vim
 
+" kitty compatibility
+" see :h xterm-kitty
+if $TERM ==? 'xterm-kitty'
+  set term=kitty
+endif
+
 " set shell
 if executable('zsh')
   set shell=zsh
@@ -75,23 +81,20 @@ endif
 
 if has('mouse') " mouse support?
   set mouse=a
-  set ttymouse=sgr " kitty compatibility
 endif
 
-let g:tex_flavor='latex'       " for .tex filetype detection, needed for vimtex to work!
-set nowrap                     " auto-wrap is evil
-set incsearch                  " highlights what you are searching for as you type
-set ignorecase                 " ignores case in search patterns
-set smartcase                  " don't ignore case when the search pattern has uppercase
-set infercase                  " during keyword completion, fix case of new word (when ignore case is on)
-set number                     " line numbers
-set tabstop=4                  " tab width is 4 spaces
-set shiftwidth=4               " indent also with 4 spaces
-set expandtab                  " expand tabs to spaces
+set nowrap " auto-wrap is evil
+set incsearch " highlights what you are searching for as you type
+set ignorecase " ignores case in search patterns
+set smartcase " don't ignore case when the search pattern has uppercase
+set infercase " during keyword completion, fix case of new word (when ignore case is on)
+set number " line numbers
+set tabstop=4 " tab width is 4 spaces
+set shiftwidth=4 " indent also with 4 spaces
+set expandtab " expand tabs to spaces
 set wildmode=longest:full,full " the default tab-completion behaviour is simply annoying
-set list                       " cool chars to highlight trailing spaces, end-of-lines and tabs
+set list " cool chars to highlight trailing spaces, end-of-lines and tabs
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
-set nofoldenable " I don't want any folding by default
 
 " remove <F1> help and Ex mode keybind, I always hit it by mistake
 nnoremap <F1> <Nop>
@@ -105,7 +108,11 @@ augroup END
 " command to remove trailing whitespace
 command StripWhitespace %s/\s\+$//e
 
-" Color Scheme settings
+" enable undercurl (needs to be done manually somehow)
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
+
+" color scheme settings
 colorscheme gruvbox
 set background=dark
 syntax on
@@ -120,7 +127,7 @@ endif
 highlight NonText ctermfg=238
 highlight SpecialKey ctermfg=238
 
-" italic comments and colorscheme settings
+" italic comments?
 if $TERM !=? '' || has('gui_running')
   highlight Comment cterm=italic
 else
@@ -129,7 +136,7 @@ endif
 
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger         = '<F3>'
+let g:UltiSnipsExpandTrigger         = '<F1>'
 let g:UltiSnipsJumpForwardTrigger    = '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger   = '<c-k>'
 let g:UltiSnipsEditSplit             = 'vertical'
@@ -139,16 +146,15 @@ let g:templates_no_builtin_templates = 1
 
 " vim-airline settings
 set noshowmode
-let g:bufferline_echo         = 0
+let g:bufferline_echo = 0
 let g:airline_powerline_fonts = 1
-"let g:airline_solarized_bg    = 'dark'
 
 " ale settings
 " Enable completion where available.
 let g:ale_lint_delay = 2000
 let g:ale_pattern_options = {'\.C': {'ale_enabled': 1}} " this is for ROOT macros
 let g:ale_completion_enabled = 1
-let g:ale_linters = { 'cpp': [] } " let YCM do its job
+let g:ale_linters = { 'cpp': [], 'asm': [] } " let YCM do its job
 let g:ale_python_flake8_options = '--max-line-length 999'
 
 " gutter options
@@ -158,11 +164,11 @@ if v:version >= 750
 endif
 
 " YouCompleteMe settings
-let g:ycm_global_ycm_extra_conf                     = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf                        = 0
-let g:ycm_add_preview_to_completeopt                = 1
-let g:ycm_seed_identifiers_with_syntax              = 0
-let g:ycm_min_num_of_chars_for_completion           = 2
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_seed_identifiers_with_syntax = 0
+let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 " vim-move settings
