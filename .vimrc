@@ -141,6 +141,7 @@ let g:UltiSnipsJumpForwardTrigger    = '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger   = '<c-k>'
 let g:UltiSnipsEditSplit             = 'vertical'
 let g:UltiSnipsSnippetsDir           = '~/.vim/templates/UltiSnips'
+let g:UltiSnipsNoPythonWarning       = 1
 let g:templates_no_autocmd           = 1
 let g:templates_no_builtin_templates = 1
 
