@@ -3,7 +3,7 @@
 top_padding=34
 bottom_padding=29
 
-bspc config border_width 1
+bspc config border_width 2
 bspc config window_gap 7
 bspc config top_padding $top_padding
 

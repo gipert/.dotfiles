@@ -97,7 +97,7 @@ monitor_setup() {
         home)
             monitor_setup --scale 2 movie
 
-            pacmd set-default-sink 3
+            pacmd set-default-sink 4
             setxkbmap us
             # xset r rate 300 40
             ;;
@@ -121,11 +121,16 @@ monitor_setup() {
             # xset r rate 300 40
             ;;
     esac
+
+    rand_wallpaper
 }
 
 rand_wallpaper() {
     if command -v feh > /dev/null && [ -d ~/pictures/wallpapers ]; then
-        img=$(ls ~/pictures/wallpapers/ | grep -E '.(png|jpe?g)'  | sort -R | tail -n 1)
-        feh --bg-tile "$HOME/pictures/wallpapers/$img"
+        # NOTE: would --random-source=/dev/urandom improve the quality of random numbers?
+        # they are definitely not good atm
+        local all_img=$(find ~/pictures/wallpapers/photos/desktop -regextype egrep -iregex '.*.(png|jpe?g|heic)')
+        local img=$(echo "$all_img" | sort -R | tail -n 1)
+        feh --bg-center --bg-fill "$img"
     fi
 }

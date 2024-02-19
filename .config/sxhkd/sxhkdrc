@@ -31,6 +31,9 @@ super + j
 super + c
     rofi -show calc -modi calc -no-show-match -no-sort
 
+super + shift + s
+    ~/.local/bin/rofi-screenshot.sh
+
 # make sxhkd reload its configuration files:
 super + Escape
     pkill -USR1 -x sxhkd

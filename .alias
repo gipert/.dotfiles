@@ -26,4 +26,6 @@ if ! command -v ranger &> /dev/null; then
     fi
 fi
 
+alias ra="ranger"
+
 [ -f ~/.alias_bis ] && source ~/.alias_bis

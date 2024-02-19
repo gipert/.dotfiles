@@ -1,0 +1,5 @@
+feh --scale-down \
+    --geometry 2000x1300 \
+    --fontpath /usr/share/fonts/TTF \
+    --menu-font FiraSans-Regular/16 \
+    --font FiraCode-Medium/16

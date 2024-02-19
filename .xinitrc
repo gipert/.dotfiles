@@ -30,12 +30,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
-# wallpaper
-if command -v feh > /dev/null && [ -d ~/pictures/wallpapers ]; then
-    img=$(ls ~/pictures/wallpapers/ | grep -E '.(png|jpe?g)'  | sort -R | tail -n 1)
-    feh --bg-tile "$HOME/pictures/wallpapers/$img"
-fi
-
 # adjust cursor repeat rate
 xset r rate 300 40
 
@@ -49,10 +43,16 @@ session=${1:-bspwm}
 [[ `command -v xob` ]] && ~/.config/xob/launch.sh &> /dev/null
 
 if [[ `hostname` == "thinkpad" ]]; then
-
     # needed for rofi-pass to work properly
     setxkbmap de
+fi
 
+# wallpaper
+if command -v feh > /dev/null && [ -d ~/pictures/wallpapers/photos/desktop ]; then
+    # NOTE: would --random-source=/dev/urandom improve the quality of random numbers?
+    all_img=$(find ~/pictures/wallpapers/photos/desktop -regextype egrep -iregex '.*.(png|jpe?g|heic)')
+    img=$(echo "$all_img" | sort -R | tail -n 1)
+    feh --bg-center --bg-fill "$img"
 fi
 
 case "$session" in

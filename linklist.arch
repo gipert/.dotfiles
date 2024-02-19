@@ -3,6 +3,7 @@
 .config/biber/biber.conf
 .config/bspwm
 .config/dunst
+.config/feh
 .config/gtk-3.0/settings.ini
 .config/htop/htoprc.arch ~/.config/htop/htoprc
 .config/i3

@@ -54,6 +54,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
   Plug 'rhysd/vim-clang-format'
   Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
+  Plug 'vim-scripts/ck.vim'
 
 call plug#end()
 
@@ -177,7 +178,7 @@ let g:move_key_modifier = 'C'
 
 " vim-commentary settings
 augroup commentary
-  autocmd FileType c,cpp,cs,java,asy setlocal commentstring=//\ %s
+  autocmd FileType c,cpp,cs,java,asy,ck setlocal commentstring=//\ %s
   autocmd FileType asm,julia,singularity,snakemake setlocal commentstring=#\ %s
   autocmd FileType lilypond setlocal commentstring=%\ %s
   autocmd FileType sql setlocal commentstring=--\ %s
@@ -185,6 +186,7 @@ augroup END
 
 augroup filetypedetect
   au BufNewFile,BufRead *.asy setf asy
+  au BufNewFile,BufRead *.ck setf ck
 augroup END
 
 " Julia-Vim
