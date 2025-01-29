@@ -11,6 +11,10 @@ set runtimepath+=~/.vim/templates
 " vim-plug settings
 call plug#begin('~/.vim/plugged')
 
+  if v:version < 802 || (v:version == 802 && has("patch-8.2.3519") == 0)
+    Plug 'cespare/vim-toml'
+  endif
+
   if v:version >= 800
     Plug 'lervag/vimtex'
     Plug 'SirVer/ultisnips', { 'tag': '*' }
