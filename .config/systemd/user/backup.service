@@ -1,0 +1,14 @@
+[Unit]
+Description=Warn about backup every two days at 12:00 AM
+After=graphical.target
+Wants=graphical.target
+
+[Timer]
+OnCalendar=*-*-* 12:00:00
+
+[Service]
+Type=oneshot
+ExecStart=/bin/zsh -c "notify-send -t -1 -a 'borg-backup' 'You have not backed up this system in a while, consider doing it now!'"
+
+[Install]
+WantedBy=timers.target default.target

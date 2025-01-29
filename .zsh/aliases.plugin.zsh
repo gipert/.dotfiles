@@ -58,3 +58,18 @@ dockerX11() {
         docker "$@"
     fi
 }
+
+wifi() {
+    if [[ "$1" == "c" ]]; then
+        shift 1
+        command nmcli d wifi connect "$@"
+    elif [[ "$1" == "l" ]]; then
+        command nmcli d wifi list
+    elif [[ "$1" == "r" ]]; then
+        command nmcli d wifi rescan
+    elif [[ "$1" == "off" ]]; then
+        command nmcli r wifi off
+    elif [[ "$1" == "on" ]]; then
+        command nmcli r wifi on
+    fi
+}

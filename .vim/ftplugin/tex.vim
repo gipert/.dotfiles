@@ -19,7 +19,7 @@ let g:vimtex_imaps_enabled = 0
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_quickfix_autoclose_after_keystrokes = 2
 
-" use vim-tex-fold instead of built-in
+" use vim-tex-fold instead of vimtex's
 let g:vimtex_fold_enabled = 0
 let g:vimtex_fold_manual = 1
 let g:tex_fold_additional_envs = ['tikzpicture', 'titlepage']

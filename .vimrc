@@ -26,7 +26,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
   endif
 
-  Plug 'matze/vim-tex-fold'
+  " FIXME: this is somehow now disabling FastFold and pasting is very slow
+  " Plug 'matze/vim-tex-fold'
   Plug 'Konfekt/FastFold'
   Plug 'reedes/vim-wheel'
   Plug 'JuliaEditorSupport/julia-vim'
@@ -178,7 +179,7 @@ let g:move_key_modifier = 'C'
 
 " vim-commentary settings
 augroup commentary
-  autocmd FileType c,cpp,cs,java,asy,ck setlocal commentstring=//\ %s
+  autocmd FileType c,cpp,cs,java,asy,chuck setlocal commentstring=//\ %s
   autocmd FileType asm,julia,singularity,snakemake setlocal commentstring=#\ %s
   autocmd FileType lilypond setlocal commentstring=%\ %s
   autocmd FileType sql setlocal commentstring=--\ %s

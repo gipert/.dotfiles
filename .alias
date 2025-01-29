@@ -13,6 +13,7 @@ alias .....='cd ../../../..'
 alias dotsync='\cd ~/.dotfiles && git pull && git submodule init && git submodule update && \cd - &> /dev/null'
 alias time='/usr/bin/time -v'
 alias o='xdg-open'
+alias k='k -h'
 
 if ! command -v ranger &> /dev/null; then
     if [[ ! -f ~/.ranger/ranger.py ]]; then

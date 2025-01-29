@@ -13,6 +13,8 @@ is_monitor_connected() {
 
 monitor_setup() {
 
+    local popts="--quiet"
+
     # FIXME: bspc monitor -r does not work!
 
     local scale=1
@@ -28,7 +30,7 @@ monitor_setup() {
     is_monitor_connected ${builtin_s} || return 1
 
     # kill all bars
-    polybar-msg cmd quit
+    polybar-msg cmd quit &> /dev/null
 
     case "$1" in
 
@@ -38,19 +40,19 @@ monitor_setup() {
 
             # turn on built-in and kill all the others
             xrandr --output ${builtin_s} --auto
-            MONITOR=${builtin_s} polybar thinkpad & disown
-            # bspc monitor any -r
+            MONITOR=${builtin_s} polybar ${popts} thinkpad & disown
             bspc monitor ${builtin_s} -d external
 
             if is_monitor_connected ${main_s}; then
                 xrandr --output ${main_s} --auto --mode 3840x2160 --right-of ${builtin_s}
-                MONITOR=${main_s} polybar thinkpad & disown
+                MONITOR=${main_s} polybar ${popts} thinkpad & disown
                 bspc monitor ${main_s} -d I II III IV V VI VII VIII IX X XI XII
             fi
 
             if is_monitor_connected ${vert_s}; then
+                # FIXME: this xrandr call does not always work somehow...
                 xrandr --output ${vert_s} --auto --scale 1.5 --rotate left --right-of ${main_s}
-                MONITOR=${vert_s} polybar vertical & disown
+                MONITOR=${vert_s} polybar ${popts} vertical & disown
                 bspc monitor ${vert_s} -d vertical
             fi
 
@@ -63,12 +65,11 @@ monitor_setup() {
             is_monitor_connected ${external_s} || return 1
 
             xrandr --output ${builtin_s} --auto
-            MONITOR=${builtin_s} polybar thinkpad & disown
-            # bspc monitor any -r
+            MONITOR=${builtin_s} polybar ${popts} thinkpad & disown
             bspc monitor ${builtin_s} -d external
 
             xrandr --output ${external_s} --auto --scale $scale --right-of ${builtin_s}
-            MONITOR=${external_s} polybar thinkpad & disown
+            MONITOR=${external_s} polybar ${popts} thinkpad & disown
             bspc monitor ${external_s} -d I II III IV V VI VII VIII IX X XI XII
             ;;
 
@@ -78,18 +79,16 @@ monitor_setup() {
             xrandr --output ${builtin_s} --auto
             xrandr --output ${external_s} --auto --scale $scale --same-as ${builtin_s}
 
-            MONITOR=${builtin_s} polybar thinkpad & disown
-            # bspc monitor any -r
+            MONITOR=${builtin_s} polybar ${popts} thinkpad & disown
             bspc monitor ${builtin_s} -d I II III IV V VI VII VIII IX X XI XII
             ;;
 
         movie)
             is_monitor_connected ${external_s} || return 1
 
-            xrandr --auto --output ${external_s} --primary --auto --scale $scale
-            MONITOR=${external_s} polybar thinkpad & disown
-            # bspc monitor any -r
-            bspc monitor ${external_s} -d I II III IV V VI VII VIII IX X XI XII
+            xrandr --auto --output ${external_s} --primary --auto --scale $scale || return 1
+            MONITOR=${external_s} polybar ${popts} thinkpad & disown
+            bspc monitor ${external_s} -d I II III IV V VI VII VIII IX X XI XII || return 1
 
             xrandr --output ${builtin_s} --off
             ;;
@@ -97,7 +96,9 @@ monitor_setup() {
         home)
             monitor_setup --scale 2 movie
 
-            pacmd set-default-sink 4
+            def=4
+            for s in $(pacmd list-sinks | grep index); do def=$s; done
+            pacmd set-default-sink $def
             setxkbmap us
             # xset r rate 300 40
             ;;
@@ -106,21 +107,30 @@ monitor_setup() {
 
             # shut all monitors off
             while IFS= read -r m; do
+                # do not switch off builtin
+                [[ "$m" == "${builtin_s}" ]] && continue
+
                 echo "INFO: shutting off $m"
-                xrandr --output $m --off
                 bspc monitor $m -r
+                xrandr --output $m --off
             done <<< "$(get_connected_monitors)"
 
-            # switch builtin display on
-            xrandr --output ${builtin_s} --auto
-            MONITOR=${builtin_s} polybar thinkpad & disown
-            # bspc monitor any -r
+            # switch on bar on builtin display
+            MONITOR=${builtin_s} polybar ${popts} thinkpad & disown
+
+            # and assign desktops
             bspc monitor ${builtin_s} -d I II III IV V VI VII VIII IX X XI XII
+
+            # adopt all orphan nodes
+            bspc wm -o
 
             setxkbmap de
             # xset r rate 300 40
             ;;
     esac
+
+    # restart dunst
+    killall -SIGUSR1 dunst && killall -SIGUSR2 dunst
 
     rand_wallpaper
 }

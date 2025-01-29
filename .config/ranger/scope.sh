@@ -43,9 +43,16 @@ HIGHLIGHT_SIZE_MAX=262143  # 256KiB
 HIGHLIGHT_TABWIDTH=${HIGHLIGHT_TABWIDTH:-8}
 HIGHLIGHT_STYLE=${HIGHLIGHT_STYLE:-clarity}
 HIGHLIGHT_OPTIONS="--replace-tabs=${HIGHLIGHT_TABWIDTH} --style=${HIGHLIGHT_STYLE} ${HIGHLIGHT_OPTIONS:-}"
-PYGMENTIZE_STYLE=${PYGMENTIZE_STYLE:-gruvbox}
+PYGMENTIZE_STYLE=${PYGMENTIZE_STYLE:-gruvbox-dark}
 
 handle_extension() {
+    local pygmentize_format='terminal'
+    local highlight_format='ansi'
+    if [[ "$( tput colors )" -ge 256 ]]; then
+        pygmentize_format='terminal256'
+        highlight_format='xterm256'
+    fi
+
     case "${FILE_EXTENSION_LOWER}" in
 
         # somehow the mimetype of LaTeX files is not always correct
@@ -53,13 +60,6 @@ handle_extension() {
             ## Syntax highlight
             if [[ "$( stat --printf='%s' -- "${FILE_PATH}" )" -gt "${HIGHLIGHT_SIZE_MAX}" ]]; then
                 exit 2
-            fi
-            if [[ "$( tput colors )" -ge 256 ]]; then
-                local pygmentize_format='terminal256'
-                local highlight_format='xterm256'
-            else
-                local pygmentize_format='terminal'
-                local highlight_format='ansi'
             fi
             pygmentize -f "${pygmentize_format}" -O "style=${PYGMENTIZE_STYLE}"\
                 -- "${FILE_PATH}" && exit 5
@@ -103,6 +103,12 @@ handle_extension() {
         json|ipynb)
             jq --color-output . "${FILE_PATH}" && exit 5
             python -m json.tool -- "${FILE_PATH}" && exit 5
+            ;;
+
+        ## YAML
+        yaml|yml)
+            pygmentize -f "${pygmentize_format}" -O "style=${PYGMENTIZE_STYLE}" \
+                -- "${FILE_PATH}" && exit 5
             ;;
 
         ## Direct Stream Digital/Transfer (DSDIFF) and wavpack aren't detected

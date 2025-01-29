@@ -25,6 +25,8 @@ setopt complete_aliases
 # install zplug
 if [[ ! -f ~/.zplug/init.zsh ]]; then
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    # need to wait a sec otherwise init.zsh is not there???
+    sleep 2
 fi
 
 source ~/.zplug/init.zsh
@@ -47,6 +49,9 @@ zplug "b4b4r07/enhancd"
 zplug "supercrabtree/k"
 zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
 
+# FIXME: need to
+# > cd ~/.zplug/repos/junegunn/fzf && ./install --bin
+# for some reason, otherwise cannot send shell jobs to background???
 zplug "junegunn/fzf", \
   hook-build:"./install --bin && ln -fsr bin/fzf $ZPLUG_HOME/bin", \
   use:"shell/*.zsh"

@@ -21,6 +21,7 @@
 .config/rofi/config.rasi
 .config/rofi-pass
 .config/sxhkd
+.config/systemd/user/backup.service
 .config/systemd/user/geoclue-agent.service
 .config/systemd/user/protonmail-bridge.service
 .config/vis/colors

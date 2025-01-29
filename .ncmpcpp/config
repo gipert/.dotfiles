@@ -1,5 +1,5 @@
 mpd_host                              = "127.0.0.1"
-mpd_port                              = "6600"
+mpd_port                              = "6602"
 mpd_music_dir                         = "~/music"
 mpd_crossfade_time                    = "0"
 now_playing_prefix                    = "$b"

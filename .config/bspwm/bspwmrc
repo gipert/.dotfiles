@@ -32,6 +32,7 @@ bspc rule -a mpv state=floating
 bspc rule -a clight-gui state=floating
 bspc rule -a Pavucontrol state=floating
 bspc rule -a gnuplot_qt state=floating
+bspc rule -a Matplotlib state=floating
 
 bspc rule -a firefox desktop=XII follow=on
 bspc rule -a TelegramDesktop desktop=XI follow=on
@@ -46,6 +47,8 @@ killall -q sxhkd
 
 if [[ `hostname` == "thinkpad" ]]; then
 
+    # NOTE: the sxhkd config is based on the DE layout!
+    setxkbmap de
     sxhkd ~/.config/sxhkd/sxhkdrc.thinkpad &
     bspc monitor eDP1 -d I II III IV V VI VII VIII IX X XI XII
 
