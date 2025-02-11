@@ -197,6 +197,9 @@ augroup END
 " Julia-Vim
 let g:latex_to_unicode_auto = 1
 
+" no folding in Snakefiles
+autocmd FileType snakemake setlocal nofoldenable
+
 " configuration file for c++ is ~/.vim/ftplugin/cpp.vim
 " configuration file for tex in ~/.vim/ftplugin/tex.vim
 
