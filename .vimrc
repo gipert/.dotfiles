@@ -23,7 +23,7 @@ call plug#begin('~/.vim/plugged')
 
   " disable on other hosts and for .C files (ROOT macros).
   " -- not sure if this is the best way to do it --
-  if (has('macunix') || hostname() ==# 'lxpertoldi' || hostname() ==# 'thinkpad')
+  if (has('macunix') || hostname() ==# 'thinkpad')
         \ && expand('%:e') !=# 'C' && &filetype !=# 'julia' && &filetype !=# 'asm'
 
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
@@ -31,7 +31,7 @@ call plug#begin('~/.vim/plugged')
   endif
 
   " FIXME: this is somehow now disabling FastFold and pasting is very slow
-  " Plug 'matze/vim-tex-fold'
+  Plug 'matze/vim-tex-fold'
   Plug 'Konfekt/FastFold'
   Plug 'reedes/vim-wheel'
   Plug 'JuliaEditorSupport/julia-vim'

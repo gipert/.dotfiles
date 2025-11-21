@@ -86,11 +86,12 @@ monitor_setup() {
         movie)
             is_monitor_connected ${external_s} || return 1
 
-            xrandr --auto --output ${external_s} --primary --auto --scale $scale || return 1
+            # NOTE: this confuses bspwm, it lists only eDP1 as active monitor afterwards
+            xrandr --auto --output ${external_s} --auto --scale $scale || return 1
             MONITOR=${external_s} polybar ${popts} thinkpad & disown
             bspc monitor ${external_s} -d I II III IV V VI VII VIII IX X XI XII || return 1
 
-            xrandr --output ${builtin_s} --off
+            # xrandr --output ${builtin_s} --off
             ;;
 
         home)

@@ -161,7 +161,9 @@ else:
 
     # import and autotag music with beets
     # further customization in ~/.config/beets/config.yaml
-    beet --directory "$HOME/music" \
+    beet \
+        --directory "$HOME/music" \
+        --plugins fetchart,musicbrainz \
         import \
         --move \
         --search-id "$musicbrainz_releases" \

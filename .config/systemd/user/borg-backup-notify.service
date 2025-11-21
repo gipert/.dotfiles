@@ -1,0 +1,6 @@
+[Unit]
+Description=Send backup reminder notification
+
+[Service]
+Type=oneshot
+ExecStart=/bin/zsh -c "notify-send -t -1 -a 'borg-backup' 'You have not backed up this system in a while, consider doing it now!'"

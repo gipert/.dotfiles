@@ -37,7 +37,7 @@ bspc rule -a Matplotlib state=floating
 bspc rule -a firefox desktop=XII follow=on
 bspc rule -a TelegramDesktop desktop=XI follow=on
 bspc rule -a whatsapp-nativefier-d40211 desktop=XI follow=on
-bspc rule -a thunderbird desktop=X follow=on
+bspc rule -a org.mozilla.Thunderbird desktop=X follow=on
 bspc rule -a Slack desktop=IX follow=on
 bspc rule -a Rocket.Chat desktop=IX follow=on
 

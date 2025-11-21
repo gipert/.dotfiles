@@ -1,9 +1,7 @@
-# forcing backend otherwise the default is qtagg, but pyqt is not installed by
-# default in virtualenvs!
-backend: tkagg
-# tkagg does not respect expernal scaling instructions (via e.g. environment
-# variables), so need to force it here
-figure.dpi: 192
+# install the pyqt6 package!
+backend: qtagg
+# this backend should respect the dpis
+# figure.dpi: 192
 savefig.bbox: tight
 # constrained layout should be better than tight layout
 figure.constrained_layout.use: True
